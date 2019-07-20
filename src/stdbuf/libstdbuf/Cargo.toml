@@ -10,7 +10,7 @@ path = "libstdbuf.rs"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 libc = "0.2"
 cpp = "0.4"
 

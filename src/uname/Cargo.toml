@@ -11,7 +11,7 @@ path = "uname.rs"
 [dependencies]
 clap = "2.32.0"
 platform-info = "0.0.1"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "uname"

@@ -10,7 +10,7 @@ path = "printf.rs"
 
 [dependencies]
 itertools = "0.8.0"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "printf"

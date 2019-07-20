@@ -19,7 +19,7 @@ regex-syntax = "0.6.7"
 sha1 = "0.6.0"
 sha2 = "0.6.0"
 sha3 = "0.6.0"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "hashsum"

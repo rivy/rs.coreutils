@@ -9,7 +9,7 @@ name = "uu_echo"
 path = "echo.rs"
 
 [dependencies]
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "echo"

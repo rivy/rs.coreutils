@@ -11,7 +11,7 @@ path = "install.rs"
 [dependencies]
 getopts = "0.2.18"
 libc = ">= 0.2"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [dev-dependencies]
 time = "0.1.40"

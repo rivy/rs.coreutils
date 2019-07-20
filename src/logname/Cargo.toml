@@ -10,7 +10,7 @@ path = "logname.rs"
 
 [dependencies]
 libc = "0.2.42"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "logname"

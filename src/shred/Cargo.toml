@@ -14,7 +14,7 @@ filetime = "0.2.1"
 getopts = "0.2.18"
 libc = "0.2.42"
 time = "0.1.40"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "shred"

@@ -13,7 +13,7 @@ path = "env.rs"
 [dependencies]
 clap = "2.33"
 libc = "0.2.42"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 rust-ini = "0.13.0"
 
 [[bin]]

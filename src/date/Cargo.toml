@@ -11,7 +11,7 @@ path = "date.rs"
 [dependencies]
 chrono = "0.4.4"
 clap = "2.32.0"
-uucore = "0.0.1"
+uucore = { git = "https://github.com/rivy/rust.uucore", branch = "rivy-local.globwalk" }
 
 [[bin]]
 name = "date"
