@@ -1,6 +1,6 @@
 [package]
 name = "install"
-version = "0.0.1"
+version = "0.0.3"
 authors = ["Ben Eills <ben@beneills.com>"]
 license = "MIT"
 build = "../#common/mkmain.rs"
