@@ -1,0 +1,1679 @@
+# CHANGELOG <br/> [uutils/coreutils](https://github.com/uutils/coreutils)
+
+---
+
+## [0.0.3](https://github.com/uutils/coreutils/compare/0.0.2...0.0.3) <small>(2020-04-10)</small>
+
+#### Changes
+
+* add ~ show-codecov utils &ac; [`f1acab41`](https://github.com/uutils/coreutils/commit/f1acab41fdb2a5acf5d7b49e5970185d80a1b96b)
+
+#### Fixes
+
+* fix forced MinSRV increase (using locked 'backtrace' version) &ac; [`e8c29c42`](https://github.com/uutils/coreutils/commit/e8c29c4275165eedf6aceaecd011600a6247dbca)
+* fix 32-bit/i686 target builds &ac; [`d02007f5`](https://github.com/uutils/coreutils/commit/d02007f5a85f11b822d2e849982e63b4fe1d271f)
+
+#### Maintenance
+
+* maint/**CICD**: generalize README and LICENSE matches for use in dpkg builds &ac; [`fc77a1bb`](https://github.com/uutils/coreutils/commit/fc77a1bb198fbfcbac016d625c9762e16423e2b7)
+* maint/**CICD**: refactor/fix Travis CI to use new 'feature' set &ac; [`a529d4ce`](https://github.com/uutils/coreutils/commit/a529d4ce3c86b1c3885dc2045ae03d6578508602)
+* maint/**CICD**: improve code coverage process and tooling &ac; [`f695cdc9`](https://github.com/uutils/coreutils/commit/f695cdc9e934df793a6e26a48cecf0db29fe6610)
+* maint/**CICD**: improve tooling info display and include build dependency info &ac; [`c80c41b6`](https://github.com/uutils/coreutils/commit/c80c41b6fefa7d413be1b465a5977b831e67b9df)
+* maint/**CICD**: minor AppVeyor changes (spelling/comments) &ac; [`a69ac1d0`](https://github.com/uutils/coreutils/commit/a69ac1d0d55763dd8e30c5065b12aa5f9bef8f2b)
+* maint/**CICD**: add GitHub:Actions (GHA) CICD &ac; [`8d6ed2e6`](https://github.com/uutils/coreutils/commit/8d6ed2e6f23430027f1de29fbda7f9b06cd9c354)
+* maint/**CICD**: improve PR support for AppVeyor CI builds &ac; [`b987a05f`](https://github.com/uutils/coreutils/commit/b987a05fc9140de2fccc3c97faf947f51d354d97)
+* maint/**CICD**: fix features option for GHA &ac; [`fdd64dc1`](https://github.com/uutils/coreutils/commit/fdd64dc19cfa21d1358f534c0f4884ea5f5ed1b3)
+* maint/**CICD**: fix MinSRV testing (use correct toolchain) &ac; [`5aef4fb0`](https://github.com/uutils/coreutils/commit/5aef4fb0e0830c8823bda3a0d5276fef06a63d34)
+* maint/**CICD**: fix GITHUB_REF parsing &ac; [`0b2c252b`](https://github.com/uutils/coreutils/commit/0b2c252b007a13d97420584705b82454a9857467)
+* maint/**build**: improve `cargo-make` build file organization and help text &ac; [`721e11e8`](https://github.com/uutils/coreutils/commit/721e11e8862506533893e55b44c1f30f5f2a25f7)
+* maint/**build**: polish and comment 'features' &ac; [`a232779d`](https://github.com/uutils/coreutils/commit/a232779d2ce7866f40dd657bba625140c2be79e0)
+* maint/**build**: refactor dependencies into sorted order &ac; [`49f090cc`](https://github.com/uutils/coreutils/commit/49f090cc5b2904f49d73da8801e19b4a21c934f4)
+* maint/**build**: refactor dependency specifications (sorted, single lines) of 'Cargo.toml' &ac; [`d3f13d33`](https://github.com/uutils/coreutils/commit/d3f13d33eb2ec11ef6ee953100d20d71ef555b42)
+* maint/**build**: much improved `cargo-make` build file (Makefile.toml) &ac; [`2b0ab790`](https://github.com/uutils/coreutils/commit/2b0ab7905cf4dcc77004b8a10c653a9bcb1c8286)
+* maint/**build**: add dev helper scripts to derive available utils for feature set &ac; [`07289004`](https://github.com/uutils/coreutils/commit/07289004b37051b0560bab59684bbebd79fbb06e)
+* maint/**build**: refactor feature strategy (allows simple `cargo build` on all platforms) and easier cross-targeted builds &ac; [`b7a3c4d8`](https://github.com/uutils/coreutils/commit/b7a3c4d8a8870b9662feda4d6f60e4adcc7da20f)
+* maint/**docs**: add spell-checker exceptions &ac; [`3b9c0b51`](https://github.com/uutils/coreutils/commit/3b9c0b51225daffddc886b85c9fae034dc7a552a)
+* maint/**license**: add license notation to all workspace packages &ac; [`62daec8e`](https://github.com/uutils/coreutils/commit/62daec8e52e8ef3dd7ddc0943c9679d4dd0d0ad9)
+
+#### Refactoring
+
+* refactor ~ clean up main directory (move '{mk,uu}main.rs' into src/#common) &ac; [`6b2c8d96`](https://github.com/uutils/coreutils/commit/6b2c8d96ac7450cbe30cebfdf3a20a97ed6ed6b5)
+* refactor ~ change repair of 'fix `cargo clippy` complaints (fatal/same if clause)' &ac; [`53041de5`](https://github.com/uutils/coreutils/commit/53041de598eba38ea0c9b9301df44a1dcb52ba28)
+* refactor ~ reorg to avoid code coverage bug &ac; [`3a9143e1`](https://github.com/uutils/coreutils/commit/3a9143e1a7d75de118a8717e54a3862e01af7c9a)
+* refactor ~ reduce excessive use of scope prefixes &ac; [`35488fc5`](https://github.com/uutils/coreutils/commit/35488fc5619b7787b63d412dd3a0fb5032dfa98e)
+* refactor ~ (maint!) use fixed/patched uucore; await upgrade upstream &ac; [`1319e786`](https://github.com/uutils/coreutils/commit/1319e786a1c8592f0a5e3c9bd6a242b74ef03461)
+* refactor/**polish**: fix `cargo clippy` complaints (deprecated std::error::Error::description) &ac; [`6b32b674`](https://github.com/uutils/coreutils/commit/6b32b674887ade410c84e2f0bb06d01bcb5a629c)
+* refactor/**polish**: fix `cargo clippy` complaints (skip_while_next) &ac; [`e7cd8d8f`](https://github.com/uutils/coreutils/commit/e7cd8d8fbf12ed42ce4f677f4b81d4ebb8d8a9db)
+* refactor/**polish**: fix `cargo clippy` complaints (wildcard_in_or_patt) &ac; [`a70c318b`](https://github.com/uutils/coreutils/commit/a70c318b20298357490cc06cd73f05a232deb199)
+* refactor/**polish**: fix `rustc` complaints (unused_parens) &ac; [`7ffc8a8e`](https://github.com/uutils/coreutils/commit/7ffc8a8e1431a91c05ede668509891363ed3c6e4)
+* refactor/**polish**: fix `cargo clippy` complaints (iter_nth_zero) &ac; [`543713f8`](https://github.com/uutils/coreutils/commit/543713f857d6bfede87214002cc82de82679e28a)
+* refactor/**polish**: fix `cargo clippy` complaints (fix/remove allow range_plus_one) &ac; [`6fb9d374`](https://github.com/uutils/coreutils/commit/6fb9d374751ee092b67605b0268ac329582bcca9)
+* refactor/**polish**: fix `cargo clippy` complaints (unused_parens) &ac; [`5c26e1a1`](https://github.com/uutils/coreutils/commit/5c26e1a11a0f378ca04d3a411b1a0e66e2b90e47)
+* refactor/**polish**: fix `cargo clippy` complaints (missing_safety_doc; with ToDO for safety note) &ac; [`8e73eb7e`](https://github.com/uutils/coreutils/commit/8e73eb7ec16a44f4ba52439a3c2dc9484d57289a)
+* refactor/**polish**: fix `cargo clippy` complaints (string_lit_as_bytes) &ac; [`9f8b1deb`](https://github.com/uutils/coreutils/commit/9f8b1deb954e7023deeda68f683d4fcdeac21fb0)
+* refactor/**polish**: fix `cargo clippy` complaints (iter_skip_next) &ac; [`76d2ae08`](https://github.com/uutils/coreutils/commit/76d2ae084b76debe4f3db7a32847c6e9e659eb81)
+* refactor/**polish**: fix `cargo clippy` complaints (or_fun_call) &ac; [`6c544def`](https://github.com/uutils/coreutils/commit/6c544def5b8634ba71235135d6499b9efe3a0aee)
+* refactor/**polish**: fix `cargo clippy` complaints (unreadable_literal) &ac; [`41e12bd6`](https://github.com/uutils/coreutils/commit/41e12bd6ec8092d47d40336f79b3abf67dbcad96)
+* refactor/**polish**: fix `cargo clippy` complaints (redundant_static_lifetimes) &ac; [`4d8e10cb`](https://github.com/uutils/coreutils/commit/4d8e10cbcec2a2632452ae1281f1494b73db8b9d)
+* refactor/**polish**: fix `cargo clippy` complaints (allow trivially_copy_pass_by_ref) &ac; [`6eabf884`](https://github.com/uutils/coreutils/commit/6eabf8841d987300f7e5944fdcc0a0352694f203)
+* refactor/**polish**: inhibit useless warning (within 'tests/tests.rs') &ac; [`9ddbdc72`](https://github.com/uutils/coreutils/commit/9ddbdc72cf5388719c78864506d58ee67d9cb1f6)
+* refactor/**polish**: fix `cargo clippy` complaints (unused imports) &ac; [`15722e3a`](https://github.com/uutils/coreutils/commit/15722e3ace69dcf92f206e74918dacf65df939a3)
+
+---
+
+## [0.0.2](https://github.com/uutils/coreutils/compare/0.0.1...0.0.2) <small>(2020-01-27)</small>
+
+#### Changes
+
+* Add 'windows_legacy' feature to allow build for older windows versions &ac; [`95809ae9`](https://github.com/uutils/coreutils/commit/95809ae98e1da102a3d369f30a6d67eb88b4cd91)
+* Add the 'dyn' keyword where necessary &ac; [`3511aa98`](https://github.com/uutils/coreutils/commit/3511aa987ad154ece5a4e4949719de549fc77c34)
+* Add windows feature and make unix imply generic &ac; [`63f15378`](https://github.com/uutils/coreutils/commit/63f15378383588d64bcd0837b232e8a34ba1b186)
+* Change the last supported Rust version to 1.31.0 &ac; [`c851e00d`](https://github.com/uutils/coreutils/commit/c851e00dbdc320cfaa2f293e74375f5fd4b9b850)
+* Add tests for signals (including failing test for `is_signal` &ac; [`1ed8a016`](https://github.com/uutils/coreutils/commit/1ed8a016c1639903e274a81326f7286d7e031dc4)
+* Change 'ls -l -h' formatting to match GNU ls &ac; [`92072697`](https://github.com/uutils/coreutils/commit/9207269791986fb457deb1c37772d56ba76c4ec8)
+
+#### Fixes
+
+* fix forced MinSRV increase (using locked 'backtrace' version) &ac; [`55888e71`](https://github.com/uutils/coreutils/commit/55888e71f7e1dd947d724375e8f40b54defa0947)
+* fix 32-bit/i686 target builds &ac; [`b4cd0405`](https://github.com/uutils/coreutils/commit/b4cd0405308c932ca412eeffb5af29c0554ba672)
+* Fix is_signal &ac; [`8378c282`](https://github.com/uutils/coreutils/commit/8378c28242da262c7e38b45fe4f2861ee35d34cc)
+* Fix [#1321](https://github.com/uutils/coreutils/issues/1321) tsort handle self-loops &ac; [`63bc9985`](https://github.com/uutils/coreutils/commit/63bc9985e09a2fcaf5fdfc3371412bb655e97e31)
+* fix ~ correct symlink creation in tests &ac; [`f3d43d77`](https://github.com/uutils/coreutils/commit/f3d43d775a926af98ddf490b16bb2e8e4f5ab6b8)
+* fix AppVeyor CI configuration &ac; [`851f2e53`](https://github.com/uutils/coreutils/commit/851f2e53234e6167388a4bcc8e418d676d61d383)
+* fix Travis CI configuration &ac; [`e5f67765`](https://github.com/uutils/coreutils/commit/e5f67765e3bcf7c453b57defcc9eb4c68fea8776)
+* fix: remove unused parens &ac; [`f56a7d30`](https://github.com/uutils/coreutils/commit/f56a7d30bafbece908c4ecdcd5bc4256505780f3)
+* fix: remove unused 'mut' &ac; [`c56f8f68`](https://github.com/uutils/coreutils/commit/c56f8f6807e6ffd4c84a20910ceb576781d997ad)
+* fix: remove unused imports &ac; [`16d39caf`](https://github.com/uutils/coreutils/commit/16d39cafcca7f8b2f33d49bc3ef6dcc198b7ddd0)
+* fix: gate unix-only imports &ac; [`a046d94e`](https://github.com/uutils/coreutils/commit/a046d94e7557b52219ac245a82c54f6a25662c55)
+* fix: gate unix-only macros (silences "unused" warnings) &ac; [`197bd2e1`](https://github.com/uutils/coreutils/commit/197bd2e10ce69f64ca1c0cc548ae8a95acb2d4fd)
+* fix: remove deprecated 'std::ascii::AsciiExt' &ac; [`a66f7a7a`](https://github.com/uutils/coreutils/commit/a66f7a7a536e7b752e1813d2ce3bb594444e3d76)
+
+#### Dependency Updates
+
+* Update the dependencies for redox compilation &ac; [`63f3f78b`](https://github.com/uutils/coreutils/commit/63f3f78bdaaee5b5897867908ad3d270970cf05b)
+* update rust minimum version to 1.27.0 (includes testing) &ac; [`fada9314`](https://github.com/uutils/coreutils/commit/fada9314d7057c0f29092a509aa5e0c14ea42c32)
+
+#### Maintenance
+
+* build: bump itertools from 0.7.11 to 0.8.0 &ac; [`e7c3d2e3`](https://github.com/uutils/coreutils/commit/e7c3d2e381e0fe685f59c2cf7af2f3953dad466b)
+* maint: reduce CI config file visibility &ac; [`9cbf8b58`](https://github.com/uutils/coreutils/commit/9cbf8b5856e84e1260e8dad0a7ae6cbe31fdb7ee)
+* build: bump filetime from 0.2.4 to 0.2.5 &ac; [`2d55e5ca`](https://github.com/uutils/coreutils/commit/2d55e5ca85a6799dc0a52c661268a4228281f0d9)
+* build: bump libc from 0.2.51 to 0.2.53 &ac; [`08ec78b6`](https://github.com/uutils/coreutils/commit/08ec78b63453fa9e3714c9ec5c3ded20abb50af4)
+* build: bump libc from 0.2.54 to 0.2.56 &ac; [`61a48467`](https://github.com/uutils/coreutils/commit/61a484675553996c3d9d8210eebd497f67bd3fc1)
+* build: bump libc from 0.2.56 to 0.2.58 &ac; [`fa73fe1c`](https://github.com/uutils/coreutils/commit/fa73fe1c640abea0643c3c600ae08fe8a376589d)
+* build: bump byteorder from 1.3.1 to 1.3.2 &ac; [`688e0812`](https://github.com/uutils/coreutils/commit/688e08127b74148de01291973846aaf41edeb2e0)
+* build: bump regex-syntax from 0.6.6 to 0.6.7 &ac; [`a0ca860f`](https://github.com/uutils/coreutils/commit/a0ca860f93a15eb40a66d87282441b290a31a47d)
+* build: [security] bump smallvec from 0.6.9 to 0.6.10 &ac; [`03e0bef9`](https://github.com/uutils/coreutils/commit/03e0bef9c29a216f868977ef1016ffa73398ce8f)
+* build: bump aho-corasick from 0.6.10 to 0.7.3 &ac; [`427381fd`](https://github.com/uutils/coreutils/commit/427381fd87b4ee8490321aae5347f29e8224023e)
+* build: bump num_cpus from 1.10.0 to 1.10.1 &ac; [`4b5dbcf9`](https://github.com/uutils/coreutils/commit/4b5dbcf9952b70e887237afe7a34ecd1159c6a1a)
+* build: bump memchr from 1.0.2 to 2.2.0 &ac; [`642a2a4e`](https://github.com/uutils/coreutils/commit/642a2a4ecbce6b67f4037775602270348c5ebf4a)
+* build: bump glob from 0.2.11 to 0.3.0 &ac; [`50aab854`](https://github.com/uutils/coreutils/commit/50aab8541d51471c449b0dfc9b7a021368c2b1a0)
+* build: bump walkdir from 2.2.7 to 2.2.8 &ac; [`7a24f5e5`](https://github.com/uutils/coreutils/commit/7a24f5e517319538437e65a098f24928ed2eaa5f)
+* maint: turn off cargo autotests to silence warnings &ac; [`cb7a926e`](https://github.com/uutils/coreutils/commit/cb7a926e9a83f7f6fac18a2034960bb7f91159aa)
+* maint/**CICD**: minor AppVeyor changes (spelling/comments) &ac; [`a8b88b8f`](https://github.com/uutils/coreutils/commit/a8b88b8f181d0a76e2631e015300aeb6ccba72e4)
+* maint/**CICD**: add GitHub:Actions (GHA) CICD &ac; [`e960c34c`](https://github.com/uutils/coreutils/commit/e960c34cac2953a3ffa7c9bf2a0b989885e8663f)
+* maint/**CICD**: refactor/fix Travis CI to use new 'feature' set &ac; [`54e33da7`](https://github.com/uutils/coreutils/commit/54e33da7b813d06328d4081ada36bea3ad7b616f)
+* maint/**build**: add `cargo make` support &ac; [`74f26a2d`](https://github.com/uutils/coreutils/commit/74f26a2d83cceb12a0551a42cdf99e4176685bc3)
+* maint/**build**: add dev helper scripts to derive available utils for feature set &ac; [`73646be4`](https://github.com/uutils/coreutils/commit/73646be49293dbb2e4326a93634a2e70c6f7fba3)
+* maint/**build**: much improved `cargo-make` build file (Makefile.toml) &ac; [`4878f2c9`](https://github.com/uutils/coreutils/commit/4878f2c9b714deafddfbd5fef841112862b36a9d)
+* maint/**build**: refactor feature strategy (allows simple `cargo build` on all platforms) and easier cross-targeted builds &ac; [`dd4cb8ed`](https://github.com/uutils/coreutils/commit/dd4cb8ed5e187862d0bcf701b01cee563e257c30)
+* maint/**cicd**: allow rust 'beta' failures (Travis CI) &ac; [`2f23a2e2`](https://github.com/uutils/coreutils/commit/2f23a2e2cb50f8534610e734cd761dabf985ce4a)
+* maint/**deps**: bump filetime from 0.2.1 to 0.2.4 &ac; [`55c29c8a`](https://github.com/uutils/coreutils/commit/55c29c8a1d9bbd21074ff97708e968a30abda96e)
+
+#### Refactoring
+
+* refactor ~ (maint!) use fixed/patched uucore; await upgrade upstream &ac; [`c9d07ccb`](https://github.com/uutils/coreutils/commit/c9d07ccb435bde9cd4eb5fb5c576afec44bd5ee8)
+* refactor ~ replace deprecated `trim_{left,right}...` with `trim_{start,end}...` &ac; [`45a04ce5`](https://github.com/uutils/coreutils/commit/45a04ce5fc07b60078eed7d40bb1295554b803a6)
+* refactor ~ remove unneeded mem::uninitialized() code &ac; [`c969becb`](https://github.com/uutils/coreutils/commit/c969becbf835f12937480939737daab843aedcad)
+* refactor: use shorthand fields &ac; [`43689226`](https://github.com/uutils/coreutils/commit/436892269f443cd49d267653a10f4a826acee936)
+* refactor/**polish**: fix `cargo clippy` complaints (allow module_inception) &ac; [`e80970cb`](https://github.com/uutils/coreutils/commit/e80970cb92932a688b3d93dc4641f51e05a4ac84)
+* refactor/**polish**: fix `cargo clippy` complaints (allow useless_let_if_seq) &ac; [`082f9520`](https://github.com/uutils/coreutils/commit/082f9520b24386f9b23bc81f35b2edb2960cfe0e)
+* refactor/**polish**: fix `cargo clippy` complaints (allow unreadable_literal {for dynamic code}) &ac; [`d82a1703`](https://github.com/uutils/coreutils/commit/d82a170351348608185da48e981a62402dbc3b53)
+* refactor/**polish**: fix `cargo clippy` complaints (allow too_many_args) &ac; [`372ddf92`](https://github.com/uutils/coreutils/commit/372ddf92220a3bec96bd79c45c430e63122c776a)
+* refactor/**polish**: fix `cargo clippy` complaints (allow single_match) &ac; [`6c7c4788`](https://github.com/uutils/coreutils/commit/6c7c4788d8532dc2d2cfcc811a310ed4892fb452)
+* refactor/**polish**: fix `cargo clippy` complaints (allow range_plus_one; `clippy` bug workaround) &ac; [`6230ab30`](https://github.com/uutils/coreutils/commit/6230ab302a56ca27884ed8a0cba22b2c887433f3)
+* refactor/**polish**: fix `cargo clippy` complaints (allow ptr_arg) &ac; [`522d3ae1`](https://github.com/uutils/coreutils/commit/522d3ae1b6bf42a71fcc709667125ceb8b7a19c9)
+* refactor/**polish**: fix `cargo clippy` complaints (allow ptr_arg) &ac; [`b8c07112`](https://github.com/uutils/coreutils/commit/b8c07112737ec436e058ca374e23b9e1426a4423)
+* refactor/**polish**: fix `cargo clippy` complaints (allow deprecated mem::uninitialized) &ac; [`a6bdad31`](https://github.com/uutils/coreutils/commit/a6bdad314d227b66b09a3fde6335bdf3aa48907b)
+* refactor/**polish**: fix `cargo clippy` complaints (allow missing_safety_doc) &ac; [`cc499833`](https://github.com/uutils/coreutils/commit/cc499833140520a24496645c9bb875646988be53)
+* refactor/**polish**: fix `cargo clippy` complaints (allow map_clone) &ac; [`df68c396`](https://github.com/uutils/coreutils/commit/df68c396c4b67d713fc5eb712158b8cc34fbcd4f)
+* refactor/**polish**: fix `cargo clippy` complaints (allow many_single_char_names) &ac; [`99ce03f2`](https://github.com/uutils/coreutils/commit/99ce03f259ccb23c453fbf73d7da7faeb61176a5)
+* refactor/**polish**: fix `cargo clippy` complaints (allow 'let_and_return') &ac; [`44a60f77`](https://github.com/uutils/coreutils/commit/44a60f773f5c5d97789fa057f7469ba165e61bbe)
+* refactor/**polish**: fix `cargo clippy` complaints (allow enum_variant_names) &ac; [`a90e1abb`](https://github.com/uutils/coreutils/commit/a90e1abbd8a7b22f4652afa67588be3dd4204e2b)
+* refactor/**polish**: fix `cargo clippy` complaints (allow comparison_chain {for f64 comparisons}) &ac; [`5241eca0`](https://github.com/uutils/coreutils/commit/5241eca084041d0e9be1715c821f885f26a74bef)
+* refactor/**polish**: fix `cargo clippy` complaints (allow comparison_chain) &ac; [`784887cc`](https://github.com/uutils/coreutils/commit/784887cc842b374806216bbad606e3821a794d3a)
+* refactor/**polish**: fix `cargo clippy` complaints (allow complexity) &ac; [`5094d6ff`](https://github.com/uutils/coreutils/commit/5094d6ffcc03df51e31e289c404973879be25232)
+* refactor/**polish**: fix `cargo clippy` complaints ('better' ref use/toplevel_ref_arg) &ac; [`37c9b0e3`](https://github.com/uutils/coreutils/commit/37c9b0e331dbc76e70b3d1bc591300d0d29ecc70)
+* refactor/**polish**: fix `cargo clippy` complaints (transmute_ptr_to_ptr) &ac; [`58779be6`](https://github.com/uutils/coreutils/commit/58779be6bbbd169117dca7a0c8007e6363937b67)
+* refactor/**polish**: fix `cargo clippy` complaints (new_ret_no_self) &ac; [`1deac8df`](https://github.com/uutils/coreutils/commit/1deac8df872c439fe04d3f1b825a0b098594cfea)
+* refactor/**polish**: fix `cargo clippy` complaints (borrowed_box) &ac; [`6131f6f0`](https://github.com/uutils/coreutils/commit/6131f6f0e19a4ddb9814174f7b531677257a62c1)
+* refactor/**polish**: fix `cargo clippy` complaints (trivially_copy_pass_by_ref) &ac; [`8f2cdcfc`](https://github.com/uutils/coreutils/commit/8f2cdcfcb5d0cfc2480bb7bd22f69983a8bbdf7e)
+* refactor/**polish**: fix `cargo clippy` complaints (flat_map_identity) &ac; [`37a3db18`](https://github.com/uutils/coreutils/commit/37a3db1819288d60b5f7658263e70774dfde88a3)
+* refactor/**polish**: fix `cargo clippy` complaints (zero_ptr) &ac; [`bffea950`](https://github.com/uutils/coreutils/commit/bffea950d94b289f7aeaf78d0f71d17b5ddd9540)
+* refactor/**polish**: fix `cargo clippy` complaints (comparison_chain) &ac; [`248dfbac`](https://github.com/uutils/coreutils/commit/248dfbac08928e8f1341c0cddc49384924c5c49e)
+* refactor/**polish**: fix `cargo clippy` complaints (unnecessary_unwrap) &ac; [`2ef9c9a2`](https://github.com/uutils/coreutils/commit/2ef9c9a28e705894a69097b6e7d9e8aa34007d1a)
+* refactor/**polish**: fix `cargo clippy` complaints (remove unit value as function arg) &ac; [`7cc35716`](https://github.com/uutils/coreutils/commit/7cc35716576d9c72a559a827d7f421951abb0429)
+* refactor/**polish**: fix `cargo clippy` complaints (inefficient `to_string()`) &ac; [`8ec50b72`](https://github.com/uutils/coreutils/commit/8ec50b72d19e74c2eb51fb26fc48091b76e2ed77)
+* refactor/**polish**: fix `cargo clippy` complaints (remove useless lint attribute) &ac; [`33440602`](https://github.com/uutils/coreutils/commit/334406028c49caf011d7326dab9c475fa16ce335)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded transmute) &ac; [`aa2ed768`](https://github.com/uutils/coreutils/commit/aa2ed76846dd5212a2c730d4559cde549871af44)
+* refactor/**polish**: fix `cargo clippy` complaints (filter_map => filter) &ac; [`f933c60a`](https://github.com/uutils/coreutils/commit/f933c60a41460258b2fd1b479015f06722fc8537)
+* refactor/**polish**: fix `cargo clippy` complaints (use enumerate) &ac; [`de9d702a`](https://github.com/uutils/coreutils/commit/de9d702a3222c105291b1121ad4971320988b58e)
+* refactor/**polish**: fix `cargo clippy` complaints (into_iter => iter) &ac; [`33e5d8c8`](https://github.com/uutils/coreutils/commit/33e5d8c81367f6043a241dcca4bc4db55d3b482a)
+* refactor/**polish**: fix `cargo clippy` complaints (avoid `as ...`) &ac; [`d343d533`](https://github.com/uutils/coreutils/commit/d343d533bab464a8101cd246a40f6a2c6ea7662e)
+* refactor/**polish**: fix `cargo clippy` complaints (remove `->()`) &ac; [`66124454`](https://github.com/uutils/coreutils/commit/66124454e3145680c19f36b83e401fc252fc169c)
+* refactor/**polish**: fix `cargo clippy` complaints (simplify enum element names/NumberMode) &ac; [`55b3e4ea`](https://github.com/uutils/coreutils/commit/55b3e4ea24eee397675426b69b59b66793397b1e)
+* refactor/**polish**: fix `cargo clippy` complaints (simplify enum element names/InteractiveMode) &ac; [`82dc40f0`](https://github.com/uutils/coreutils/commit/82dc40f0af301dbf7c743fc99ac543f36b834323)
+* refactor/**polish**: fix `cargo clippy` complaints (loop/match => while let) &ac; [`fd8e5acd`](https://github.com/uutils/coreutils/commit/fd8e5acd57aafedc32341fc93c4f10d8331fc30e)
+* refactor/**polish**: fix `cargo clippy` complaints (String => str) &ac; [`98039f17`](https://github.com/uutils/coreutils/commit/98039f176d8fc392dbc9e6dbb96412cbb6009f98)
+* refactor/**polish**: fix `cargo clippy` complaints (match => if let) &ac; [`3bddf84a`](https://github.com/uutils/coreutils/commit/3bddf84aec709d3ea033534654ae76b481169d34)
+* refactor/**polish**: fix `cargo clippy` complaints (map => if let) &ac; [`600c4049`](https://github.com/uutils/coreutils/commit/600c40490bbe64e3114e49c686ce39e6cdef8c69)
+* refactor/**polish**: fix `cargo clippy` complaints (use is_ok) &ac; [`739c2d57`](https://github.com/uutils/coreutils/commit/739c2d5793ed2088c66e71636ac807066f1ddc72)
+* refactor/**polish**: fix `cargo clippy` complaints (use is_null) &ac; [`8b18b7c2`](https://github.com/uutils/coreutils/commit/8b18b7c206c588efd1e6f35f2e37f24bdf557789)
+* refactor/**polish**: fix `cargo clippy` complaints (use is_empty / is_none) &ac; [`bb15dcf1`](https://github.com/uutils/coreutils/commit/bb15dcf1b85b85bbd4844d5f72c2cc38a3828cb3)
+* refactor/**polish**: fix `cargo clippy` complaints (collapse equal if blocks) &ac; [`2931c808`](https://github.com/uutils/coreutils/commit/2931c808b68fa4a076436daf066171c5165a35c1)
+* refactor/**polish**: fix `cargo clippy` complaints (collapse if-if) &ac; [`b003d55f`](https://github.com/uutils/coreutils/commit/b003d55fe11e13e48c94e39aed902b946bbec9b1)
+* refactor/**polish**: fix `cargo clippy` complaints (collapse else-if) &ac; [`b8eb763e`](https://github.com/uutils/coreutils/commit/b8eb763e4350ecfd7e57b5497eb3a3123ed43753)
+* refactor/**polish**: fix `cargo clippy` complaints (needless_lifetimes) &ac; [`2db6fb20`](https://github.com/uutils/coreutils/commit/2db6fb20c9f83274b0977cb26609d561ac70270c)
+* refactor/**polish**: fix `cargo clippy` complaints ('better' match indirection) &ac; [`8c97f0ee`](https://github.com/uutils/coreutils/commit/8c97f0eebb85537a0379feafbec2644957834de8)
+* refactor/**polish**: fix `cargo clippy` complaints ('better' ref indirection) &ac; [`ab87a1ab`](https://github.com/uutils/coreutils/commit/ab87a1ab5f522129ef6a95c247eb42d853049c27)
+* refactor/**polish**: fix `cargo clippy` complaints (redundant return variable) &ac; [`94c088f4`](https://github.com/uutils/coreutils/commit/94c088f4525f83afa3c8d94b3fc05f62557f6503)
+* refactor/**polish**: fix `cargo clippy` complaints (redundant return) &ac; [`88a45a15`](https://github.com/uutils/coreutils/commit/88a45a157b5ac25f622e33bb93bec77aec76523b)
+* refactor/**polish**: fix `cargo clippy` complaints (redundant clone) &ac; [`564168cc`](https://github.com/uutils/coreutils/commit/564168ccfc3b19493827a014413e46f75384ba00)
+* refactor/**polish**: fix `cargo clippy` complaints (redundant closure) &ac; [`2e90c78f`](https://github.com/uutils/coreutils/commit/2e90c78fae96c5f4d29ce0242777c1f01d9aeae9)
+* refactor/**polish**: fix `cargo clippy` complaints (DRY struct def) &ac; [`fa8540cb`](https://github.com/uutils/coreutils/commit/fa8540cb159730f9bc6df57d2ed614df7de3a1e9)
+* refactor/**polish**: fix `cargo clippy` complaints (&Vec => &[]) &ac; [`ea8ed8d5`](https://github.com/uutils/coreutils/commit/ea8ed8d5da5712ea09b0975a46b8eaae0c753eee)
+* refactor/**polish**: fix `cargo clippy` complaints (Vec<> => []) &ac; [`a72422fb`](https://github.com/uutils/coreutils/commit/a72422fb0ef07b1f39ea349c52650fbe9344daf7)
+* refactor/**polish**: fix `cargo clippy` complaints (char not string) &ac; [`ec5ca193`](https://github.com/uutils/coreutils/commit/ec5ca193acec6aec43d75beeea2bcd0524f90066)
+* refactor/**polish**: fix `cargo clippy` complaints (number readability) &ac; [`11d68d3e`](https://github.com/uutils/coreutils/commit/11d68d3e51dba64a84f302e5d9d5584eb5cce69f)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded `String::from`) &ac; [`3da2a69e`](https://github.com/uutils/coreutils/commit/3da2a69e114d5dfeca15a76a5adf7bd7aef78a38)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded parens) &ac; [`bf636826`](https://github.com/uutils/coreutils/commit/bf6368269cc2a8cfc8264b7771ce02505a1b6f0e)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded ref for copiable) &ac; [`1216378c`](https://github.com/uutils/coreutils/commit/1216378c7263ed1046922bb38f173c99579626fe)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded `mut`) &ac; [`bc558f30`](https://github.com/uutils/coreutils/commit/bc558f301ae8d5827abd3c998a2470d17a5519b5)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded `format`) &ac; [`25b1f98c`](https://github.com/uutils/coreutils/commit/25b1f98cf8cbac60bf4981a91ed1b79c349e6ac3)
+* refactor/**polish**: fix `cargo clippy` complaints (use `starts_with()`) &ac; [`3bff7096`](https://github.com/uutils/coreutils/commit/3bff70967ca5c73d0bf160bb6c63f4572ee8fe0b)
+* refactor/**polish**: fix `cargo clippy` complaints (`while let ... = some` => `for ... in`) &ac; [`e676447b`](https://github.com/uutils/coreutils/commit/e676447b3da7ab5438d7d1133cd455beb3d7793a)
+* refactor/**polish**: fix `cargo clippy` complaints (default/tests => `let ... = if ...`) &ac; [`8142ecf3`](https://github.com/uutils/coreutils/commit/8142ecf3255fa67f0e466495b7501e70a7bece6e)
+* refactor/**polish**: fix `cargo clippy` complaints (unwrap_or_else) &ac; [`d192ebea`](https://github.com/uutils/coreutils/commit/d192ebea5b8a0e4582c4bbac2c287ebbdff3a17c)
+* refactor/**polish**: fix `cargo clippy` complaints (String => str) &ac; [`4ddc65f2`](https://github.com/uutils/coreutils/commit/4ddc65f255de0f0bab5e3d1a31045e77bc003593)
+* refactor/**polish**: fix `cargo clippy` complaints (remove allow unused_must_use) &ac; [`2d95cfdc`](https://github.com/uutils/coreutils/commit/2d95cfdcbd0e978048cfad4f1e18caa29d6eb87b)
+* refactor/**polish**: fix `cargo clippy` complaints (for in => iter.take) &ac; [`90a64a83`](https://github.com/uutils/coreutils/commit/90a64a831a25b3e5bfa268b18ee5df2bb00456c0)
+* refactor/**polish**: fix `cargo clippy` complaints (if is_none => as_ref()?) &ac; [`16429332`](https://github.com/uutils/coreutils/commit/1642933275826f43a2984291005b91e5a5e5248e)
+* refactor/**polish**: fix `cargo clippy` complaints (negation instead of * -1) &ac; [`88db11a3`](https://github.com/uutils/coreutils/commit/88db11a32817dda089f2092a07a3993083522d54)
+* refactor/**polish**: fix `cargo clippy` complaints (use `values()`) &ac; [`3c2e609b`](https://github.com/uutils/coreutils/commit/3c2e609bfe13f0b339a84a8218f63990017a6adc)
+* refactor/**polish**: fix `cargo clippy` complaints (match function signatures) &ac; [`c6e98082`](https://github.com/uutils/coreutils/commit/c6e98082242a9f5d118d40355a9a861dca60743e)
+* refactor/**polish**: fix `cargo clippy` complaints (or_else) &ac; [`c6817aef`](https://github.com/uutils/coreutils/commit/c6817aefb39df5ba7aab766ec697833b9f4fd194)
+* refactor/**polish**: fix `cargo clippy` complaints ('better' as `println!()`) &ac; [`413c64fa`](https://github.com/uutils/coreutils/commit/413c64fa128dc1e2324d5e3b599610c7dbee0b2b)
+* refactor/**polish**: fix `cargo clippy` complaints ('better' as `println!(...)`) &ac; [`291d2f5d`](https://github.com/uutils/coreutils/commit/291d2f5d4801d03ba316bd88911c192c05425e45)
+* refactor/**polish**: fix `cargo clippy` complaints (unneeded `_`) &ac; [`ba5a2435`](https://github.com/uutils/coreutils/commit/ba5a2435bed4109f539b609c278261c14fed4d72)
+* refactor/**polish**: fix `cargo clippy` complaints (use `+=`/`-=` notation) &ac; [`493f5f14`](https://github.com/uutils/coreutils/commit/493f5f14965fd657a4c2e915fb0ed2dd2666abea)
+* refactor/**polish**: fix `cargo clippy` complaints (deprecated uint64_t) &ac; [`b4866afb`](https://github.com/uutils/coreutils/commit/b4866afb9a8918c57a2373d4dc17784ee105de81)
+* refactor/**polish**: fix `cargo clippy` complaints (iter.collect => to_vec) &ac; [`b276f475`](https://github.com/uutils/coreutils/commit/b276f4758f3995c1b9bc27a83a6090ec935e7190)
+* refactor/**polish**: fix `cargo clippy` complaints (fatal/write_all) &ac; [`a9b1a03b`](https://github.com/uutils/coreutils/commit/a9b1a03b372e241a97890a827697c785b0e1ec6c)
+* refactor/**polish**: fix `cargo clippy` complaints (fatal/unneeded drop) &ac; [`662db613`](https://github.com/uutils/coreutils/commit/662db613367d0e61700f0f4ea9293f85676d5b62)
+* refactor/**polish**: fix `cargo clippy` complaints (fatal/unneeded clone) &ac; [`181c9d6c`](https://github.com/uutils/coreutils/commit/181c9d6cae11a32f673a414c966fd8ad23097caa)
+* refactor/**polish**: fix `cargo clippy` complaints (fatal/temporary_cstring_as_ptr) &ac; [`6043ac1c`](https://github.com/uutils/coreutils/commit/6043ac1cbdbc3f402e999b2ee112d9c09ede296c)
+* refactor/**polish**: fix `cargo clippy` complaints (fatal/same if clause) &ac; [`1f5749e3`](https://github.com/uutils/coreutils/commit/1f5749e3046b7a58b080fc04e237039fcc3b58ff)
+* refactor/**polish**: fix `cargo clippy` complaints (fatal/cast_ptr_alignment) &ac; [`1f137c24`](https://github.com/uutils/coreutils/commit/1f137c245fb848a4758ead2f5dbf56d475a90671)
+* refactor/**polish**: fix `cargo clippy` complaints (unwrap_or_else) &ac; [`daecc56d`](https://github.com/uutils/coreutils/commit/daecc56d47dfc0a1d2f93110e1115b2866349e85)
+* refactor/**polish**: fix `cargo clippy` complaints (unused imports) &ac; [`54d310eb`](https://github.com/uutils/coreutils/commit/54d310ebcc605a4d1e8183d6ae7bf465fb9f6255)
+* refactor/**polish**: convert to `try!` to `?` syntax &ac; [`b4b0ee40`](https://github.com/uutils/coreutils/commit/b4b0ee40d708111b7ddff57493b70cf3e8962a7e)
+* refactor/**polish**: convert to inclusive range operator syntax (`..=`) &ac; [`c22cf215`](https://github.com/uutils/coreutils/commit/c22cf215baa3ebd80303741415c3ecdbc0e42b43)
+* refactor/**polish**: fix `cargo clippy` complaints (use b'...' notation) &ac; [`768ed717`](https://github.com/uutils/coreutils/commit/768ed71725f548ad08882b8780d05eed8037b1f0)
+
+#### Test Improvements
+
+* Test on FreeBSD using Cirrus CI and link to the Discord in the README &ac; [`220e07dc`](https://github.com/uutils/coreutils/commit/220e07dc950e9df027c1a8217065b43c372e27b0)
+
+#### Pull Requests
+
+* Merge pull request [#1402](https://github.com/uutils/coreutils/issues/1402) from GabrielGanne/master
+* Merge pull request [#1444](https://github.com/uutils/coreutils/issues/1444) from sylvestre/master
+* Merge pull request [#1430](https://github.com/uutils/coreutils/issues/1430) from bippityboppity/add-dyn
+* Merge pull request [#1428](https://github.com/uutils/coreutils/issues/1428) from AdminXVII/update-deps-redox
+* Merge pull request [#1409](https://github.com/uutils/coreutils/issues/1409) from uutils/dependabot/cargo/smallvec-0.6.10
+* Merge pull request [#1403](https://github.com/uutils/coreutils/issues/1403) from uutils/dependabot/cargo/aho-corasick-0.7.3
+* Merge pull request [#1400](https://github.com/uutils/coreutils/issues/1400) from uutils/dependabot/cargo/num_cpus-1.10.1
+* Merge pull request [#1395](https://github.com/uutils/coreutils/issues/1395) from uutils/dependabot/cargo/memchr-2.2.0
+* Merge pull request [#1389](https://github.com/uutils/coreutils/issues/1389) from uutils/dependabot/cargo/glob-0.3.0
+* Merge pull request [#1385](https://github.com/uutils/coreutils/issues/1385) from uutils/dependabot/cargo/libc-0.2.58
+* Merge pull request [#1388](https://github.com/uutils/coreutils/issues/1388) from uutils/dependabot/cargo/byteorder-1.3.2
+* Merge pull request [#1393](https://github.com/uutils/coreutils/issues/1393) from uutils/dependabot/cargo/itertools-0.8.0
+* Merge pull request [#1392](https://github.com/uutils/coreutils/issues/1392) from uutils/dependabot/cargo/regex-syntax-0.6.7
+* Merge pull request [#1394](https://github.com/uutils/coreutils/issues/1394) from uutils/dependabot/cargo/walkdir-2.2.8
+* Merge pull request [#1384](https://github.com/uutils/coreutils/issues/1384) from uutils/dependabot/cargo/libc-0.2.56
+* Merge pull request [#1376](https://github.com/uutils/coreutils/issues/1376) from Arcterus/env-refactor
+* Merge pull request [#1375](https://github.com/uutils/coreutils/issues/1375) from Arcterus/separate-uucore
+* Merge pull request [#1374](https://github.com/uutils/coreutils/issues/1374) from rivy/fix.env-polish
+* Merge pull request [#1362](https://github.com/uutils/coreutils/issues/1362) from Arcterus/cirrus
+* Merge pull request [#1368](https://github.com/uutils/coreutils/issues/1368) from uutils/dependabot/cargo/libc-0.2.53
+* Merge pull request [#1369](https://github.com/uutils/coreutils/issues/1369) from Dr-Emann/uucore_signals_cleanup
+* Merge pull request [#1316](https://github.com/uutils/coreutils/issues/1316) from rivy/fix.env
+* Merge pull request [#1363](https://github.com/uutils/coreutils/issues/1363) from rethab/reject-null-with-program
+* Merge pull request [#1360](https://github.com/uutils/coreutils/issues/1360) from uutils/dependabot/cargo/filetime-0.2.5
+* Merge pull request [#1335](https://github.com/uutils/coreutils/issues/1335) from uutils/dependabot/cargo/rand-0.6.5
+* Merge pull request [#1359](https://github.com/uutils/coreutils/issues/1359) from wnklmnn/dependabot/cargo/rand-0.6.5
+* Merge pull request [#1310](https://github.com/uutils/coreutils/issues/1310) from dvrax/chown-ref-fix
+* Merge pull request [#1343](https://github.com/uutils/coreutils/issues/1343) from uutils/dependabot/cargo/lazy_static-1.3.0
+* Merge pull request [#1356](https://github.com/uutils/coreutils/issues/1356) from Arcterus/echo-locked-stdout
+* Merge pull request [#1319](https://github.com/uutils/coreutils/issues/1319) from rivy/fix.touch
+* Merge pull request [#1306](https://github.com/uutils/coreutils/issues/1306) from rinconjc/1235
+* Merge pull request [#1336](https://github.com/uutils/coreutils/issues/1336) from rinconjc/1321
+* Merge pull request [#1234](https://github.com/uutils/coreutils/issues/1234) from uutils/dependabot/cargo/onig-3.2.2
+* Merge pull request [#1354](https://github.com/uutils/coreutils/issues/1354) from ccbrown/rewrite-echo
+* Merge pull request [#1338](https://github.com/uutils/coreutils/issues/1338) from Arcterus/refactor-base32_64
+* Merge pull request [#1317](https://github.com/uutils/coreutils/issues/1317) from rivy/fix.expr
+* Merge pull request [#1315](https://github.com/uutils/coreutils/issues/1315) from rivy/fix.rm
+* Merge pull request [#1304](https://github.com/uutils/coreutils/issues/1304) from rivy/fix.cp
+* Merge pull request [#1305](https://github.com/uutils/coreutils/issues/1305) from rivy/fix.mv
+* Merge pull request [#1353](https://github.com/uutils/coreutils/issues/1353) from uutils/dependabot/cargo/libc-0.2.51
+* Merge pull request [#1307](https://github.com/uutils/coreutils/issues/1307) from PaulCapron/master
+* Merge pull request [#1328](https://github.com/uutils/coreutils/issues/1328) from uutils/dependabot/cargo/time-0.1.42
+* Merge pull request [#1329](https://github.com/uutils/coreutils/issues/1329) from uutils/dependabot/cargo/lazy_static-1.2.0
+* Merge pull request [#1298](https://github.com/uutils/coreutils/issues/1298) from uutils/dependabot/cargo/half-1.3.0
+* Merge pull request [#1333](https://github.com/uutils/coreutils/issues/1333) from uutils/dependabot/cargo/filetime-0.2.4
+* Merge pull request [#1301](https://github.com/uutils/coreutils/issues/1301) from uutils/dependabot/cargo/rand-0.5.5
+* Merge pull request [#1300](https://github.com/uutils/coreutils/issues/1300) from uutils/dependabot/cargo/aho-corasick-0.6.8
+* Merge pull request [#1302](https://github.com/uutils/coreutils/issues/1302) from uutils/dependabot/cargo/regex-1.0.3
+* Merge pull request [#1314](https://github.com/uutils/coreutils/issues/1314) from teresy/shorthand-fields
+* Merge pull request [#1290](https://github.com/uutils/coreutils/issues/1290) from ArniDagur/ls-formatting
+* Merge pull request [#1312](https://github.com/uutils/coreutils/issues/1312) from E5ten/patch-3
+* Merge pull request [#1281](https://github.com/uutils/coreutils/issues/1281) from rivy/alt/win-cli-globbing
+
+---
+
+## 0.0.1 <small>(2018-12-24)</small>
+
+#### Changes
+
+* add available debug info to test utility UCommand &ac; [`b6558f33`](https://github.com/uutils/coreutils/commit/b6558f3394d42b07eafbe946410a1c042d7952f9)
+* Add license scan report and status &ac; [`c06dd400`](https://github.com/uutils/coreutils/commit/c06dd4007bf59e6279e80615c96db48e19deb839)
+* Change static to const &ac; [`727d4843`](https://github.com/uutils/coreutils/commit/727d4843b801f8a701cde41aec50869e953f1cd1)
+* Add configuration for Codecov to prevent it from failing builds &ac; [`1629c882`](https://github.com/uutils/coreutils/commit/1629c882718e81df7b5616873e18dbf859831941)
+* Add installation instructions for NixOS &ac; [`55e9c5ed`](https://github.com/uutils/coreutils/commit/55e9c5edc55bc23d553d920de3eb514c41975176)
+* add #[allow(unused_imports)] to std::ascii::AsciiExt &ac; [`cc66229f`](https://github.com/uutils/coreutils/commit/cc66229f16e58cc3fe03f74b7ff073e894e460dc)
+* Add Sphinx documentation to generate man pages &ac; [`8ed38394`](https://github.com/uutils/coreutils/commit/8ed383941d6ba984de4495de9307d354bf30b855)
+* Add cross build targeting Redox to Travis CI &ac; [`a23a8ed1`](https://github.com/uutils/coreutils/commit/a23a8ed1f15d691ea36a2ceb5e71d4f727c67095)
+* Added a check to see if the input file/path that ls is run on when using -l or other long options, that if the path part ends with '/' then it does not show it as a soft-link if it is a soft-link but, instead shows the directory contents of the directory the soft-link points to - see https://github.com/uutils/coreutils/issues/1093 &ac; [`0268cf75`](https://github.com/uutils/coreutils/commit/0268cf75cd7eeb4566a0b346a5d56df60cdf5c35)
+* Add numfmt &ac; [`b2ad5183`](https://github.com/uutils/coreutils/commit/b2ad51839bf5c45ae664d4be95d471c885cac9cf)
+* Added support for preserving timestamps. &ac; [`03432db9`](https://github.com/uutils/coreutils/commit/03432db9516bae53fb95551bc64e685da81613af)
+* Add LOC counter to README &ac; [`3d34d06a`](https://github.com/uutils/coreutils/commit/3d34d06a1ef2f4f25b0dcd132547c4ad1a0526b7)
+* add cat support for unix domain sockets &ac; [`133934f7`](https://github.com/uutils/coreutils/commit/133934f7cf5a0abd59818ec2aefbbb10e953cd1b)
+* Add Fuchsia as recognized host OS in uname. &ac; [`59c12433`](https://github.com/uutils/coreutils/commit/59c12433e0605b9960facd208f66249f232feddd)
+* add author name &ac; [`a90aec3f`](https://github.com/uutils/coreutils/commit/a90aec3f1bdd9380eb71342ab2104947bc641b05)
+* Add uucore::utsname to get system info &ac; [`c63aa19c`](https://github.com/uutils/coreutils/commit/c63aa19cd1333a4af006f5121fc6af5cadcfa30f)
+* Add uucore::entries &ac; [`799804e4`](https://github.com/uutils/coreutils/commit/799804e455f55cc91da19c5928d45e9c06b0cb56)
+* Add missing pinky entry in Cargo.lock. &ac; [`3e6a560b`](https://github.com/uutils/coreutils/commit/3e6a560b9c6854541270beece542bedff2ec99e5)
+* add verbose flag to tail &ac; [`519c1caa`](https://github.com/uutils/coreutils/commit/519c1caa23e69a5005120ef1e9a69696ada1a6d2)
+* Add conversion of UID to username for `ls` &ac; [`6179b89b`](https://github.com/uutils/coreutils/commit/6179b89bcc9e9d4603c557d8976ba0c96072913d)
+* Add dircolors &ac; [`c9f363d0`](https://github.com/uutils/coreutils/commit/c9f363d09c07e9eeaa31f70a2170b136ee3496d3)
+* add mknod &ac; [`79478626`](https://github.com/uutils/coreutils/commit/79478626da91471db186b1a503ed4bb21c470304)
+* Add extra spaces to output to match formating of origial `od` &ac; [`1fbda966`](https://github.com/uutils/coreutils/commit/1fbda9663d47fddb175323e40ffefe0365456617)
+* Add a test for `tail -c <BYTES>` from stdin &ac; [`9824bc4d`](https://github.com/uutils/coreutils/commit/9824bc4db30768d4e3baa0d3a6f2c59609a8ef91)
+* Add a test for `tail -c <BYTES> <FILE>` &ac; [`44523338`](https://github.com/uutils/coreutils/commit/445233389e4f8f75c7b3fb8def0ce1b9256d52d5)
+* Changed display_symlink_count to use the right variable name. Removed dead code. &ac; [`539da3ba`](https://github.com/uutils/coreutils/commit/539da3ba1a310f442476a60246cfbb5041a20499)
+* Add missing lib.name for uucore &ac; [`c8ff8950`](https://github.com/uutils/coreutils/commit/c8ff895018235981d6a88ef32d752094d13124e9)
+* Add caution about effectiveness to help text &ac; [`6c3917e1`](https://github.com/uutils/coreutils/commit/6c3917e12355d62077e42c20a4ac2c733f6ae336)
+* add Cargo.lock &ac; [`1525c189`](https://github.com/uutils/coreutils/commit/1525c189eeae4d0f5b1ef8725e1125d251d54ff6)
+* add artifact products to appveyor build process &ac; [`eab6c294`](https://github.com/uutils/coreutils/commit/eab6c294d6349577c57775204b3df82450a5c475)
+* add back initial appveyor file &ac; [`caece01a`](https://github.com/uutils/coreutils/commit/caece01a6f484707816a52bdaadc109196749e5d)
+* add busybox test instructions to README.md &ac; [`73cfb04d`](https://github.com/uutils/coreutils/commit/73cfb04d1107e95f9c2f9d06b58acab1243c0f7f)
+* add back busybox test support &ac; [`a0d7910e`](https://github.com/uutils/coreutils/commit/a0d7910e91429150c698c4c54faa7239c706cca9)
+* Add initial tests for default values &ac; [`cf399faa`](https://github.com/uutils/coreutils/commit/cf399faad26f863a4eb00243a56d22485b6da65d)
+* Add macro to properly find program name. &ac; [`58d6add8`](https://github.com/uutils/coreutils/commit/58d6add8d11b6376966ccbe88a5661e9c9160a46)
+* Add true/false back to multicall binary &ac; [`ef5e8650`](https://github.com/uutils/coreutils/commit/ef5e865089e06c6e41e892ac6591a6bb25cb959e)
+* Add tests for link. &ac; [`10a2c5c2`](https://github.com/uutils/coreutils/commit/10a2c5c22435a6ba470f98850392efae9069c428)
+* Add tests for rmdir. &ac; [`3b5c7766`](https://github.com/uutils/coreutils/commit/3b5c776675b2d87021b0774cc939a5caa19db655)
+* Add tests for cksum/sum. &ac; [`04014d31`](https://github.com/uutils/coreutils/commit/04014d314cfad9e223a60fbab348fbd027c2804e)
+* Add tests for touch. &ac; [`cc4cf604`](https://github.com/uutils/coreutils/commit/cc4cf6049e6bc95a0950c8be93c7bd948b63122a)
+* Add comments for deprecated connect(). &ac; [`480019f5`](https://github.com/uutils/coreutils/commit/480019f5b33bf1452dbafd9179634767487eee55)
+* Add support for beta release to Travis. &ac; [`e090a314`](https://github.com/uutils/coreutils/commit/e090a314a9a2c7bfcb81271aacf5971906a27284)
+* Add tests for cut. &ac; [`92947404`](https://github.com/uutils/coreutils/commit/929474040b7eae035ac86c08f1e3a83dfc5b1046)
+* Add Windows CI support using AppVeyor. &ac; [`b6b8b5b0`](https://github.com/uutils/coreutils/commit/b6b8b5b0c6935c954886b7bfdc6e7b4687b1a7ce)
+* Add initial implementation for ln. &ac; [`9f1dc989`](https://github.com/uutils/coreutils/commit/9f1dc98925220fcb164d73a4fe251f7b383666aa)
+* Add a test &ac; [`85cb9aca`](https://github.com/uutils/coreutils/commit/85cb9aca94a781e8de638e529f84385577300f71)
+* Add tests for tac. &ac; [`dcfc2349`](https://github.com/uutils/coreutils/commit/dcfc23498e6a6c835b05771ef59a6d66bb44290f)
+* Add initial tests for realpath. &ac; [`23cb9541`](https://github.com/uutils/coreutils/commit/23cb9541e7aad442fa0c62c8ce219487c4c598eb)
+* Add helper method for creating symlinks. &ac; [`c3802bb6`](https://github.com/uutils/coreutils/commit/c3802bb69c1d9f8713f7e6553abac4f3734a4bbb)
+* Add initial tests. &ac; [`2dd90af9`](https://github.com/uutils/coreutils/commit/2dd90af92a0beddf9c0d97d7a48b1e93f815fb41)
+* Add quiet and verbose flags to head. &ac; [`b25a3445`](https://github.com/uutils/coreutils/commit/b25a344566408afd44707dc446e582a39111310d)
+* Add initial tests for head. &ac; [`133a6c55`](https://github.com/uutils/coreutils/commit/133a6c5563e8b2fbfe18bcccad3b4c084acaa2f4)
+* Add newline when printing lines. &ac; [`826d8a65`](https://github.com/uutils/coreutils/commit/826d8a65302016fecdd326f894875f937b8ce845)
+* Add tests for base64. &ac; [`2bde7872`](https://github.com/uutils/coreutils/commit/2bde7872c5ecbd6fbba484ea73cb35f762ca766c)
+* Add a test for the 'env -' case &ac; [`c32e21fc`](https://github.com/uutils/coreutils/commit/c32e21fc01f3aa50e421a10606c454846a8c9aed)
+* Add macro to manually flush a writer. &ac; [`d558e372`](https://github.com/uutils/coreutils/commit/d558e37288bbb003d7b85c49ea5fb1e28027bdda)
+* Add separate builds for stable and nightly. &ac; [`7a54aa56`](https://github.com/uutils/coreutils/commit/7a54aa56ebb4a533a5f13d93c5a734dee439b904)
+* Add initial tests for hashsum. &ac; [`9d74bbe5`](https://github.com/uutils/coreutils/commit/9d74bbe5321f0c70e1da2fd59492e774cbc412ed)
+* Add tests for unlink. &ac; [`906ba3e2`](https://github.com/uutils/coreutils/commit/906ba3e24aa3198d51580f0ce7a0504b956c09d7)
+* Add tests for rm. &ac; [`497c04ad`](https://github.com/uutils/coreutils/commit/497c04ad44cd3262ff5772496166f3a8d55b4598)
+* Add tests for readlink. &ac; [`481fdd74`](https://github.com/uutils/coreutils/commit/481fdd744a9bacd77b32c7fd79c079aea9f49237)
+* Add initial test for tsort. &ac; [`82dbd02c`](https://github.com/uutils/coreutils/commit/82dbd02c032532003136a3a79bf69540f974e1b8)
+* Add initial test for pwd. &ac; [`08aea6d5`](https://github.com/uutils/coreutils/commit/08aea6d549a3ea7006a05686a99f4839c1255db6)
+* Add initial tests for false/true. &ac; [`9172bb9b`](https://github.com/uutils/coreutils/commit/9172bb9bd88529d95f628bc80e95618e9fef72cd)
+* Add initial tests for echo. &ac; [`87e7cc9b`](https://github.com/uutils/coreutils/commit/87e7cc9b44c351a1db9d336043a6684d32ff7dcf)
+* Add initial tests for dirname. &ac; [`e700e0d2`](https://github.com/uutils/coreutils/commit/e700e0d2f47b4c58cf452ed4d9e322f0100b4511)
+* Add initial tests for basename. &ac; [`646285f6`](https://github.com/uutils/coreutils/commit/646285f68406456c51d6b9e2aa3bb8dd5db2ecd1)
+* Add initial tests for split. &ac; [`234c8131`](https://github.com/uutils/coreutils/commit/234c81311f38002408dd0f5e1f4a6e1c614b25fe)
+* Add tests for fold. &ac; [`5878d990`](https://github.com/uutils/coreutils/commit/5878d9904e11722295a5c627ea1857b120149170)
+* add test for `factor` &ac; [`9a806346`](https://github.com/uutils/coreutils/commit/9a806346a91535ad52caf66eb65b66b43c23b571)
+* Add a new makefile rule to check for test errors. &ac; [`0736855c`](https://github.com/uutils/coreutils/commit/0736855c3d867fe6aae2f3f0d64a8d795afdebf5)
+* Add test for paste. &ac; [`0ea0e750`](https://github.com/uutils/coreutils/commit/0ea0e7504a3a17f61255508d6cd63fd5751926de)
+* Add test support for env to Makefile. &ac; [`5d7a7fd8`](https://github.com/uutils/coreutils/commit/5d7a7fd87504c9a26808cfe59a002cce11dee8c7)
+* Add documentation for new rule. &ac; [`61ddb043`](https://github.com/uutils/coreutils/commit/61ddb0431485ef26f3dc95651a96e99336372721)
+* Add a new makefile rule to check for build errors. &ac; [`5c1de087`](https://github.com/uutils/coreutils/commit/5c1de087af5b9e2ac7cb4dc2366a3c448e3f9e17)
+* Added verbose for split - prints created file name &ac; [`61c20863`](https://github.com/uutils/coreutils/commit/61c20863105e7400a55930433e78c27098db6b69)
+* Added SIZE multiplier suffixes. &ac; [`dbd1d34b`](https://github.com/uutils/coreutils/commit/dbd1d34ba3e45af0ba741e2c7514400bffcc842a)
+* Added verbose for split - prints created file name &ac; [`2dc58581`](https://github.com/uutils/coreutils/commit/2dc585813192acc7c0ab4562ea6da5f4f8b0f0d9)
+* Added SIZE multiplier suffixes. &ac; [`4fe3c54e`](https://github.com/uutils/coreutils/commit/4fe3c54ebd892714afdf2131d5f7a0144d7af54d)
+* Add cat implementation &ac; [`ec5147e9`](https://github.com/uutils/coreutils/commit/ec5147e9901bf198de152a8a6518fba8ab6d467c)
+* Add semicolons to item macros &ac; [`9b67c372`](https://github.com/uutils/coreutils/commit/9b67c372b276e9d50ad66415ec01b79f2d744758)
+* add nproc &ac; [`09af3eca`](https://github.com/uutils/coreutils/commit/09af3ecaa2ca08d22ce0d041241bcb2ca7f6bfb9)
+* Change tab to spaces &ac; [`681022a2`](https://github.com/uutils/coreutils/commit/681022a2ca9a0f971b02cc7178d1690013dc5423)
+* Add explicit lifetimes &ac; [`1c8e9161`](https://github.com/uutils/coreutils/commit/1c8e9161cc4c9277467e5b3c7567a3a8b3d4efe5)
+* Add repr(C) to c structs &ac; [`83974be0`](https://github.com/uutils/coreutils/commit/83974be06fa2b572304faa064ef79fe7b6b05277)
+* Add stripping and LTO options to Makefile &ac; [`af401146`](https://github.com/uutils/coreutils/commit/af40114664448d0ad49ab25c3a212c8720800f9a)
+* Add tsort &ac; [`f414fcb8`](https://github.com/uutils/coreutils/commit/f414fcb89dd0e9e103200c2548ea545221035989)
+* add test &ac; [`a4eb5c16`](https://github.com/uutils/coreutils/commit/a4eb5c16f902f1847f04f61df81484e1cd290494)
+* Added more options, removed od from README &ac; [`10dc7a2d`](https://github.com/uutils/coreutils/commit/10dc7a2deb50a1fa1df343e2b836f42d798204f1)
+* Add shuf to Cargo.toml and remove shuf from to-do list &ac; [`0b76c70a`](https://github.com/uutils/coreutils/commit/0b76c70aaa85705f102747afc10e6e9d7bd863ce)
+* Add cut to Cargo.toml, remove cut from To Do list &ac; [`a470c330`](https://github.com/uutils/coreutils/commit/a470c330e64977f3d9139ef441fc8f0808492a44)
+* Add cut_characters implementation, based on cut_bytes &ac; [`8b1ff08b`](https://github.com/uutils/coreutils/commit/8b1ff08bd5be6b21bd30ae58737d6c29f1d0c637)
+* Add initial cut support, only bytes cutting &ac; [`2ab58645`](https://github.com/uutils/coreutils/commit/2ab586459b0a9a34ce461fd9e268fd8b85c4188f)
+* Added nohup to cargo &ac; [`3d75a9ba`](https://github.com/uutils/coreutils/commit/3d75a9ba9db0571dfcccf223577c47e53b3a320e)
+* Added nohup to uutils &ac; [`0063bb2a`](https://github.com/uutils/coreutils/commit/0063bb2a8ce1b564f2af6b45a5aefb22771e6b62)
+* Add type suffixes where necessary &ac; [`b3c9fd89`](https://github.com/uutils/coreutils/commit/b3c9fd891eaff9dace0999767f6a5026b3440959)
+* add Cargo.toml &ac; [`9a09e2d7`](https://github.com/uutils/coreutils/commit/9a09e2d756ce1c220712b4a95b548c7a32ddd8cc)
+* add multicall build to travis &ac; [`abbaf244`](https://github.com/uutils/coreutils/commit/abbaf244d20d91421d9319a1a560f1fa9255af97)
+* Change md5sum/rust-crypto to deps/rust-crypto &ac; [`5b8e359a`](https://github.com/uutils/coreutils/commit/5b8e359a5fff5e0b4485e029c0e17df2aa594073)
+* add nl &ac; [`2e097d65`](https://github.com/uutils/coreutils/commit/2e097d659e9903ed631ffd1d352c16efc5d22b3b)
+* Add some installation instructions &ac; [`986d7cba`](https://github.com/uutils/coreutils/commit/986d7cba79b638be7da1a964707f3cc4c675fe33)
+* Add the ability to install coreutils (resolves [#216](https://github.com/uutils/coreutils/issues/216)) &ac; [`0bb67fe1`](https://github.com/uutils/coreutils/commit/0bb67fe13a04fc008a36b0442e5a2a4d4455b60b)
+* add factor &ac; [`b321a1a5`](https://github.com/uutils/coreutils/commit/b321a1a5c0ab924bd6ff3786b4b5f50e3738cbea)
+* Add a 'busytest' target to run uutils under the busybox testsuite &ac; [`91da25ff`](https://github.com/uutils/coreutils/commit/91da25ff2b4197d8a4b9235187c14c237dd1bb1e)
+* add uutils multicall binary &ac; [`13f01e4c`](https://github.com/uutils/coreutils/commit/13f01e4c11ebeb802212474d28d7858611e8539c)
+* add sum &ac; [`aa51311f`](https://github.com/uutils/coreutils/commit/aa51311f83857b26e021f8c0e32f32e952161901)
+* add tr &ac; [`dded5fb8`](https://github.com/uutils/coreutils/commit/dded5fb80d07b351358a1a7da341273a0a8ac0f9)
+* Add cp back to Makefile and fix build. &ac; [`bb3ee23d`](https://github.com/uutils/coreutils/commit/bb3ee23d8cff73fc9cfae117362de8959d024e0a)
+* Add unlink command. &ac; [`ee98e495`](https://github.com/uutils/coreutils/commit/ee98e49514d7b3d7c26512ae1df42d0757574588)
+* add cksum &ac; [`d4cb1d01`](https://github.com/uutils/coreutils/commit/d4cb1d0185b794ad7c79190ee01993bfb5ec8d7a)
+* add comm &ac; [`dc8dc5a4`](https://github.com/uutils/coreutils/commit/dc8dc5a48300b1b3b27ea3380d66a6969725eddd)
+* Add stdin (-) support to some programs &ac; [`bf48ed6e`](https://github.com/uutils/coreutils/commit/bf48ed6eb53662f875a6aee6ea51cfbf1fe7fc90)
+* Add vim formatting comment. &ac; [`fb8e5029`](https://github.com/uutils/coreutils/commit/fb8e502980137653b78d98ca9e5f1c2a67ec5590)
+* Add paste (closes [#120](https://github.com/uutils/coreutils/issues/120)) &ac; [`fac630d0`](https://github.com/uutils/coreutils/commit/fac630d07cd5de4785c74d9a0a3b9d42670bd239)
+* Add -h help and -V version flags &ac; [`b61e3dae`](https://github.com/uutils/coreutils/commit/b61e3dae2ed619713871ca5de3876d1d9c7fd413)
+* Add status image and move users to Unix-specific commands &ac; [`a79728b1`](https://github.com/uutils/coreutils/commit/a79728b1fba85067501046351b1b40757944df26)
+* Add a way to prevent building of programs on Windows &ac; [`ce5cd020`](https://github.com/uutils/coreutils/commit/ce5cd0200b8cb862527340415d64bcb700518330)
+* Changed truncate to use multi-line println! &ac; [`9877f5de`](https://github.com/uutils/coreutils/commit/9877f5de19b1e752cfc8fd9f85bcbc42ff4f6e2c)
+* Added truncate &ac; [`968483bd`](https://github.com/uutils/coreutils/commit/968483bdf6332b382dfc673e6e9545dabf68e765)
+* Add default filename static. &ac; [`d20d1194`](https://github.com/uutils/coreutils/commit/d20d1194168cd3a1d139ca71b069bfc5b6f09850)
+* add `users` executable. &ac; [`bc117345`](https://github.com/uutils/coreutils/commit/bc11734557f586ad7f5071fc8f69b1819b581e43)
+* add to makefile, basic mkdir functionality done &ac; [`d0c2896b`](https://github.com/uutils/coreutils/commit/d0c2896b16674f35803971f274bd764190bdfedb)
+* Added build instructions and allowed selection of which tests to run &ac; [`33bcc315`](https://github.com/uutils/coreutils/commit/33bcc3156b877aa53ff6a0a46e73014366739af8)
+* Add standard warning function in tee &ac; [`af409212`](https://github.com/uutils/coreutils/commit/af4092124b0557e856279d607576a8d3946f5ca1)
+* Added the ability to select which programs to compile &ac; [`68e4d86f`](https://github.com/uutils/coreutils/commit/68e4d86f9db8840f7235dd36c3f1a4f7742d4008)
+* Added the aliases -h and -V for --help and --version to rmdir &ac; [`90b3ad4b`](https://github.com/uutils/coreutils/commit/90b3ad4bd22d841d13c8ee29697d97c41fe3daed)
+* Added the aliases -h and -V for --help and --version to rm &ac; [`fe1edd9f`](https://github.com/uutils/coreutils/commit/fe1edd9f67e71a3fb64edb7d11cf0eeb0db11f2e)
+* Added the aliases -h and -V for --help and --version to sleep &ac; [`c399046c`](https://github.com/uutils/coreutils/commit/c399046c1a7dc431a0197e7d781d15bab327df2d)
+* Add --verbose support to rm &ac; [`21616259`](https://github.com/uutils/coreutils/commit/216162593480b919f42a5163dec228427c066bd4)
+* Add more '/' checks to rm &ac; [`2021a557`](https://github.com/uutils/coreutils/commit/2021a557756d63165e218d56cd9b599eb31c7ef5)
+* Add simple rm implementation &ac; [`d08d8c80`](https://github.com/uutils/coreutils/commit/d08d8c802966a1856d29398ead84882f7349cf24)
+* Add formatting-related logic &ac; [`9eae93e8`](https://github.com/uutils/coreutils/commit/9eae93e8a1486e5d0ff5755a5a443f944c0e4958)
+* Add du to Makefile &ac; [`025adec1`](https://github.com/uutils/coreutils/commit/025adec19e923c74ae690531dce8537aa19aefa7)
+* add basename &ac; [`8ef06144`](https://github.com/uutils/coreutils/commit/8ef06144a11c5487a9628527526e58d091234a7c)
+* added wc utility &ac; [`23bdaae5`](https://github.com/uutils/coreutils/commit/23bdaae577d22360af4952a46721c5da18f984e2)
+* Add env to the build &ac; [`a501bade`](https://github.com/uutils/coreutils/commit/a501bade8870480e272a3aba7e40478d449b797c)
+* Add managed boxes feature to fix the build on latest master &ac; [`a910b54e`](https://github.com/uutils/coreutils/commit/a910b54e4a59ddf6e18e8965b70992b02cde401c)
+* Add env util &ac; [`4f7b7c80`](https://github.com/uutils/coreutils/commit/4f7b7c80a5d4f9068fb5bca133972fd39ee51e6d)
+* Add travis config &ac; [`c1659953`](https://github.com/uutils/coreutils/commit/c1659953acdb337e5c4a6a3abe326b78868517aa)
+* Add tests for cat and fix a couple issues &ac; [`13fd72e1`](https://github.com/uutils/coreutils/commit/13fd72e1f23e640b604d31b025a9b76f358ee84e)
+* Add whoami implementation. &ac; [`1c454e8b`](https://github.com/uutils/coreutils/commit/1c454e8b0b6d1c9dd0c8086cf53f017a4ca7d2bd)
+* Add the first four utils &ac; [`9653ed81`](https://github.com/uutils/coreutils/commit/9653ed81a2fbf393f420d9a8007c574d922018d1)
+* change/**tmp/**: to .gitignore &ac; [`c3d30af5`](https://github.com/uutils/coreutils/commit/c3d30af5e98ee062eaaa26bb8e2860abae37731c)
+
+#### Fixes
+
+* fix gnu CI build on AppVeyor &ac; [`cbb1cff0`](https://github.com/uutils/coreutils/commit/cbb1cff0d304e3392f108d6f3dd23bc3168fe742)
+* fix ~ correct symlink creation in tests &ac; [`06e9540f`](https://github.com/uutils/coreutils/commit/06e9540f8e58fd6e15fa7ee2686b6793a1940401)
+* fix AppVeyor CI configuration &ac; [`8ade12d0`](https://github.com/uutils/coreutils/commit/8ade12d0a4bf57afbd4bebc40eb8fdf4bf8826c2)
+* fix Travis CI configuration &ac; [`122875a2`](https://github.com/uutils/coreutils/commit/122875a23b76e9f0ae88041a1f30cb6e2826b394)
+* fix: remove unused parens &ac; [`9406359e`](https://github.com/uutils/coreutils/commit/9406359eac8e8bf02ea8ff4c2dfdb642bfc45b08)
+* fix: remove unused 'mut' &ac; [`ab0298a1`](https://github.com/uutils/coreutils/commit/ab0298a16f7aeed26b7fb651e4ccc80da402a617)
+* fix: remove unused imports &ac; [`a19ca1c7`](https://github.com/uutils/coreutils/commit/a19ca1c7f83f58b5645879a09e746ee8ac3076f4)
+* fix: gate unix-only imports &ac; [`9bf0d82c`](https://github.com/uutils/coreutils/commit/9bf0d82c4ef39ab621ec84f3d15dabc8ac028d94)
+* fix: gate unix-only macros (silences "unused" warnings) &ac; [`dca16a11`](https://github.com/uutils/coreutils/commit/dca16a11aa63c48b91d8431746876b6ca5c3aef9)
+* fix: remove deprecated 'std::ascii::AsciiExt' &ac; [`63204104`](https://github.com/uutils/coreutils/commit/632041040d868a6797cf46e67df00fa42a67e07d)
+* Fix --apparent-size on ext4 and MacOS &ac; [`13e57616`](https://github.com/uutils/coreutils/commit/13e57616b41fc3d5fd789bcc95dc46a239473979)
+* Fix -b flag &ac; [`4a0f3b31`](https://github.com/uutils/coreutils/commit/4a0f3b31ab4ea7b8e95729d19a299b0224caec7b)
+* Fix comparison of empty string to numeric f64 sort &ac; [`b09ccaf6`](https://github.com/uutils/coreutils/commit/b09ccaf6b1010024d56d79f7539c5173b48113aa)
+* Fix more clippy warnings and remove redundant 'static &ac; [`e46e3594`](https://github.com/uutils/coreutils/commit/e46e3594d20f2358a7421b8df11b851a47726b03)
+* Fix a few clippy warnings &ac; [`4034a322`](https://github.com/uutils/coreutils/commit/4034a322a2bf2df7f885121e2c7a259d61e588ad)
+* Fix expr &ac; [`4756eb5c`](https://github.com/uutils/coreutils/commit/4756eb5c190cbea26daa5d05ec747542d87f0930)
+* Fix .travis.yml &ac; [`49fe4d21`](https://github.com/uutils/coreutils/commit/49fe4d213822a841113c441204b527ae0252353a)
+* Fix issues raised in review &ac; [`838ce7b3`](https://github.com/uutils/coreutils/commit/838ce7b3e35f0e5aef5c222c7ee864729b481c21)
+* Fix edgecase for du on mac &ac; [`f0e25e55`](https://github.com/uutils/coreutils/commit/f0e25e5537d06d176c0b9827da02b12b893f9261)
+* Fix broken lock file &ac; [`79ae872b`](https://github.com/uutils/coreutils/commit/79ae872b1e6a33e55c74ef7c8d4350da23452205)
+* Fix cp build on Redox &ac; [`75141f03`](https://github.com/uutils/coreutils/commit/75141f03823c46ca1fc6880d66458081c8cc7f9e)
+* Fix broken tests due to updating Cargo.lock &ac; [`4ef2ef29`](https://github.com/uutils/coreutils/commit/4ef2ef29cd0d15ed07f9d4a5bfd4a89d6e4ac7f1)
+* fix --help and --version &ac; [`f0aa68aa`](https://github.com/uutils/coreutils/commit/f0aa68aa1eb31e8311699281d6d358a502fcb736)
+* Fix cp -r test &ac; [`b92c6edf`](https://github.com/uutils/coreutils/commit/b92c6edf142ba5f86f6cfc2236e7551797183f9f)
+* Fix onig build on appveyor msvc &ac; [`642f67c9`](https://github.com/uutils/coreutils/commit/642f67c97336936b22355fca6c9315b7e3fc6b46)
+* Fix ordering of ls -t, which was backwards &ac; [`3c3f5ab2`](https://github.com/uutils/coreutils/commit/3c3f5ab2a39bec862df1d72a4741826ee356fb40)
+* Fix the windows failure &ac; [`8f58a4a5`](https://github.com/uutils/coreutils/commit/8f58a4a58a88207651e6d4563077e7c9d7781773)
+* Fix test &ac; [`45ebfdf3`](https://github.com/uutils/coreutils/commit/45ebfdf35faae4266f146e9b2105e797b02f03c2)
+* Fix comment spelling &ac; [`78d2e8db`](https://github.com/uutils/coreutils/commit/78d2e8db27bab9e39abf70003ad487acf53c2290)
+* Fix clippy warnings &ac; [`b3680a5b`](https://github.com/uutils/coreutils/commit/b3680a5baf91d6889f1dad6a649a67dea6f809f3)
+* Fix a number of Windows build warnings &ac; [`0809dce4`](https://github.com/uutils/coreutils/commit/0809dce4a2cba58f45d29e264571bc2b0b5d4d97)
+* Fix mv build on Windows &ac; [`d55e2ee8`](https://github.com/uutils/coreutils/commit/d55e2ee80a0b70424354856763c4285ca2d60efb)
+* Fixed and made the comments clearer &ac; [`2060048c`](https://github.com/uutils/coreutils/commit/2060048c796e689614b696a8c1537951f37f48c9)
+* Fix [#842](https://github.com/uutils/coreutils/issues/842) &ac; [`c0a9e1f0`](https://github.com/uutils/coreutils/commit/c0a9e1f0eb0ed50b1b8598156391ccc8131b0975)
+* Fix windows build &ac; [`68631e55`](https://github.com/uutils/coreutils/commit/68631e555fcaa88bc3b91ee32ee40ebb8bfc43f8)
+* Fix type synonym relaiance which breaks some rusts &ac; [`28d1de1d`](https://github.com/uutils/coreutils/commit/28d1de1de05b30c8ed7e31ece85c86ea60774460)
+* fix fmt's behavior for blank prefixed lines &ac; [`e2cb5eec`](https://github.com/uutils/coreutils/commit/e2cb5eec0adb9878c81665034d10a315028bcbe0)
+* Fix test on Rust Stable. &ac; [`8ff30874`](https://github.com/uutils/coreutils/commit/8ff308740c33479019e137fe2ece5bb5372c9ecb)
+* fix two clippy warnings &ac; [`986c00cd`](https://github.com/uutils/coreutils/commit/986c00cd91f1be1999073d4b81b9a4cbe334f007)
+* Fix sleep duration calculations. &ac; [`7d89717d`](https://github.com/uutils/coreutils/commit/7d89717d4bed1b3a4a318339f2f7134434b9c74c)
+* Fix type mismatch error. &ac; [`53c60e29`](https://github.com/uutils/coreutils/commit/53c60e2990332c4e7eef77be2c1c70b177538e4a)
+* Fix AppVeyor (hopefully) and change targeted Rust version &ac; [`07e1f598`](https://github.com/uutils/coreutils/commit/07e1f598330c9367ff9c88f6d379749531a0a414)
+* Fix clippy warnings &ac; [`a2944e06`](https://github.com/uutils/coreutils/commit/a2944e06db93c70f20556fdd5039abfabce78be6)
+* Fix [#784](https://github.com/uutils/coreutils/issues/784) &ac; [`96817dfb`](https://github.com/uutils/coreutils/commit/96817dfbc5b0e72f164ab82d4b486be67fdc0513)
+* Fix copyright line &ac; [`cf1204b2`](https://github.com/uutils/coreutils/commit/cf1204b2b3c4cc18140072be94fcb226fd36f4dc)
+* Fix busybox seq formatting test &ac; [`5958354b`](https://github.com/uutils/coreutils/commit/5958354b013f5bef58909137a0911550c357dba2)
+* fix error in overriding build during install &ac; [`23ca60ec`](https://github.com/uutils/coreutils/commit/23ca60ecd2530a778e494aeb1508e32420526fe2)
+* fixes for linux install see notes calling install goal overrides utility build settings with utility install settings calling install goal defaults profile to --release PROG_PREFIX is now applied to all utilities modify uutils.rs to make symbolic link bins possible binary install paths rmd first to prevent errors due to lns simplify vars for more readable install target other minor fixes &ac; [`d99d5c13`](https://github.com/uutils/coreutils/commit/d99d5c1338858cd49d203f0f7abacab57d4c6031)
+* Fix "private type in public interface" warnings. &ac; [`3b4baeb1`](https://github.com/uutils/coreutils/commit/3b4baeb1e7cbf0972f7a396906f91ccdb8286a9f)
+* Fix arm build &ac; [`ab0639d8`](https://github.com/uutils/coreutils/commit/ab0639d88aa2b293a1ec41ef69ecc2ae2bdc32f2)
+* Fix whitespace &ac; [`b6abe563`](https://github.com/uutils/coreutils/commit/b6abe5635733f86d96fb16ab1c73c67911bc0f90)
+* Fix errors with bools represented as ints. &ac; [`e8aa7241`](https://github.com/uutils/coreutils/commit/e8aa7241fab8d548ab6bdac53aae79b2d2fbd6f0)
+* Fix multicall true &ac; [`b1405588`](https://github.com/uutils/coreutils/commit/b1405588ce22d000a80f13a144cb97611e59bb01)
+* Fix namespace collision for test. &ac; [`d4e0ea41`](https://github.com/uutils/coreutils/commit/d4e0ea41a342c115cb94b232b019ed044bc65c37)
+* Fix whitespace and sort order of tests. &ac; [`412025b4`](https://github.com/uutils/coreutils/commit/412025b45ab618913989ae2313acea390b2654cd)
+* Fix test scaffolding after Cargo updates. &ac; [`c0c8d3ec`](https://github.com/uutils/coreutils/commit/c0c8d3ececa3909ff7b54643afdbf8101add34a4)
+* Fix nightly build &ac; [`d167674b`](https://github.com/uutils/coreutils/commit/d167674ba75cea15c9c1c193aadb307af5f0b9d0)
+* Fix test build &ac; [`9ffa5084`](https://github.com/uutils/coreutils/commit/9ffa50848d6b530bfce59a1f0c53923185387e43)
+* Fix the build &ac; [`ac7e289d`](https://github.com/uutils/coreutils/commit/ac7e289d29bb9e60a06f70457b1f175622847b5f)
+* Fix build by making du not use futures &ac; [`c06b8218`](https://github.com/uutils/coreutils/commit/c06b8218f74a576c9d71f4455ce60379c276b73f)
+* Fix difference w/ GNU coreutils' sum. &ac; [`26f0ec83`](https://github.com/uutils/coreutils/commit/26f0ec8379121b652aeb227efc4d4348bb28a5ba)
+* Fix bug when setting time w/o year. &ac; [`eff8851c`](https://github.com/uutils/coreutils/commit/eff8851cf9d91fa88147c89e1da8224efcdb2bb4)
+* Fix build on non-windows &ac; [`010bda9d`](https://github.com/uutils/coreutils/commit/010bda9df2f0439ca582f54f3252a5179328618d)
+* Fix deprecation warnings for tr. &ac; [`49d9de17`](https://github.com/uutils/coreutils/commit/49d9de17fed4eb93245ae651ea99c27c0b0f65dd)
+* Fix stdbuf regression. &ac; [`b8ab2c12`](https://github.com/uutils/coreutils/commit/b8ab2c125fa7803a6c68e9e6a940e662d87e00c5)
+* Fix OS X build errors for stdbuf. &ac; [`3fa2e89a`](https://github.com/uutils/coreutils/commit/3fa2e89a7a7a939a7ea8c756c40d55ff9b6df2ac)
+* Fix broken split tests. &ac; [`7b5d8001`](https://github.com/uutils/coreutils/commit/7b5d800104d5e7a9fa980a7ac9ccd7d1b177cd03)
+* Fix alignment of mv help. &ac; [`951be1bf`](https://github.com/uutils/coreutils/commit/951be1bfaacc2dbff184dc3c2f857082aec07379)
+* Fix simple typo in mv.rs &ac; [`0ed57b38`](https://github.com/uutils/coreutils/commit/0ed57b3896c21f0fe3a8b43ac385db2626ddcd86)
+* Fix ptx tests on OS X. &ac; [`9bc33a43`](https://github.com/uutils/coreutils/commit/9bc33a43f9e98f07ccd56f7ec173782013ad1271)
+* Fix split tests. &ac; [`0df4918f`](https://github.com/uutils/coreutils/commit/0df4918f2d88fc6d6af93f95f58bd963099a4d69)
+* Fix broken tests. &ac; [`66e109f6`](https://github.com/uutils/coreutils/commit/66e109f683f614f7d76bfcf2440a1a4c999cf6e2)
+* Fix hostname &ac; [`72d8ab05`](https://github.com/uutils/coreutils/commit/72d8ab05065a70f76b2ed8a17d42a9a91b0cd1a0)
+* Fix 'env -' case &ac; [`abd3e1e8`](https://github.com/uutils/coreutils/commit/abd3e1e8e4951d07801f97292999ae1d2eb9d2a2)
+* Fix failure to print stdout for echo. &ac; [`07d57ac1`](https://github.com/uutils/coreutils/commit/07d57ac109955c82446e993f1320792944614cb8)
+* Fix nohup. &ac; [`430e9530`](https://github.com/uutils/coreutils/commit/430e9530d4db26ff33c0e3880990e7b825f25ac8)
+* Fix mkfifo on Linux. &ac; [`c4d8312e`](https://github.com/uutils/coreutils/commit/c4d8312e6bae7092397c045cf391820b4c2eb9b9)
+* Fix stdbuf. &ac; [`a2400a27`](https://github.com/uutils/coreutils/commit/a2400a272fba62c42093d86f0f75075295156be2)
+* Fix kill. &ac; [`7d71dfbb`](https://github.com/uutils/coreutils/commit/7d71dfbbf41dbcb4c3fd8a9eb936e540924dd022)
+* Fix id. &ac; [`c9344017`](https://github.com/uutils/coreutils/commit/c93440170da8935a35fbc1e6f0c319bf022fbc59)
+* Fix du. &ac; [`349622a0`](https://github.com/uutils/coreutils/commit/349622a05b365cdf7f8b3112bfe5db16ea088e7b)
+* Fix mkfifo. &ac; [`46bd77c3`](https://github.com/uutils/coreutils/commit/46bd77c3c25f68c99f21b631bd31e6fe88346ba8)
+* Fix mv. &ac; [`18da32f3`](https://github.com/uutils/coreutils/commit/18da32f394dfa0519bfb40921c3ac2965eab3c58)
+* fix `cut` &ac; [`aabbf83d`](https://github.com/uutils/coreutils/commit/aabbf83d88bfd2f61effeeaf4a8d0906cbc0bbf1)
+* Fix nice. &ac; [`1ee57fa2`](https://github.com/uutils/coreutils/commit/1ee57fa2293cf9a2cf2b98b537653e74c275ff97)
+* Fix od. &ac; [`b20bde94`](https://github.com/uutils/coreutils/commit/b20bde94cb458f6d5604f4b5f8b64af8b8c9f36e)
+* Fix nproc. &ac; [`58de022e`](https://github.com/uutils/coreutils/commit/58de022ed473bd9807093179bf6382f357a7f56a)
+* Fix nl. &ac; [`28c21902`](https://github.com/uutils/coreutils/commit/28c21902c569fe718b50215256b7db3defecf691)
+* Fix basename when trailing slashes are present. &ac; [`3abf19a5`](https://github.com/uutils/coreutils/commit/3abf19a595098e1cf6c45aba35666a47a207115c)
+* Fix split. &ac; [`10339e6c`](https://github.com/uutils/coreutils/commit/10339e6c32c426dc79e8cedd0384c9ad384301a9)
+* fix `rmdir` &ac; [`a3acb003`](https://github.com/uutils/coreutils/commit/a3acb0039474d4a0d3abd917a3101cdd9070cd32)
+* fix `rm` &ac; [`4854eb23`](https://github.com/uutils/coreutils/commit/4854eb238d752736aecd9786fab1ac7db39b73fb)
+* fixed `sleep` &ac; [`7565c27c`](https://github.com/uutils/coreutils/commit/7565c27c00a27d006cdc87d710586117b6ad0b12)
+* fix `shuf` &ac; [`d89fbedf`](https://github.com/uutils/coreutils/commit/d89fbedf124088b705f86922d51fda0d2f1df4f7)
+* fix `tac` &ac; [`4390e4ff`](https://github.com/uutils/coreutils/commit/4390e4ffa6b2afe382a5dadee6e49612dc206680)
+* fix `test` &ac; [`cab4f8d5`](https://github.com/uutils/coreutils/commit/cab4f8d570741b2985cef07e5acdd58f5efe8f4e)
+* fix `touch` &ac; [`1c93a793`](https://github.com/uutils/coreutils/commit/1c93a793e95658eab54e1754ce39d9b5d1240519)
+* fix and slight optimization for `factor` &ac; [`6c4e967f`](https://github.com/uutils/coreutils/commit/6c4e967fc666a7b40000c7cb271b5b3b448c3e0c)
+* Fix broken seq tests. &ac; [`b8fb64a3`](https://github.com/uutils/coreutils/commit/b8fb64a35a303d718bd10b708f9bbf77eb967247)
+* Fix env and add tests. &ac; [`500bbbfa`](https://github.com/uutils/coreutils/commit/500bbbfa830988d33973c57d9501dd38e2fb7025)
+* Fix sum. &ac; [`0c883155`](https://github.com/uutils/coreutils/commit/0c883155f52dff1266496f38034b48582b050ed7)
+* Fix link. &ac; [`6911c7e2`](https://github.com/uutils/coreutils/commit/6911c7e2ce6688266fa3e6850eb598b3dff4c8f7)
+* Fix realpath and relpath. &ac; [`b854a316`](https://github.com/uutils/coreutils/commit/b854a3161a40341bbfa913bb88e3f2df665c95b9)
+* Fix cp. &ac; [`c31ad752`](https://github.com/uutils/coreutils/commit/c31ad75226ac92b48140f501249da2024a8c0a39)
+* Fix failing test for sort. &ac; [`b809af60`](https://github.com/uutils/coreutils/commit/b809af601a669b8bc3bcbfb0d0398b8ebedaf2e7)
+* Fix sort. &ac; [`b0f531c7`](https://github.com/uutils/coreutils/commit/b0f531c7a32e2fbaef59d6b69695ef74943d6d0b)
+* Fix hostid and pwd. &ac; [`c4ae971e`](https://github.com/uutils/coreutils/commit/c4ae971e8c7a452c13c9ef1fbc54ba7cfd201faf)
+* Fix printenv. &ac; [`930896ba`](https://github.com/uutils/coreutils/commit/930896bac1625652cc90a8ece10073c009ea8824)
+* Fix groups and logname. &ac; [`c7d07315`](https://github.com/uutils/coreutils/commit/c7d07315b846e83be24c81e8a60fbaab5e0d4307)
+* Fix tty. &ac; [`3465525d`](https://github.com/uutils/coreutils/commit/3465525d555af401563683dff7c80566ec1013e7)
+* Fix dirname. &ac; [`27947c9d`](https://github.com/uutils/coreutils/commit/27947c9d2d2ebd692c9f8da20dafd9514ccb7841)
+* Fix truncate and related tests. &ac; [`5ec7f286`](https://github.com/uutils/coreutils/commit/5ec7f2862554189d8d4fbc60afd2209260fde83d)
+* Fix head and tail. &ac; [`3b09af81`](https://github.com/uutils/coreutils/commit/3b09af815dd8c37027454caaedcfff0e0f69f013)
+* fix `tr` and its test &ac; [`91827a59`](https://github.com/uutils/coreutils/commit/91827a594af333a33bfaf30fcb477914ffe814ce)
+* Fix travis &ac; [`8a1a562b`](https://github.com/uutils/coreutils/commit/8a1a562b08d6578e7e511e7ad0b57e64ba94fa8b)
+* fix option parsing &ac; [`cd32db7a`](https://github.com/uutils/coreutils/commit/cd32db7afab8278f5ad5ba5558b72e8d2397b6c2)
+* fix `unlink` &ac; [`ec4e3a60`](https://github.com/uutils/coreutils/commit/ec4e3a60e43a36edc70efe4c68fc9a75e7760ff7)
+* Fix tsort. &ac; [`2c4fd7ae`](https://github.com/uutils/coreutils/commit/2c4fd7ae234e4eba2d6528e6c0c61618fe1808eb)
+* fix `uname` &ac; [`2e237dd6`](https://github.com/uutils/coreutils/commit/2e237dd6bbff68addaf7af03dd7fa9ea4c79e951)
+* fix `uptime` &ac; [`1d62f35b`](https://github.com/uutils/coreutils/commit/1d62f35b45dcdf32039f39209ece4ae2a7c1632e)
+* fix `wc` &ac; [`a122849e`](https://github.com/uutils/coreutils/commit/a122849e7cacd4d574db2dd343ba047240148727)
+* fix `users` &ac; [`143aea72`](https://github.com/uutils/coreutils/commit/143aea72ee512b7998789d62d1bb264b9d475002)
+* fix `whoami` &ac; [`09937b66`](https://github.com/uutils/coreutils/commit/09937b66b99d42c53170605a739637091e202bf8)
+* Fix broken build for serialize crate. &ac; [`023780ea`](https://github.com/uutils/coreutils/commit/023780ea3761cba1dfb16f7c7d0bf3876316face)
+* fix build infrastructure ; modernize library use &ac; [`ecf248c5`](https://github.com/uutils/coreutils/commit/ecf248c5e3cf09a49d1b9d8c2cbdb86ab1ddee16)
+* fix feature warnings &ac; [`4e79a82f`](https://github.com/uutils/coreutils/commit/4e79a82f46d0f8e2c6dd739108fa5ecc3f6e3d1c)
+* Fix closure syntax &ac; [`7c617f52`](https://github.com/uutils/coreutils/commit/7c617f524b1741a6a472ee811176fbab40961921)
+* Fix warnings &ac; [`25232c36`](https://github.com/uutils/coreutils/commit/25232c36974d9890afcd433ca34e49fd9becaee5)
+* Fix most unstable feature warnings &ac; [`3eb5a814`](https://github.com/uutils/coreutils/commit/3eb5a814a3000043066f5874eedf6691aaaeeb22)
+* Fix typo in stdbuf dependencies (fixes [#521](https://github.com/uutils/coreutils/issues/521)) &ac; [`b01f1230`](https://github.com/uutils/coreutils/commit/b01f123050c568c2460ac391030339ed074c7cc2)
+* Fix deprecation warnings with latest rust nightly &ac; [`605c1072`](https://github.com/uutils/coreutils/commit/605c1072585ba2d67c836c8326865521dac1a457)
+* fix char_len warnings &ac; [`0f2e20cc`](https://github.com/uutils/coreutils/commit/0f2e20cc49343f371c01ff358065d1e45b6a5268)
+* Fix deprecation warnings on latest nightlies &ac; [`d1421683`](https://github.com/uutils/coreutils/commit/d14216836512fc57a151edfecb570f14437dbc87)
+* Fix deprecation warnings (`into_string` => `to_owned`) &ac; [`8644b75a`](https://github.com/uutils/coreutils/commit/8644b75a85ad48c9ed45adbe96fe0f1d49b03735)
+* Fix build with rustc master &ac; [`b9e0ce0b`](https://github.com/uutils/coreutils/commit/b9e0ce0b1c55b2d71eb8c844ed9baecc3aea65a0)
+* Fix build with rust nightly Dec-20-2014 &ac; [`75425f1f`](https://github.com/uutils/coreutils/commit/75425f1fe804ca93cf534178fbe8513c3ea820f9)
+* Fix a mismatched types compilation error &ac; [`8cb5d03d`](https://github.com/uutils/coreutils/commit/8cb5d03d0c8e84a16b04067a3adee25bcfd61f51)
+* Fix build with rust master &ac; [`842cc8b1`](https://github.com/uutils/coreutils/commit/842cc8b14cec66dca9fe857e0375b9cd755a6274)
+* Fix build for latest Rust &ac; [`798a873b`](https://github.com/uutils/coreutils/commit/798a873b59541f8bcfe45579badee3639095a7ed)
+* Fix build for latest Rust &ac; [`68fd0971`](https://github.com/uutils/coreutils/commit/68fd0971d0b6fc268091916e904cec1f0da8e234)
+* fix 32-bit kernel uptime error &ac; [`388f6e3c`](https://github.com/uutils/coreutils/commit/388f6e3cf8d9c615850d2c474b01641603c6dc62)
+* Fix warning about time being deprecated &ac; [`1f89fd4b`](https://github.com/uutils/coreutils/commit/1f89fd4b89f72fcb0f0a84825fe0c3f5602f47f2)
+* Fix most deprecation warnings and remove hacky nohup code &ac; [`31111ac1`](https://github.com/uutils/coreutils/commit/31111ac1990940245387293e94d20bd04d861525)
+* Fix build as well as most deprecation warnings &ac; [`d50d4f54`](https://github.com/uutils/coreutils/commit/d50d4f54b939c488bfd6de6738cedcdb793afcc5)
+* fix *write*! macro args &ac; [`2027a7a9`](https://github.com/uutils/coreutils/commit/2027a7a981b5f9f34a43191032cbc52805a42127)
+* Fix deprecation warnings &ac; [`e7b247de`](https://github.com/uutils/coreutils/commit/e7b247de0bcabeda554f9d4185067b2141116535)
+* Fix get_mut deprecation warnings &ac; [`71c9797b`](https://github.com/uutils/coreutils/commit/71c9797bd76c09af0734647bef9ab96cf2231e00)
+* Fix fold for Busybox tests (other than unicode) &ac; [`573ca293`](https://github.com/uutils/coreutils/commit/573ca2931b3f2b9890950aa134c9eff62702c256)
+* Fix wc output for bytes &ac; [`afabebe4`](https://github.com/uutils/coreutils/commit/afabebe4324f327a72bbf89b5c0df63b3e1628ca)
+* Fix deprecation warnings &ac; [`5af66af0`](https://github.com/uutils/coreutils/commit/5af66af01557b0d28e49723b71777cb63ea02145)
+* Fix typo (and macos build?) &ac; [`d159acff`](https://github.com/uutils/coreutils/commit/d159acff2e0527346b3cf3495c533c52c41f5a65)
+* Fix deprecation warnings &ac; [`1dc57eb3`](https://github.com/uutils/coreutils/commit/1dc57eb329f0b82059c38145fdacd21457d17686)
+* Fix uutils build with non-empty DONT_BUILD &ac; [`0d6d5e72`](https://github.com/uutils/coreutils/commit/0d6d5e721386d09389ba9753ee71992c298f5292)
+* Fix non_snake_case warnings &ac; [`f9e99c0c`](https://github.com/uutils/coreutils/commit/f9e99c0c26f0248269647e2ced2a46be890d8968)
+* Fix sync and whoami on windows. &ac; [`4414d95b`](https://github.com/uutils/coreutils/commit/4414d95b6b707a1ae46356c71007001e3b7cad0c)
+* Fix build with rust master &ac; [`81264a5d`](https://github.com/uutils/coreutils/commit/81264a5d6aa54fb0e5a1822a0d1bb85cfb456683)
+* Fix deprecation warnings &ac; [`ac77c6da`](https://github.com/uutils/coreutils/commit/ac77c6da17d9f5cfa7da30568a83abec43797796)
+* Fix more bugs to pass Busybox tests &ac; [`e80af557`](https://github.com/uutils/coreutils/commit/e80af5570017ce1620c73e61d49b3d9ed9a37f0d)
+* Fix typo and code formatting &ac; [`5986b77e`](https://github.com/uutils/coreutils/commit/5986b77e1cbfb8437d691170cd9f401140326c84)
+* fix comment &ac; [`16b569ee`](https://github.com/uutils/coreutils/commit/16b569ee180c684ed9efb14b215fe796c8595bb9)
+* Fix for hashsum: fix file checking [#305](https://github.com/uutils/coreutils/issues/305) &ac; [`978ee8cc`](https://github.com/uutils/coreutils/commit/978ee8cc3a5ddfd97b13fdf0f386961097a7ee30)
+* Fix build dependencies in the Makefile &ac; [`eb5f199c`](https://github.com/uutils/coreutils/commit/eb5f199c8fd36977569311e0b5171c925890a421)
+* Fix build failure for systems with a non-64-bit time_t. &ac; [`dfd6e1e5`](https://github.com/uutils/coreutils/commit/dfd6e1e5ed6d790c9efa4e06d6b392da6cbac2e4)
+* Fix id and groups for Macs.  Also make every util depend on common &ac; [`cf2d7a3b`](https://github.com/uutils/coreutils/commit/cf2d7a3bb7e94ec264e44e146841c20cf4192fd4)
+* Fix typo &ac; [`47319285`](https://github.com/uutils/coreutils/commit/4731928558b9482f989f430a910d95f9908dcccf)
+* Fix deprecation warnings &ac; [`7dd26a1f`](https://github.com/uutils/coreutils/commit/7dd26a1f525e8019aa5c6036b785fa45ae542c9d)
+* Fix travis &ac; [`298da5ad`](https://github.com/uutils/coreutils/commit/298da5ad404c3bfe3c7d2b01c7e5519135fa1a4a)
+* Fix everything but md5sum (blocked on rust-crypto) for latest Rust &ac; [`4e8703e0`](https://github.com/uutils/coreutils/commit/4e8703e04fab091f885b9af746d8ba8e23194258)
+* Fixed most issues caused by libc being moved from std to it's own crate. &ac; [`27ed8132`](https://github.com/uutils/coreutils/commit/27ed81322c5ca5d76ac6bef00a0c76d9b94f48d2)
+* Fix OSX crash for uptime &ac; [`4b857105`](https://github.com/uutils/coreutils/commit/4b857105c9898a0522b7e86aa21df87e288be4f2)
+* Fix master by using Vec and adjusting &ac; [`10d7a0cc`](https://github.com/uutils/coreutils/commit/10d7a0cc9c427720b188cb6d1bcb511633e9c2d4)
+* Fix compilation for latest rustc. &ac; [`49f3f0ea`](https://github.com/uutils/coreutils/commit/49f3f0ea32e534499f7f56ab04a1b8ce877b0e2a)
+* Fix master by removing extra crate, and using max method for comparing floats &ac; [`786b3901`](https://github.com/uutils/coreutils/commit/786b39019b066d1fff28a6a8b5f46ca62197956b)
+* Fix master by comparing against slices, not ~ &ac; [`1dc2cd3a`](https://github.com/uutils/coreutils/commit/1dc2cd3a0f75bf206533b8b6b5c8fceca300673b)
+* Fix for latest Rust &ac; [`8cf617d0`](https://github.com/uutils/coreutils/commit/8cf617d08fd1ed4e9476b0b68f8005f67f357568)
+* Fix du, which closes [#46](https://github.com/uutils/coreutils/issues/46), and id when not compiling on Linux &ac; [`63f6c971`](https://github.com/uutils/coreutils/commit/63f6c9719b81b949fa6ce856b518fbf554844e46)
+* Fix for latest Rust &ac; [`0c60bda0`](https://github.com/uutils/coreutils/commit/0c60bda0747525f21fb233ddef189f0a44df8581)
+* Fix programs for latest Rust and begin usage of new utility macros &ac; [`74df4d5a`](https://github.com/uutils/coreutils/commit/74df4d5a98d0de3c20339b7c7d8e3575ea027161)
+* Fix typo in README &ac; [`bdb01f17`](https://github.com/uutils/coreutils/commit/bdb01f172c18eaddb5cc4284c73f0a20fb8ec930)
+* fix wc due from_utf8 changes and resolve warnings &ac; [`5581cd07`](https://github.com/uutils/coreutils/commit/5581cd079b2d4da140deed8e338e65e6d57cbaf7)
+* Fix base64 due to from_utf8 and replace changes &ac; [`492b35f6`](https://github.com/uutils/coreutils/commit/492b35f629b6a8b1a65f74e210d3e12ee45c3abf)
+* fix cat tests &ac; [`b7721055`](https://github.com/uutils/coreutils/commit/b7721055f4dad2babb20f24f65ad057898e3cf17)
+* Fix test for cat, add mkdir test &ac; [`aac0a46b`](https://github.com/uutils/coreutils/commit/aac0a46b39abcaaf6dcf5102e36071c8b5fa2552)
+* Fix build with latest Rust compiler. &ac; [`8fd1d5a3`](https://github.com/uutils/coreutils/commit/8fd1d5a336e9cb1318c8e3eea830ee6c8fa60cb6)
+* fixed --max-line-length behaviour &ac; [`68e98ae5`](https://github.com/uutils/coreutils/commit/68e98ae5e0d0375faff31b8e95997f3a78cae451)
+* Fixed line count &ac; [`5000ad7f`](https://github.com/uutils/coreutils/commit/5000ad7f39464ad16ae5994a6d987e534d11f1bb)
+* Fix build issue because of make. &ac; [`ed8bc6b7`](https://github.com/uutils/coreutils/commit/ed8bc6b7bc652d331ad8aef7a87d6f37e224fdfa)
+* Fix build. &ac; [`96346761`](https://github.com/uutils/coreutils/commit/96346761abfdf783d2b3202533a04db348e32b9f)
+* Fix makefile &ac; [`177ba969`](https://github.com/uutils/coreutils/commit/177ba96969611d9afab8696c4f7c37e671d25180)
+* Fix compilation for Rust master branch (0.9-pre) &ac; [`3e4c1023`](https://github.com/uutils/coreutils/commit/3e4c1023c492089aedeb47a6877dff3cd92718e9)
+* fix/**rewrite**: `unexpand` and its tests &ac; [`feee266b`](https://github.com/uutils/coreutils/commit/feee266b2052ffd6d4539c35ec5b3a1fb3fd2868)
+* fix/**rewrite**: `expand` &ac; [`8e2788bd`](https://github.com/uutils/coreutils/commit/8e2788bd39d4c448d1c7e0b72cb803db27e59477)
+
+#### Dependency Updates
+
+* update rust minimum version to 1.27.0 (includes testing) &ac; [`d131694a`](https://github.com/uutils/coreutils/commit/d131694a76f7d846c4df733446d96eb9f2e6a3bd)
+* Update to Rand 0.5 ([#1288](https://github.com/uutils/coreutils/issues/1288)) &ac; [`fe21c4b7`](https://github.com/uutils/coreutils/commit/fe21c4b7fd6c2b644569cb4b53e150ebd9c64044)
+* Update du.rs &ac; [`9ff5d4f1`](https://github.com/uutils/coreutils/commit/9ff5d4f1f9e96082ec70400f4fe639582b6baf2c)
+* Update README to more accurately reflect build &ac; [`902d0414`](https://github.com/uutils/coreutils/commit/902d0414b0b7a66c5919a740f6f1fa3bd65bbb84)
+* Update for changes in regex &ac; [`7cfe0465`](https://github.com/uutils/coreutils/commit/7cfe0465eeb434a0c08015b82cf878ce4a054a36)
+* Update Cargo.lock so date will build. &ac; [`f4dc03a2`](https://github.com/uutils/coreutils/commit/f4dc03a29c7755fb059f3c0ff3f6d3d3b759cb99)
+* Update dependencies. &ac; [`c36917b3`](https://github.com/uutils/coreutils/commit/c36917b35f234b45200cbbd40020b420b0d4d695)
+* Update dependencies. &ac; [`3b06a6e2`](https://github.com/uutils/coreutils/commit/3b06a6e292a1e42c8f5064355ecad92a02799196)
+* Update Cargo.lock about dependencies. &ac; [`a529bff6`](https://github.com/uutils/coreutils/commit/a529bff697a43b2e2039b120ff6597d9fcf51ba5)
+* update documentation &ac; [`c522a622`](https://github.com/uutils/coreutils/commit/c522a62232b79ac2ad9c322272abd5d711dbd0a7)
+* Update README &ac; [`8cb6b141`](https://github.com/uutils/coreutils/commit/8cb6b141f1f2261737b2d62309f1cd02ed00fc1a)
+* Update README &ac; [`a651d3f6`](https://github.com/uutils/coreutils/commit/a651d3f6a7236ecaaadc66f699f96f5279a6be71)
+* Update README &ac; [`5220fcc2`](https://github.com/uutils/coreutils/commit/5220fcc2c84a147faac276a700008b4ab4f2dc77)
+* Update bit-set to 0.3.0. &ac; [`f75d58f1`](https://github.com/uutils/coreutils/commit/f75d58f1dac7f3d792f89bdf15b56c71f76b6bd6)
+* update uses of libc 0.1.x and deprecated stdlib uses &ac; [`b20b2cca`](https://github.com/uutils/coreutils/commit/b20b2cca19b8860eeaac1026b98ef1541fe3cd93)
+* Update dependencies &ac; [`4655fb5f`](https://github.com/uutils/coreutils/commit/4655fb5fdae5e58090bed364f5f0e5d111d556ea)
+* Update Travis to use stable. &ac; [`83f842d8`](https://github.com/uutils/coreutils/commit/83f842d8c96193cb9c2376a782d7143bcca51ecc)
+* Updated README to reflect nightly build dependency &ac; [`5d42ea0e`](https://github.com/uutils/coreutils/commit/5d42ea0ea9ad16ed7efca04ee6890e8e5e46d3a2)
+* Update Travis to build using stable (1.1). &ac; [`2a34cdf7`](https://github.com/uutils/coreutils/commit/2a34cdf72adf0651e9e2f3ac543cfab71a7d4db1)
+* Update dependency for bit vector. &ac; [`5d456763`](https://github.com/uutils/coreutils/commit/5d456763faa9cca87d8a9bdc9a4fd3139f257d89)
+* Update timeout.rs to new io &ac; [`66a40d55`](https://github.com/uutils/coreutils/commit/66a40d555de5d9308ba2578e836591fb5e6dafa1)
+* Update to nightly build. &ac; [`690a483a`](https://github.com/uutils/coreutils/commit/690a483a8ae1e99e7119c5897b74a9f64b0c7b54)
+* Update dependencies. &ac; [`cf7db989`](https://github.com/uutils/coreutils/commit/cf7db989e7351a418d28628c36acaaa2d80d6d6f)
+* Update README to reflect completion of ptx. &ac; [`d457f796`](https://github.com/uutils/coreutils/commit/d457f796f8c04f94739070106d50772e5b20d758)
+* Update hashsum. &ac; [`18371461`](https://github.com/uutils/coreutils/commit/1837146134fde952137c2662bb4e225601eb9dae)
+* Update mkdir. &ac; [`7f3d4ebf`](https://github.com/uutils/coreutils/commit/7f3d4ebf5bee2e3004704c8a34a40c657333674e)
+* Update readlink. &ac; [`b2063d6d`](https://github.com/uutils/coreutils/commit/b2063d6d736a88e085437e59f727f75bae538801)
+* Update fold to replace vector concatenation. &ac; [`66a7dc8c`](https://github.com/uutils/coreutils/commit/66a7dc8cb73f102f1b174d4cbefd620503b7675f)
+* Update fold to nightly build. &ac; [`dd19bc27`](https://github.com/uutils/coreutils/commit/dd19bc27c1939a9c47f2e23989b32dad5f5c9265)
+* Update paste to nightly build. &ac; [`773eeb6d`](https://github.com/uutils/coreutils/commit/773eeb6d5ea12f370672563ccbf0d9ce3f903c57)
+* Update comm to new_io &ac; [`53f62cdd`](https://github.com/uutils/coreutils/commit/53f62cdd6f375e67ef6b04c158e547ed777b61f1)
+* Update tty's options to conform to GNU version. &ac; [`6de22f91`](https://github.com/uutils/coreutils/commit/6de22f91a9098e470cf40e5c3e1ed7cceb9e690b)
+* update `uniq` &ac; [`8cd81ec4`](https://github.com/uutils/coreutils/commit/8cd81ec4188c1039b31b0bd4ee7b7591f2f4a849)
+* update `yes` &ac; [`de280721`](https://github.com/uutils/coreutils/commit/de2807214031f7fae097daad9bc1d3c0de4aba09)
+* update chroot (not quite working yet) &ac; [`664f7d47`](https://github.com/uutils/coreutils/commit/664f7d474ed0de9f74f6a8247f2ae1cfd74a6bb3)
+* update chmod for latest stdlib changes &ac; [`06f1b38c`](https://github.com/uutils/coreutils/commit/06f1b38c9142ae2f9ff01f3920acf73847d2f660)
+* update cat, cat tests to new API &ac; [`cc48e83e`](https://github.com/uutils/coreutils/commit/cc48e83e98020a4c03d23d9b0c9109b5c47cb2d2)
+* Update feature flags &ac; [`3529c5d8`](https://github.com/uutils/coreutils/commit/3529c5d80992c3c4e11fa12ac2b76de7df80307a)
+* Update dependencies &ac; [`0d7ac019`](https://github.com/uutils/coreutils/commit/0d7ac019d106a5db27424af8211d576a281b284d)
+* Update feature flags &ac; [`3993a2bf`](https://github.com/uutils/coreutils/commit/3993a2bf90f07b65f5273313f203ae8d545e4a02)
+* Update to the new integer suffixes &ac; [`26568d20`](https://github.com/uutils/coreutils/commit/26568d2021c191e6583ba4d1297cab4f8ed18ab7)
+* Update slicing syntax ([] -> [..]) &ac; [`8098d172`](https://github.com/uutils/coreutils/commit/8098d172d7eb0a1eb7ac8044d50d17cf27378a5a)
+* Update dependencies &ac; [`4ad3e854`](https://github.com/uutils/coreutils/commit/4ad3e854ac366d50bba54bcd49832ce56e2594d6)
+* Update dependencies &ac; [`932ef2aa`](https://github.com/uutils/coreutils/commit/932ef2aa3aa30e524a7d587874e8ee943a6c91d5)
+* Update dependencies &ac; [`05709c37`](https://github.com/uutils/coreutils/commit/05709c37d62b7ed7a46c71f9fb007b7f44f0dacb)
+* Update dependencies &ac; [`3bff8108`](https://github.com/uutils/coreutils/commit/3bff8108377c165167e9aa5388fef50493a586d1)
+* Update dependencies &ac; [`c32caba9`](https://github.com/uutils/coreutils/commit/c32caba9b6d3c2ab3a6b1e392bb31b8c75048571)
+* Update rust-crypt/time &ac; [`bd1922d1`](https://github.com/uutils/coreutils/commit/bd1922d1557d90aadc09a46714d1a5d8b6ebae68)
+* Update rust-time/rust-crypto &ac; [`49ace193`](https://github.com/uutils/coreutils/commit/49ace1933dccc1fc2bdd19482b4be35a457bfd31)
+* Update rust-crypto &ac; [`76673699`](https://github.com/uutils/coreutils/commit/766736998343a83f718842f9dbeffd2e1bc1080f)
+* Update rust-lang/time &ac; [`f2ccf51e`](https://github.com/uutils/coreutils/commit/f2ccf51eea8ee80704ef72703a14328e691cdbaa)
+* Update for recent std::ascii changes &ac; [`aff936da`](https://github.com/uutils/coreutils/commit/aff936da9926e363038de20afce0d401bae1b03f)
+* Update time for latest Rust &ac; [`c4baf79c`](https://github.com/uutils/coreutils/commit/c4baf79c53357c4450a54dd0222cfa3d698ea679)
+* Update for latest Rust &ac; [`b8d67ea6`](https://github.com/uutils/coreutils/commit/b8d67ea67292ff23f976b8e58c39a82934201491)
+* Update time &ac; [`c470efc5`](https://github.com/uutils/coreutils/commit/c470efc5b44e96cb55ff704a803d5309206eeeae)
+* Update rust-crypto &ac; [`b065b774`](https://github.com/uutils/coreutils/commit/b065b774abd9a4f684ec31adac2c98f8c6dafc18)
+* Update rust-crypto &ac; [`3b24dc87`](https://github.com/uutils/coreutils/commit/3b24dc87875dda8f003d6b1d20a2cb1825fdbbf6)
+* Update rust-crypto &ac; [`eaa79823`](https://github.com/uutils/coreutils/commit/eaa79823579d8005f6d756011f6d3e0ea527b178)
+* Update for new coercion rules &ac; [`09f223fd`](https://github.com/uutils/coreutils/commit/09f223fdb1ed9618e68d3b11571fa7b1b0bbb448)
+* Update for namespaced enums &ac; [`cd409c6d`](https://github.com/uutils/coreutils/commit/cd409c6d3fd3f32e551288ade7772f6c13c14c1e)
+* update from string for new api &ac; [`737db500`](https://github.com/uutils/coreutils/commit/737db500a3a5e89fa524ef9686043d5bbac56a75)
+* update rust-crypto &ac; [`1cdab45c`](https://github.com/uutils/coreutils/commit/1cdab45c1bb3d2d22614b75e58e7ba08023c9233)
+* Update rust-crypto &ac; [`ea791e3d`](https://github.com/uutils/coreutils/commit/ea791e3df6846525cb18d48ca113f004bcf78bee)
+* Update collection paths/names &ac; [`241c8d0f`](https://github.com/uutils/coreutils/commit/241c8d0f5510fa1fd2a4144d156ef3313690a206)
+* Update rust-crypto &ac; [`c63947c1`](https://github.com/uutils/coreutils/commit/c63947c17aff20a418dd64d7281b7b0c93054b9f)
+* Update README.md &ac; [`7ad692c8`](https://github.com/uutils/coreutils/commit/7ad692c8e4200dac07a91877c3eb6102c4f103f8)
+* Update rust-crypto &ac; [`e9d90958`](https://github.com/uutils/coreutils/commit/e9d90958f998848a18011a059a8a4b169b9019cf)
+* Update to the new cfg syntax &ac; [`7eefe700`](https://github.com/uutils/coreutils/commit/7eefe7003b92c21ffd5829b082b0f4ca226e64eb)
+* update deprecated parts of sync &ac; [`e3b87549`](https://github.com/uutils/coreutils/commit/e3b8754919c0a9b446bcc05b5bc81816eb48b211)
+* update whoami syntax for windows &ac; [`4e1aab25`](https://github.com/uutils/coreutils/commit/4e1aab25c3c375272ef420aed8e8579bb4a560dc)
+* Update rust-crypto &ac; [`8b3531ba`](https://github.com/uutils/coreutils/commit/8b3531ba53d4cbed6e754d48f3ff0030cafb6128)
+* Update for rust RFC 52 changes &ac; [`2ef74e27`](https://github.com/uutils/coreutils/commit/2ef74e27834ba656f1175019c0aae9a4e59a75ab)
+* Update for latest Rust &ac; [`01c681ec`](https://github.com/uutils/coreutils/commit/01c681ecb3187edbbea8174681504cb46d2f3ad7)
+* Update for rust master &ac; [`6b9831a0`](https://github.com/uutils/coreutils/commit/6b9831a091914ee0818f4b921be114a934230d2f)
+* Update Travis to use official Rust support &ac; [`8b09104c`](https://github.com/uutils/coreutils/commit/8b09104cc4bd4800e0ff50a0bb503c52137b45de)
+* update rust-crypto &ac; [`5405c291`](https://github.com/uutils/coreutils/commit/5405c291136000f14240da61b6e12b46efc827ef)
+* Update rust-crypto &ac; [`cab466d6`](https://github.com/uutils/coreutils/commit/cab466d678ff3d350f7b613d44140a013c107794)
+* Update for new import syntax &ac; [`1134e8b9`](https://github.com/uutils/coreutils/commit/1134e8b9c9e9833e7f3f1fb0464b1b94713a51a4)
+* update rust-crypto &ac; [`f4c46b86`](https://github.com/uutils/coreutils/commit/f4c46b86316059a46e0add36ced9b1a859f01c22)
+* Update for lastest Rust &ac; [`bc6cd771`](https://github.com/uutils/coreutils/commit/bc6cd77132208d46c133e146365658df4263d06a)
+* Update rust-crypto &ac; [`c399c8d0`](https://github.com/uutils/coreutils/commit/c399c8d039b2d158ebfe7f6815d3a9a6f729b23b)
+* Update for crate_id related changes &ac; [`a0b3b710`](https://github.com/uutils/coreutils/commit/a0b3b710c24c7e6d9a011818c274166c09b94329)
+* Update rust-crypto &ac; [`cf7da259`](https://github.com/uutils/coreutils/commit/cf7da259ee1ff2b080afa43b9998b6c01d799d95)
+* Update rust-crypto &ac; [`917fc0c5`](https://github.com/uutils/coreutils/commit/917fc0c5455c8b5541e9bd66f560002e188c5328)
+* update readme &ac; [`edd0378e`](https://github.com/uutils/coreutils/commit/edd0378e70fcc4f3fd7aa9644e3da1461fadfacf)
+* Update README.md to fix link to rust website &ac; [`af4003de`](https://github.com/uutils/coreutils/commit/af4003deeb7d356f3fa1108e5f126dc8a271e0ca)
+* Update to Rust nightly &ac; [`ce19eb43`](https://github.com/uutils/coreutils/commit/ce19eb4329df398dc8ad2db3da08d1e7b8a06ffe)
+* update submodule: rust-crypto &ac; [`f8cc46d9`](https://github.com/uutils/coreutils/commit/f8cc46d982ec367f449fe610744f2d693444f79d)
+* Update to nightly &ac; [`2bf64159`](https://github.com/uutils/coreutils/commit/2bf64159e0ba14b2b3ecd119dab9ee7de914eaf8)
+* Update .gitignore &ac; [`6f264ebc`](https://github.com/uutils/coreutils/commit/6f264ebcbf36e57bf5464b77124ac13ae1d7e1e3)
+* update rust-crypto &ac; [`9665fb0a`](https://github.com/uutils/coreutils/commit/9665fb0a269feba1a349c91b6666a08bd9ec242f)
+* Update rust-crypto &ac; [`98855bbc`](https://github.com/uutils/coreutils/commit/98855bbc2ce16956f390894c9f9cc5f4165219f8)
+* Update tests to use std::process:Command &ac; [`25926bab`](https://github.com/uutils/coreutils/commit/25926bab677f9901b8f8f709b36b4076d6d5d3bf)
+* Update for getopts changes &ac; [`577e4bae`](https://github.com/uutils/coreutils/commit/577e4baef929c87520f36821c65e99ca375b2836)
+* Update to box/Box<T> syntax. &ac; [`7a06ae08`](https://github.com/uutils/coreutils/commit/7a06ae081d78d03e87c92d384c7a3230799061f0)
+* Update for latest Rust &ac; [`366c388d`](https://github.com/uutils/coreutils/commit/366c388d3f4743362ec082d49184e881f0cae236)
+* Update base64 to latest rust &ac; [`8705d95a`](https://github.com/uutils/coreutils/commit/8705d95ae91871744833999bd8880d6a423bb9c6)
+* update uname: use push_str instead of + for appending &ac; [`4dbe7860`](https://github.com/uutils/coreutils/commit/4dbe7860d0362c6686dadae1e2883b2887dd7c28)
+* Update for latest Rust &ac; [`e898d377`](https://github.com/uutils/coreutils/commit/e898d37736fb8532a60d345fd1b19700df77b4f5)
+* Update for new programs &ac; [`6151cb93`](https://github.com/uutils/coreutils/commit/6151cb93be6b961427a536635981772eff8a34e1)
+* Update for latest Rust &ac; [`b6086641`](https://github.com/uutils/coreutils/commit/b6086641357ce783418f600ee8efba6b2ea3a7ae)
+* Update for latest Rust and fixed up id for Linux &ac; [`47ddd7d4`](https://github.com/uutils/coreutils/commit/47ddd7d4f2f7156b653dfa0b2092d6156b2379f3)
+* Update for latest Rust &ac; [`91973738`](https://github.com/uutils/coreutils/commit/9197373843c63745a3b3fb6c68e2588396c6e00a)
+* update cat for current Rust syntax with ugly errors handling &ac; [`efae9b62`](https://github.com/uutils/coreutils/commit/efae9b621f30556d0ab5727cedb068852205b663)
+* Update most utilities for latest Rust &ac; [`384d7107`](https://github.com/uutils/coreutils/commit/384d710790cf6bd53c8711b16fc20462b11fd743)
+* update code for Rust print syntax changes &ac; [`ee56d7b1`](https://github.com/uutils/coreutils/commit/ee56d7b196be6ffd91f92e3f10e2ac9e49dea0be)
+* Update rm command to fix the build &ac; [`d3212745`](https://github.com/uutils/coreutils/commit/d3212745560f2bd84b6b8ff6621a7b44f0508285)
+* Update basename for latest rustc &ac; [`aa889f6b`](https://github.com/uutils/coreutils/commit/aa889f6bae654daf2cc8e2308c5ad1594a024870)
+* update test dir paths into tmp dir &ac; [`73a19a08`](https://github.com/uutils/coreutils/commit/73a19a0818b643e8d6325ec769541a68dce522e5)
+* Update readme, add success message at end of tests &ac; [`233c4929`](https://github.com/uutils/coreutils/commit/233c49292d993ca37ca15ba55229bb9fde76f730)
+* Update crate attributes for tee &ac; [`2d5180be`](https://github.com/uutils/coreutils/commit/2d5180be07c7d0ca5094dcb7f3ace27b763702b5)
+* update coding style and add basename to makefile &ac; [`15465e21`](https://github.com/uutils/coreutils/commit/15465e21ecde2160f7c970c58f915ef72f1bba3f)
+* Update README.md &ac; [`b9297b44`](https://github.com/uutils/coreutils/commit/b9297b4405f93e46fec4bb304f49855fa08fe49b)
+* Update TODOs &ac; [`3dfafbcc`](https://github.com/uutils/coreutils/commit/3dfafbcc00aff8fec18ed49f9a0be14db5f28cfd)
+* Update README.md &ac; [`483d140e`](https://github.com/uutils/coreutils/commit/483d140e6ffb4ae3dce6d4883b5e6465e893a543)
+* Update cat/test for std::rt::io changes. Also, use the higher level std::run over std::rt::io::process. &ac; [`087cfbd0`](https://github.com/uutils/coreutils/commit/087cfbd0c6c99b5123d13653d7f939349c152fe7)
+* Update main utils for language changes. &ac; [`c4fab4cf`](https://github.com/uutils/coreutils/commit/c4fab4cf67a7d29367dfb82347d8d7329b2f2a9e)
+* Update readme &ac; [`7c8db7ff`](https://github.com/uutils/coreutils/commit/7c8db7ffb46c1ebfe9230e5bc44fa1b3ccda9b9b)
+* Update to use the new format! macro &ac; [`cdc435f0`](https://github.com/uutils/coreutils/commit/cdc435f0081dbfd2be1790043f9b2e11735a5df2)
+* Update code to rust 0.8-dev &ac; [`7fab5ef1`](https://github.com/uutils/coreutils/commit/7fab5ef1e0214d8c34d64df5185bd5db39ec8564)
+
+#### Maintenance
+
+* maint: update all dependencies &ac; [`a27d05c2`](https://github.com/uutils/coreutils/commit/a27d05c251be3d6da9ac2cab7a76f491e6c5200b)
+* maint: reduce CI config file visibility &ac; [`d297ead4`](https://github.com/uutils/coreutils/commit/d297ead4f57525ba29479faac2d194d490e004eb)
+* maint: turn off cargo autotests to silence warnings &ac; [`730b8b8c`](https://github.com/uutils/coreutils/commit/730b8b8c63823daa660cc165c5ac23fc69ee9761)
+* Build chmod and install on Redox &ac; [`1532b207`](https://github.com/uutils/coreutils/commit/1532b207d278e1e3da900c77bf47b9258d4e9c9f)
+* Build shred on Redox &ac; [`7d657e3c`](https://github.com/uutils/coreutils/commit/7d657e3c0dffaa108ab568404e74fa5b1eb8a974)
+* Build hashsum, join, ln, ls, mkdir, mktemp, nl, ptx, sort on Redox &ac; [`6f4b91db`](https://github.com/uutils/coreutils/commit/6f4b91db93e8832d4568c75263da957fb86ea53c)
+* Build hashsum, join, ln, ls, mkdir, mktemp, nl, ptx, sort on Redox &ac; [`a19aed31`](https://github.com/uutils/coreutils/commit/a19aed314ef452e444e826c38a876cfdbb7882c9)
+* build: create group features for target systems &ac; [`a8bb7f44`](https://github.com/uutils/coreutils/commit/a8bb7f4417272fd6685ba4efdcce888f0525270a)
+* Build rust-crypto with cargo &ac; [`2dcbd844`](https://github.com/uutils/coreutils/commit/2dcbd84456fa79af585964e4bd5ca5854dffeea3)
+
+#### Refactoring
+
+* Refactor Stat::new to return Result &ac; [`be79a705`](https://github.com/uutils/coreutils/commit/be79a705722ee100e498db0f0bdd0b93fd7db464)
+* Refactor settings into dedicated struct &ac; [`77abd58b`](https://github.com/uutils/coreutils/commit/77abd58be725561e10291deb4bc6bfe3607158cb)
+* Refactor and simplify build for utilities. &ac; [`b90d2535`](https://github.com/uutils/coreutils/commit/b90d253584492ba71797f4ddbaa0e605b1cd3e3b)
+* Refactor check for standard stream interactivity. &ac; [`9a4c1aa7`](https://github.com/uutils/coreutils/commit/9a4c1aa7fae076773121c55576f27d889543134c)
+* Refactor wc settings into dedicated struct. &ac; [`ac8d972e`](https://github.com/uutils/coreutils/commit/ac8d972ed9fcc6a8bb3943e82a32032715ac2c78)
+* Refactor method to auto-convert into byte array. &ac; [`62b9dc03`](https://github.com/uutils/coreutils/commit/62b9dc0326383ad1944e2ceb841d0bc9da05c648)
+* Refactor utility settings into dedicated struct. &ac; [`1580daea`](https://github.com/uutils/coreutils/commit/1580daea7c6d49aec2041b6afd74d91a33cc9169)
+
+#### Test Improvements
+
+* test: handle symlinks in main match &ac; [`187006f0`](https://github.com/uutils/coreutils/commit/187006f0d303b6785f5e6a9bcd2603ef904640e6)
+* Test for unimplemented command line arguments &ac; [`a5d97323`](https://github.com/uutils/coreutils/commit/a5d97323db8d4f1c806264133ca876cc4ae113d8)
+* test: fix namespace and broken test &ac; [`012414c4`](https://github.com/uutils/coreutils/commit/012414c49fb2ff67cdc9a76ce5ccd84a5f5add1d)
+* test: add some tests for -a and -o &ac; [`ccc67726`](https://github.com/uutils/coreutils/commit/ccc67726462c30e2f8fa18c94a859f6d15ffef1b)
+* test: fix -a and -o by using operator precedence &ac; [`88ad6710`](https://github.com/uutils/coreutils/commit/88ad6710f531cd80718d971204209a7982b42700)
+* test: fix build &ac; [`cb92f70a`](https://github.com/uutils/coreutils/commit/cb92f70aebe9cf54fe6b885b37d3e390fb47e3fe)
+* Test if there are users before printing them. &ac; [`80d9af42`](https://github.com/uutils/coreutils/commit/80d9af42aadd7fde2a4e25a499b6949cef40d496)
+* test/**{seq,tr,truncate,unexpand}:**: fix build &ac; [`52ea352c`](https://github.com/uutils/coreutils/commit/52ea352ca3601f588a71224168b466925462e516)
+
+#### Reverts
+
+* Build hashsum, join, ln, ls, mkdir, mktemp, nl, ptx, sort on Redox
+* Allow selection of tests to not pass to BusyBox
+
+#### Pull Requests
+
+* Merge pull request [#1311](https://github.com/uutils/coreutils/issues/1311) from E5ten/patch-2
+* Merge pull request [#1303](https://github.com/uutils/coreutils/issues/1303) from rinconjc/1278
+* Merge pull request [#1297](https://github.com/uutils/coreutils/issues/1297) from E5ten/patch-1
+* Merge pull request [#1293](https://github.com/uutils/coreutils/issues/1293) from JJJollyjim/master
+* Merge pull request [#1296](https://github.com/uutils/coreutils/issues/1296) from rkuslak/master
+* Merge pull request [#1291](https://github.com/uutils/coreutils/issues/1291) from NoTroop/hostid-enum
+* Merge pull request [#1284](https://github.com/uutils/coreutils/issues/1284) from vks/clippy
+* Merge pull request [#1285](https://github.com/uutils/coreutils/issues/1285) from arsdragonfly/master
+* Merge pull request [#1283](https://github.com/uutils/coreutils/issues/1283) from xplorld/fix/sort-numeric-nan
+* Merge pull request [#1266](https://github.com/uutils/coreutils/issues/1266) from simonvandel/uniq-perf
+* Merge pull request [#1265](https://github.com/uutils/coreutils/issues/1265) from simonvandel/uniq-delimiter-enum
+* Merge pull request [#1264](https://github.com/uutils/coreutils/issues/1264) from uutils/dependabot/cargo/clippy-0.0.212
+* Merge pull request [#1254](https://github.com/uutils/coreutils/issues/1254) from bootandy/master
+* Merge pull request [#1262](https://github.com/uutils/coreutils/issues/1262) from uutils/dependabot/cargo/cpp_build-0.4.0
+* Merge pull request [#1261](https://github.com/uutils/coreutils/issues/1261) from uutils/dependabot/cargo/getopts-0.2.18
+* Merge pull request [#1263](https://github.com/uutils/coreutils/issues/1263) from uutils/dependabot/cargo/cpp-0.4.0
+* Merge pull request [#1259](https://github.com/uutils/coreutils/issues/1259) from uutils/dependabot/cargo/clippy-0.0.211
+* Merge pull request [#1257](https://github.com/uutils/coreutils/issues/1257) from uutils/dependabot/cargo/clap-2.32.0
+* Merge pull request [#1258](https://github.com/uutils/coreutils/issues/1258) from uutils/dependabot/cargo/aho-corasick-0.6.5
+* Merge pull request [#1246](https://github.com/uutils/coreutils/issues/1246) from uutils/dependabot/cargo/regex-1.0.1
+* Merge pull request [#1251](https://github.com/uutils/coreutils/issues/1251) from uutils/dependabot/cargo/half-1.1.1
+* Merge pull request [#1252](https://github.com/uutils/coreutils/issues/1252) from uutils/dependabot/cargo/chrono-0.4.4
+* Merge pull request [#1247](https://github.com/uutils/coreutils/issues/1247) from uutils/dependabot/cargo/clippy-0.0.209
+* Merge pull request [#1244](https://github.com/uutils/coreutils/issues/1244) from uutils/dependabot/cargo/clippy-0.0.208
+* Merge pull request [#1242](https://github.com/uutils/coreutils/issues/1242) from TheGoddessInari/windows
+* Merge pull request [#1243](https://github.com/uutils/coreutils/issues/1243) from uutils/dependabot/cargo/chrono-0.4.3
+* Merge pull request [#1239](https://github.com/uutils/coreutils/issues/1239) from uutils/dependabot/cargo/unicode-width-0.1.5
+* Merge pull request [#1238](https://github.com/uutils/coreutils/issues/1238) from uutils/dependabot/cargo/clippy-0.0.207
+* Merge pull request [#1237](https://github.com/uutils/coreutils/issues/1237) from uutils/dependabot/cargo/regex-1.0.0
+* Merge pull request [#1236](https://github.com/uutils/coreutils/issues/1236) from uutils/dependabot/cargo/itertools-0.7.8
+* Merge pull request [#1216](https://github.com/uutils/coreutils/issues/1216) from uutils/dependabot/cargo/bit-set-0.5.0
+* Merge pull request [#1232](https://github.com/uutils/coreutils/issues/1232) from uutils/dependabot/cargo/regex-syntax-0.6.1
+* Merge pull request [#1233](https://github.com/uutils/coreutils/issues/1233) from uutils/dependabot/cargo/time-0.1.40
+* Merge pull request [#1205](https://github.com/uutils/coreutils/issues/1205) from uutils/dependabot/cargo/filetime-0.2.1
+* Merge pull request [#1208](https://github.com/uutils/coreutils/issues/1208) from uutils/dependabot/cargo/remove_dir_all-0.3.0
+* Merge pull request [#1223](https://github.com/uutils/coreutils/issues/1223) from uutils/dependabot/cargo/semver-0.9.0
+* Merge pull request [#1206](https://github.com/uutils/coreutils/issues/1206) from uutils/dependabot/cargo/quick-error-1.2.2
+* Merge pull request [#1228](https://github.com/uutils/coreutils/issues/1228) from uutils/dependabot/cargo/walkdir-2.1.4
+* Merge pull request [#1222](https://github.com/uutils/coreutils/issues/1222) from uutils/dependabot/cargo/tempdir-0.3.7
+* Merge pull request [#1219](https://github.com/uutils/coreutils/issues/1219) from kupospelov/master
+* Merge pull request [#1225](https://github.com/uutils/coreutils/issues/1225) from uutils/dependabot/cargo/half-1.1.0
+* Merge pull request [#1227](https://github.com/uutils/coreutils/issues/1227) from uutils/dependabot/cargo/rand-0.4.2
+* Merge pull request [#1218](https://github.com/uutils/coreutils/issues/1218) from Arcterus/bytes
+* Merge pull request [#1221](https://github.com/uutils/coreutils/issues/1221) from uutils/dependabot/cargo/regex-syntax-0.6.0
+* Merge pull request [#1220](https://github.com/uutils/coreutils/issues/1220) from uutils/dependabot/cargo/libc-0.2.42
+* Merge pull request [#1224](https://github.com/uutils/coreutils/issues/1224) from uutils/dependabot/cargo/unindent-0.1.3
+* Merge pull request [#1215](https://github.com/uutils/coreutils/issues/1215) from uutils/dependabot/cargo/sha1-0.6.0
+* Merge pull request [#1214](https://github.com/uutils/coreutils/issues/1214) from uutils/dependabot/cargo/lazy_static-1.0.1
+* Merge pull request [#1211](https://github.com/uutils/coreutils/issues/1211) from uutils/dependabot/cargo/lazy_static-1.0.0
+* Merge pull request [#1210](https://github.com/uutils/coreutils/issues/1210) from uutils/dependabot/cargo/winapi-0.3.5
+* Merge pull request [#1207](https://github.com/uutils/coreutils/issues/1207) from uutils/dependabot/cargo/clippy-0.0.206
+* Merge pull request [#1204](https://github.com/uutils/coreutils/issues/1204) from uutils/dependabot/cargo/regex-syntax-0.5.0
+* Merge pull request [#1203](https://github.com/uutils/coreutils/issues/1203) from uutils/dependabot/cargo/clap-2.31.2
+* Merge pull request [#1201](https://github.com/uutils/coreutils/issues/1201) from Arcterus/bytes
+* Merge pull request [#1197](https://github.com/uutils/coreutils/issues/1197) from c-edw/master
+* Merge pull request [#1200](https://github.com/uutils/coreutils/issues/1200) from Arcterus/uptime-fix
+* Merge pull request [#1199](https://github.com/uutils/coreutils/issues/1199) from Arcterus/readme
+* Merge pull request [#1191](https://github.com/uutils/coreutils/issues/1191) from ProgVal/chmod-human-friendly
+* Merge pull request [#1189](https://github.com/uutils/coreutils/issues/1189) from ProgVal/unlink-nul-terminator
+* Merge pull request [#1192](https://github.com/uutils/coreutils/issues/1192) from ProgVal/chmod-unimplemented
+* Merge pull request [#1188](https://github.com/uutils/coreutils/issues/1188) from ProgVal/test-language
+* Merge pull request [#1184](https://github.com/uutils/coreutils/issues/1184) from jiangjun1983/hostname_xgethostname_fix
+* Merge pull request [#1186](https://github.com/uutils/coreutils/issues/1186) from Arcterus/du-cleanup
+* Merge pull request [#1185](https://github.com/uutils/coreutils/issues/1185) from Arcterus/du-cleanup
+* Merge pull request [#1176](https://github.com/uutils/coreutils/issues/1176) from bootandy/du_input_refactor3
+* Merge pull request [#1180](https://github.com/uutils/coreutils/issues/1180) from Arcterus/master
+* Merge pull request [#1182](https://github.com/uutils/coreutils/issues/1182) from kupospelov/master
+* Merge pull request [#1178](https://github.com/uutils/coreutils/issues/1178) from fossabot/master
+* Merge pull request [#1179](https://github.com/uutils/coreutils/issues/1179) from kupospelov/master
+* Merge pull request [#1177](https://github.com/uutils/coreutils/issues/1177) from mmstick/ls-column
+* Merge pull request [#1171](https://github.com/uutils/coreutils/issues/1171) from bootandy/du_h
+* Merge pull request [#1175](https://github.com/uutils/coreutils/issues/1175) from equal-l2/patch-1
+* Merge pull request [#1169](https://github.com/uutils/coreutils/issues/1169) from bootandy/du
+* Merge pull request [#1170](https://github.com/uutils/coreutils/issues/1170) from Arcterus/master
+* Merge pull request [#1168](https://github.com/uutils/coreutils/issues/1168) from ids1024/tail-redox
+* Merge pull request [#1167](https://github.com/uutils/coreutils/issues/1167) from ids1024/redox_more
+* Merge pull request [#1166](https://github.com/uutils/coreutils/issues/1166) from ids1024/redox_chmod_install
+* Merge pull request [#1165](https://github.com/uutils/coreutils/issues/1165) from ids1024/test_redox
+* Merge pull request [#1157](https://github.com/uutils/coreutils/issues/1157) from bootandy/master
+* Merge pull request [#1161](https://github.com/uutils/coreutils/issues/1161) from ids1024/utils_redox
+* Merge pull request [#1160](https://github.com/uutils/coreutils/issues/1160) from uutils/revert-1159-utils_redox
+* Merge pull request [#1159](https://github.com/uutils/coreutils/issues/1159) from ids1024/utils_redox
+* Merge pull request [#1158](https://github.com/uutils/coreutils/issues/1158) from ids1024/redox_cat
+* Merge pull request [#1156](https://github.com/uutils/coreutils/issues/1156) from Arcterus/cleanup
+* Merge pull request [#1154](https://github.com/uutils/coreutils/issues/1154) from Arcterus/rustfmt
+* Merge pull request [#1153](https://github.com/uutils/coreutils/issues/1153) from Arcterus/platform-info
+* Merge pull request [#1151](https://github.com/uutils/coreutils/issues/1151) from Arcterus/hostname-refactor
+* Merge pull request [#1150](https://github.com/uutils/coreutils/issues/1150) from Arcterus/codecov-fix
+* Merge pull request [#1146](https://github.com/uutils/coreutils/issues/1146) from Arcterus/winapi
+* Merge pull request [#1143](https://github.com/uutils/coreutils/issues/1143) from Arcterus/containers
+* Merge pull request [#1142](https://github.com/uutils/coreutils/issues/1142) from Ma27/add-install-instructions-for-nixos
+* Merge pull request [#1140](https://github.com/uutils/coreutils/issues/1140) from kupospelov/master
+* Merge pull request [#1139](https://github.com/uutils/coreutils/issues/1139) from king6cong/master
+* Merge pull request [#1137](https://github.com/uutils/coreutils/issues/1137) from Arcterus/realpath-relpath-fix
+* Merge pull request [#1134](https://github.com/uutils/coreutils/issues/1134) from kupospelov/master
+* Merge pull request [#1136](https://github.com/uutils/coreutils/issues/1136) from Arcterus/realpath-relpath-fix
+* Merge pull request [#1135](https://github.com/uutils/coreutils/issues/1135) from jamessan/stat-cleanup
+* Merge pull request [#1131](https://github.com/uutils/coreutils/issues/1131) from bmusin/remove_some_warns
+* Merge pull request [#1129](https://github.com/uutils/coreutils/issues/1129) from kupospelov/master
+* Merge pull request [#1127](https://github.com/uutils/coreutils/issues/1127) from bltnkl/echo_refine
+* Merge pull request [#1128](https://github.com/uutils/coreutils/issues/1128) from bltnkl/tail_readme_fix
+* Merge pull request [#1074](https://github.com/uutils/coreutils/issues/1074) from Heather/pwd_lp
+* Merge pull request [#1087](https://github.com/uutils/coreutils/issues/1087) from ProgVal/faster-yes
+* Merge pull request [#1123](https://github.com/uutils/coreutils/issues/1123) from Arcterus/codecov
+* Merge pull request [#1120](https://github.com/uutils/coreutils/issues/1120) from Arcterus/stdbuf-cargo
+* Merge pull request [#1105](https://github.com/uutils/coreutils/issues/1105) from Arcterus/docs
+* Merge pull request [#1113](https://github.com/uutils/coreutils/issues/1113) from tsliang/master
+* Merge pull request [#1119](https://github.com/uutils/coreutils/issues/1119) from KeenS/install-ignore--c
+* Merge pull request [#1118](https://github.com/uutils/coreutils/issues/1118) from KeenS/install-file
+* Merge pull request [#1116](https://github.com/uutils/coreutils/issues/1116) from Arcterus/rm_f_fix
+* Merge pull request [#1114](https://github.com/uutils/coreutils/issues/1114) from kupospelov/master
+* Merge pull request [#1112](https://github.com/uutils/coreutils/issues/1112) from kupospelov/master
+* Merge pull request [#1111](https://github.com/uutils/coreutils/issues/1111) from Arcterus/mode-to-uucore
+* Merge pull request [#1108](https://github.com/uutils/coreutils/issues/1108) from Arcterus/readme-versions
+* Merge pull request [#1110](https://github.com/uutils/coreutils/issues/1110) from Arcterus/mode-to-uucore
+* Merge pull request [#1097](https://github.com/uutils/coreutils/issues/1097) from shutefan/fix-chmod-tests
+* Merge pull request [#1107](https://github.com/uutils/coreutils/issues/1107) from Arcterus/dev
+* Merge pull request [#1095](https://github.com/uutils/coreutils/issues/1095) from ids1024/travis-redox2
+* Merge pull request [#1106](https://github.com/uutils/coreutils/issues/1106) from Arcterus/dev
+* Merge pull request [#1101](https://github.com/uutils/coreutils/issues/1101) from skade/document-base-version
+* Merge pull request [#1084](https://github.com/uutils/coreutils/issues/1084) from Arcterus/stdbuf-fix
+* Merge pull request [#1076](https://github.com/uutils/coreutils/issues/1076) from emielbeinema/remove-rust-crypto
+* Merge pull request [#1090](https://github.com/uutils/coreutils/issues/1090) from shutefan/chmod-cleanup
+* Merge pull request [#1089](https://github.com/uutils/coreutils/issues/1089) from flyrry/fix_env
+* Merge pull request [#1088](https://github.com/uutils/coreutils/issues/1088) from flyrry/cleanup_help
+* Merge pull request [#1091](https://github.com/uutils/coreutils/issues/1091) from ykrivopalov/numfmt
+* Merge pull request [#1094](https://github.com/uutils/coreutils/issues/1094) from gbutler69/master
+* Merge pull request [#1082](https://github.com/uutils/coreutils/issues/1082) from flyrry/finish_basename
+* Merge pull request [#1080](https://github.com/uutils/coreutils/issues/1080) from shutefan/add-truncate-to-tr
+* Merge pull request [#1078](https://github.com/uutils/coreutils/issues/1078) from shutefan/fix-warnings-in-cp
+* Merge pull request [#1081](https://github.com/uutils/coreutils/issues/1081) from shutefan/split-up-function
+* Merge pull request [#1079](https://github.com/uutils/coreutils/issues/1079) from shutefan/add-quiet-flag-to-tail
+* Merge pull request [#1075](https://github.com/uutils/coreutils/issues/1075) from ids1024/expr-regex
+* Merge pull request [#1066](https://github.com/uutils/coreutils/issues/1066) from Matt8898/master
+* Merge pull request [#1073](https://github.com/uutils/coreutils/issues/1073) from ykrivopalov/tr_improvement
+* Merge pull request [#1070](https://github.com/uutils/coreutils/issues/1070) from ids1024/install-verbose
+* Merge pull request [#1069](https://github.com/uutils/coreutils/issues/1069) from ids1024/redox
+* Merge pull request [#1068](https://github.com/uutils/coreutils/issues/1068) from ids1024/cp
+* Merge pull request [#1065](https://github.com/uutils/coreutils/issues/1065) from penguwin/README
+* Merge pull request [#1](https://github.com/uutils/coreutils/issues/1) from ids1024/expr-regex
+* Merge pull request [#1056](https://github.com/uutils/coreutils/issues/1056) from Matt8898/master
+* Merge pull request [#1062](https://github.com/uutils/coreutils/issues/1062) from Arcterus/table-utils
+* Merge pull request [#1061](https://github.com/uutils/coreutils/issues/1061) from Arcterus/ls-fix
+* Merge pull request [#1060](https://github.com/uutils/coreutils/issues/1060) from Arcterus/rm-refactor
+* Merge pull request [#1059](https://github.com/uutils/coreutils/issues/1059) from Arcterus/loc
+* Merge pull request [#1057](https://github.com/uutils/coreutils/issues/1057) from ids1024/ls
+* Merge pull request [#1058](https://github.com/uutils/coreutils/issues/1058) from ids1024/redox-ls
+* Merge pull request [#1054](https://github.com/uutils/coreutils/issues/1054) from ids1024/chmod
+* Merge pull request [#1052](https://github.com/uutils/coreutils/issues/1052) from Matt8898/master
+* Merge pull request [#1051](https://github.com/uutils/coreutils/issues/1051) from millerjs/millerjs-implement-copy
+* Merge pull request [#1053](https://github.com/uutils/coreutils/issues/1053) from millerjs/pin-dependencies
+* Merge pull request [#1046](https://github.com/uutils/coreutils/issues/1046) from Matt8898/cp
+* Merge pull request [#1035](https://github.com/uutils/coreutils/issues/1035) from shinh/ln
+* Merge pull request [#1044](https://github.com/uutils/coreutils/issues/1044) from Shnatsel/fnv-hash-map
+* Merge pull request [#1045](https://github.com/uutils/coreutils/issues/1045) from kubo39/nproc-counts-via-affinity-mask-if-available
+* Merge pull request [#1043](https://github.com/uutils/coreutils/issues/1043) from Shnatsel/stream-processing
+* Merge pull request [#1039](https://github.com/uutils/coreutils/issues/1039) from Matt8898/coreopts_multi
+* Merge pull request [#1038](https://github.com/uutils/coreutils/issues/1038) from theGeekPirate/patch-1
+* Merge pull request [#1036](https://github.com/uutils/coreutils/issues/1036) from shinh/rm-invalid-symlink
+* Merge pull request [#1033](https://github.com/uutils/coreutils/issues/1033) from shinh/rm-dir-link
+* Merge pull request [#1031](https://github.com/uutils/coreutils/issues/1031) from shinh/mkdir-dup
+* Merge pull request [#1034](https://github.com/uutils/coreutils/issues/1034) from shinh/ls-n
+* Merge pull request [#1032](https://github.com/uutils/coreutils/issues/1032) from shinh/ln-basename
+* Merge pull request [#1030](https://github.com/uutils/coreutils/issues/1030) from shinh/ls-B
+* Merge pull request [#1029](https://github.com/uutils/coreutils/issues/1029) from adeschamps/master
+* Merge pull request [#1028](https://github.com/uutils/coreutils/issues/1028) from Scorpil/pinky_fix_test_macos
+* Merge pull request [#1026](https://github.com/uutils/coreutils/issues/1026) from evestera/cat-numlines-notrailing
+* Merge pull request [#1025](https://github.com/uutils/coreutils/issues/1025) from adeschamps/master
+* Merge pull request [#1024](https://github.com/uutils/coreutils/issues/1024) from DaanHoogland/master
+* Merge pull request [#1020](https://github.com/uutils/coreutils/issues/1020) from KeenS/ls-inode
+* Merge pull request [#1022](https://github.com/uutils/coreutils/issues/1022) from millerjs/cat-domain-sockets
+* Merge pull request [#1018](https://github.com/uutils/coreutils/issues/1018) from Minoru/bugfix/1017-mkdir-p-with-existing-dir
+* Merge pull request [#1015](https://github.com/uutils/coreutils/issues/1015) from Minoru/feature/846-tail-pid
+* Merge pull request [#1016](https://github.com/uutils/coreutils/issues/1016) from uutils/fix-out-dir
+* Merge pull request [#1014](https://github.com/uutils/coreutils/issues/1014) from Minoru/bugfix/umask-independent-test
+* Merge pull request [#1010](https://github.com/uutils/coreutils/issues/1010) from antiagainst/fuchsia
+* Merge pull request [#1011](https://github.com/uutils/coreutils/issues/1011) from uutils/fix-build-error
+* Merge pull request [#1008](https://github.com/uutils/coreutils/issues/1008) from wimh/od-help
+* Merge pull request [#1003](https://github.com/uutils/coreutils/issues/1003) from Arcterus/fix-preserve-root
+* Merge pull request [#1005](https://github.com/uutils/coreutils/issues/1005) from antiagainst/fuchsia
+* Merge pull request [#992](https://github.com/uutils/coreutils/issues/992) from kevgeniy/master
+* Merge pull request [#1002](https://github.com/uutils/coreutils/issues/1002) from antiagainst/itertools
+* Merge pull request [#985](https://github.com/uutils/coreutils/issues/985) from knight42/fix-preserve-root
+* Merge pull request [#1000](https://github.com/uutils/coreutils/issues/1000) from antiagainst/fuchsia
+* Merge pull request [#997](https://github.com/uutils/coreutils/issues/997) from wimh/stat-travis
+* Merge pull request [#1001](https://github.com/uutils/coreutils/issues/1001) from jbcrail/clippy-and-spelling
+* Merge pull request [#998](https://github.com/uutils/coreutils/issues/998) from antiagainst/libc-dependency
+* Merge pull request [#994](https://github.com/uutils/coreutils/issues/994) from Will-W/windowsfixes
+* Merge pull request [#995](https://github.com/uutils/coreutils/issues/995) from antiagainst/build-dependency
+* Merge pull request [#965](https://github.com/uutils/coreutils/issues/965) from wimh/od
+* Merge pull request [#993](https://github.com/uutils/coreutils/issues/993) from Zephiris/windows
+* Merge pull request [#991](https://github.com/uutils/coreutils/issues/991) from wimh/more_windows
+* Merge pull request [#989](https://github.com/uutils/coreutils/issues/989) from SjonHortensius/Makefile-fixes
+* Merge pull request [#988](https://github.com/uutils/coreutils/issues/988) from wimh/who_rpi
+* Merge pull request [#987](https://github.com/uutils/coreutils/issues/987) from Arcterus/master
+* Merge pull request [#986](https://github.com/uutils/coreutils/issues/986) from nathanross/cache-mingw
+* Merge pull request [#984](https://github.com/uutils/coreutils/issues/984) from knight42/fix-touch
+* Merge pull request [#983](https://github.com/uutils/coreutils/issues/983) from knight42/fix-preserve-root
+* Merge pull request [#980](https://github.com/uutils/coreutils/issues/980) from nathanross/tests-boilerplate-reduction
+* Merge pull request [#978](https://github.com/uutils/coreutils/issues/978) from vegichan/master
+* Merge pull request [#977](https://github.com/uutils/coreutils/issues/977) from knight42/chgrp
+* Merge pull request [#976](https://github.com/uutils/coreutils/issues/976) from knight42/mv
+* Merge pull request [#975](https://github.com/uutils/coreutils/issues/975) from nathanross/normalize-coreopts-squashed
+* Merge pull request [#974](https://github.com/uutils/coreutils/issues/974) from knight42/fix-bugs
+* Merge pull request [#969](https://github.com/uutils/coreutils/issues/969) from robertclancy/tail-f-dev-stdin-bug
+* Merge pull request [#971](https://github.com/uutils/coreutils/issues/971) from knight42/remove-unnecessary-ctypes
+* Merge pull request [#968](https://github.com/uutils/coreutils/issues/968) from knight42/uucore-entries
+* Merge pull request [#970](https://github.com/uutils/coreutils/issues/970) from knight42/remove-vec-map
+* Merge pull request [#967](https://github.com/uutils/coreutils/issues/967) from nathanross/cleanup-tests-squashed
+* Merge pull request [#963](https://github.com/uutils/coreutils/issues/963) from alsuren/sort--merge
+* Merge pull request [#964](https://github.com/uutils/coreutils/issues/964) from knight42/uniq-add-tests
+* Merge pull request [#945](https://github.com/uutils/coreutils/issues/945) from nathanross/cut-fix-chars-ranges
+* Merge pull request [#961](https://github.com/uutils/coreutils/issues/961) from nathanross/coreopts-further-refinement
+* Merge pull request [#962](https://github.com/uutils/coreutils/issues/962) from nathanross/tests-echo-complete-tests
+* Merge pull request [#960](https://github.com/uutils/coreutils/issues/960) from knight42/who
+* Merge pull request [#958](https://github.com/uutils/coreutils/issues/958) from knight42/improve-utmpx
+* Merge pull request [#957](https://github.com/uutils/coreutils/issues/957) from knight42/fix-message-template
+* Merge pull request [#956](https://github.com/uutils/coreutils/issues/956) from nathanross/tests-common-communicative-assertions
+* Merge pull request [#954](https://github.com/uutils/coreutils/issues/954) from nathanross/tests-basename-use-chaining
+* Merge pull request [#953](https://github.com/uutils/coreutils/issues/953) from pthariensflame/fix/shellcheck
+* Merge pull request [#952](https://github.com/uutils/coreutils/issues/952) from nathanross/cut-impl-zero-terminated
+* Merge pull request [#951](https://github.com/uutils/coreutils/issues/951) from nathanross/message-templates
+* Merge pull request [#950](https://github.com/uutils/coreutils/issues/950) from nathanross/cut-original-help-and-usage
+* Merge pull request [#948](https://github.com/uutils/coreutils/issues/948) from pthariensflame/patch-1
+* Merge pull request [#946](https://github.com/uutils/coreutils/issues/946) from ChrisNikkel/feature/zero_terminated
+* Merge pull request [#944](https://github.com/uutils/coreutils/issues/944) from nathanross/tests-cut-incr-feature-coverage
+* Merge pull request [#942](https://github.com/uutils/coreutils/issues/942) from nathanross/fix-appveyor
+* Merge pull request [#940](https://github.com/uutils/coreutils/issues/940) from knight42/cleanup-tests
+* Merge pull request [#939](https://github.com/uutils/coreutils/issues/939) from knight42/base32
+* Merge pull request [#938](https://github.com/uutils/coreutils/issues/938) from frewsxcv/warnings
+* Merge pull request [#937](https://github.com/uutils/coreutils/issues/937) from frewsxcv/refactor-timeout
+* Merge pull request [#935](https://github.com/uutils/coreutils/issues/935) from frewsxcv/refactor-time
+* Merge pull request [#936](https://github.com/uutils/coreutils/issues/936) from frewsxcv/pink
+* Merge pull request [#934](https://github.com/uutils/coreutils/issues/934) from knight42/fix-pinky
+* Merge pull request [#933](https://github.com/uutils/coreutils/issues/933) from frewsxcv/timeout
+* Merge pull request [#932](https://github.com/uutils/coreutils/issues/932) from alsuren/sort--stable
+* Merge pull request [#929](https://github.com/uutils/coreutils/issues/929) from nathanross/test-of
+* Merge pull request [#928](https://github.com/uutils/coreutils/issues/928) from knight42/patch
+* Merge pull request [#926](https://github.com/uutils/coreutils/issues/926) from pokeylope/ls-improvements
+* Merge pull request [#927](https://github.com/uutils/coreutils/issues/927) from knight42/ci
+* Merge pull request [#925](https://github.com/uutils/coreutils/issues/925) from BourgondAries/master
+* Merge pull request [#924](https://github.com/uutils/coreutils/issues/924) from BourgondAries/master
+* Merge pull request [#913](https://github.com/uutils/coreutils/issues/913) from knight42/pinky
+* Merge pull request [#923](https://github.com/uutils/coreutils/issues/923) from king6cong/tail-dir-fix
+* Merge pull request [#921](https://github.com/uutils/coreutils/issues/921) from nathanross/tests-minor-cleanup
+* Merge pull request [#920](https://github.com/uutils/coreutils/issues/920) from nathanross/tests-common-util-idiomatic-asserts
+* Merge pull request [#919](https://github.com/uutils/coreutils/issues/919) from nathanross/addl-documentation-util
+* Merge pull request [#918](https://github.com/uutils/coreutils/issues/918) from nathanross/cat-additional-tests
+* Merge pull request [#917](https://github.com/uutils/coreutils/issues/917) from nathanross/terse-base64
+* Merge pull request [#916](https://github.com/uutils/coreutils/issues/916) from nathanross/efficient-testing
+* Merge pull request [#915](https://github.com/uutils/coreutils/issues/915) from jerenept/master
+* Merge pull request [#914](https://github.com/uutils/coreutils/issues/914) from beneills/implement-install
+* Merge pull request [#906](https://github.com/uutils/coreutils/issues/906) from knight42/chown
+* Merge pull request [#909](https://github.com/uutils/coreutils/issues/909) from smigle00/master
+* Merge pull request [#907](https://github.com/uutils/coreutils/issues/907) from ssrvv/master
+* Merge pull request [#903](https://github.com/uutils/coreutils/issues/903) from knight42/chmod-patch
+* Merge pull request [#902](https://github.com/uutils/coreutils/issues/902) from nkowdley/master
+* Merge pull request [#901](https://github.com/uutils/coreutils/issues/901) from knight42/mktemp-dir
+* Merge pull request [#900](https://github.com/uutils/coreutils/issues/900) from knight42/reorganize-tests
+* Merge pull request [#899](https://github.com/uutils/coreutils/issues/899) from tshepang/patch-1
+* Merge pull request [#898](https://github.com/uutils/coreutils/issues/898) from palaviv/improve-sort
+* Merge pull request [#897](https://github.com/uutils/coreutils/issues/897) from knight42/single-test
+* Merge pull request [#896](https://github.com/uutils/coreutils/issues/896) from knight42/ls-patch
+* Merge pull request [#893](https://github.com/uutils/coreutils/issues/893) from knight42/stat
+* Merge pull request [#895](https://github.com/uutils/coreutils/issues/895) from tarka/ls-uname-group
+* Merge pull request [#894](https://github.com/uutils/coreutils/issues/894) from kwantam/master
+* Merge pull request [#892](https://github.com/uutils/coreutils/issues/892) from mdsn/follow-stdin
+* Merge pull request [#890](https://github.com/uutils/coreutils/issues/890) from mdsn/follow-multiple
+* Merge pull request [#889](https://github.com/uutils/coreutils/issues/889) from jbcrail/update-deps
+* Merge pull request [#888](https://github.com/uutils/coreutils/issues/888) from tshepang/warnings
+* Merge pull request [#887](https://github.com/uutils/coreutils/issues/887) from jbcrail/fix-cksum-overflow
+* Merge pull request [#885](https://github.com/uutils/coreutils/issues/885) from jbcrail/refactor-tests
+* Merge pull request [#884](https://github.com/uutils/coreutils/issues/884) from modelorganism/od-formats
+* Merge pull request [#882](https://github.com/uutils/coreutils/issues/882) from jbcrail/fix-windows-build
+* Merge pull request [#880](https://github.com/uutils/coreutils/issues/880) from knight42/fix
+* Merge pull request [#878](https://github.com/uutils/coreutils/issues/878) from jbcrail/update-appveyor-build
+* Merge pull request [#877](https://github.com/uutils/coreutils/issues/877) from jbcrail/pin_vecmap_for_tr
+* Merge pull request [#875](https://github.com/uutils/coreutils/issues/875) from knight42/dircolors
+* Merge pull request [#872](https://github.com/uutils/coreutils/issues/872) from knight42/mknod
+* Merge pull request [#845](https://github.com/uutils/coreutils/issues/845) from peschkaj/master
+* Merge pull request [#830](https://github.com/uutils/coreutils/issues/830) from lucaotta/fix-788
+* Merge pull request [#871](https://github.com/uutils/coreutils/issues/871) from modelorganism/odupdate
+* Merge pull request [#869](https://github.com/uutils/coreutils/issues/869) from chungy/sha3
+* Merge pull request [#868](https://github.com/uutils/coreutils/issues/868) from ebfe/od
+* Merge pull request [#863](https://github.com/uutils/coreutils/issues/863) from ProgVal/patch-1
+* Merge pull request [#861](https://github.com/uutils/coreutils/issues/861) from ProgVal/test-tail-f
+* Merge pull request [#862](https://github.com/uutils/coreutils/issues/862) from fitzgen/tail-size-multiplier-suffix
+* Merge pull request [#858](https://github.com/uutils/coreutils/issues/858) from ProgVal/implement-tail-z
+* Merge pull request [#856](https://github.com/uutils/coreutils/issues/856) from jbcrail/refactor-sort-tests
+* Merge pull request [#855](https://github.com/uutils/coreutils/issues/855) from jbcrail/fix-readlink-realpath-tests
+* Merge pull request [#854](https://github.com/uutils/coreutils/issues/854) from fitzgen/tests-for-tail-bytes
+* Merge pull request [#853](https://github.com/uutils/coreutils/issues/853) from jbcrail/fix-pwd-test
+* Merge pull request [#852](https://github.com/uutils/coreutils/issues/852) from jbcrail/contributing-commit-msgs
+* Merge pull request [#851](https://github.com/uutils/coreutils/issues/851) from fitzgen/tests-for-tail-bytes
+* Merge pull request [#844](https://github.com/uutils/coreutils/issues/844) from jbcrail/sort_add_month
+* Merge pull request [#843](https://github.com/uutils/coreutils/issues/843) from llogiq/clippy
+* Merge pull request [#840](https://github.com/uutils/coreutils/issues/840) from ebfe/travis
+* Merge pull request [#839](https://github.com/uutils/coreutils/issues/839) from Shiroy/uucore_lib_name
+* Merge pull request [#836](https://github.com/uutils/coreutils/issues/836) from jamwt/fix_sleep
+* Merge pull request [#837](https://github.com/uutils/coreutils/issues/837) from skade/move_to_stable
+* Merge pull request [#832](https://github.com/uutils/coreutils/issues/832) from fitzgen/tail-large-files
+* Merge pull request [#829](https://github.com/uutils/coreutils/issues/829) from lucaotta/fix-chmod-reference
+* Merge pull request [#825](https://github.com/uutils/coreutils/issues/825) from nathanross/dirname-fix-impl
+* Merge pull request [#828](https://github.com/uutils/coreutils/issues/828) from cbjadwani/uniq_add_tests
+* Merge pull request [#823](https://github.com/uutils/coreutils/issues/823) from nathanross/comm-additional-tests
+* Merge pull request [#821](https://github.com/uutils/coreutils/issues/821) from ebfe/cat-test
+* Merge pull request [#827](https://github.com/uutils/coreutils/issues/827) from ColdPie1/sort_opt_o
+* Merge pull request [#826](https://github.com/uutils/coreutils/issues/826) from nathanross/link-normalize-error-messages
+* Merge pull request [#822](https://github.com/uutils/coreutils/issues/822) from nathanross/more-ergonomic-testing
+* Merge pull request [#820](https://github.com/uutils/coreutils/issues/820) from nathanross/cat-fix-squeeze-blank
+* Merge pull request [#819](https://github.com/uutils/coreutils/issues/819) from nathanross/additional-tests
+* Merge pull request [#815](https://github.com/uutils/coreutils/issues/815) from nathanross/spec-tests
+* Merge pull request [#816](https://github.com/uutils/coreutils/issues/816) from nathanross/minor-fixes
+* Merge pull request [#657](https://github.com/uutils/coreutils/issues/657) from nathanross/printf-reorg
+* Merge pull request [#814](https://github.com/uutils/coreutils/issues/814) from shalupov/mark-fixtures-data-as-binary
+* Merge pull request [#813](https://github.com/uutils/coreutils/issues/813) from shalupov/fix-windows-tests-startup
+* Merge pull request [#812](https://github.com/uutils/coreutils/issues/812) from ebfe/fix-build
+* Merge pull request [#810](https://github.com/uutils/coreutils/issues/810) from ebfe/tests-chmod
+* Merge pull request [#809](https://github.com/uutils/coreutils/issues/809) from jbcrail/fix-type-mismatch
+* Merge pull request [#808](https://github.com/uutils/coreutils/issues/808) from ebfe/make-vars
+* Merge pull request [#807](https://github.com/uutils/coreutils/issues/807) from uutils/revert-805-master
+* Merge pull request [#805](https://github.com/uutils/coreutils/issues/805) from Arcterus/master
+* Merge pull request [#803](https://github.com/uutils/coreutils/issues/803) from Arcterus/master
+* Merge pull request [#800](https://github.com/uutils/coreutils/issues/800) from Arcterus/master
+* Merge pull request [#798](https://github.com/uutils/coreutils/issues/798) from Arcterus/master
+* Merge pull request [#797](https://github.com/uutils/coreutils/issues/797) from Arcterus/master
+* Merge pull request [#795](https://github.com/uutils/coreutils/issues/795) from ebfe/ptx-stable
+* Merge pull request [#796](https://github.com/uutils/coreutils/issues/796) from ebfe/unexpand-stable
+* Merge pull request [#794](https://github.com/uutils/coreutils/issues/794) from ebfe/travis
+* Merge pull request [#793](https://github.com/uutils/coreutils/issues/793) from ebfe/clippy
+* Merge pull request [#792](https://github.com/uutils/coreutils/issues/792) from Arcterus/master
+* Merge pull request [#791](https://github.com/uutils/coreutils/issues/791) from Arcterus/master
+* Merge pull request [#790](https://github.com/uutils/coreutils/issues/790) from ebfe/tests-mktemp
+* Merge pull request [#781](https://github.com/uutils/coreutils/issues/781) from KeenS/mktemp
+* Merge pull request [#789](https://github.com/uutils/coreutils/issues/789) from ebfe/chmod-tests
+* Merge pull request [#787](https://github.com/uutils/coreutils/issues/787) from ebfe/chmod-tests
+* Merge pull request [#786](https://github.com/uutils/coreutils/issues/786) from Arcterus/master
+* Merge pull request [#785](https://github.com/uutils/coreutils/issues/785) from ebfe/tests
+* Merge pull request [#783](https://github.com/uutils/coreutils/issues/783) from ebfe/fix-touch-tests
+* Merge pull request [#774](https://github.com/uutils/coreutils/issues/774) from KeenS/cache_and_cargo
+* Merge pull request [#780](https://github.com/uutils/coreutils/issues/780) from forticulous/shred
+* Merge pull request [#779](https://github.com/uutils/coreutils/issues/779) from ebfe/du-symlink
+* Merge pull request [#778](https://github.com/uutils/coreutils/issues/778) from gekola/fix-seq-busybox-tests
+* Merge pull request [#777](https://github.com/uutils/coreutils/issues/777) from nathanross/tidy-make
+* Merge pull request [#775](https://github.com/uutils/coreutils/issues/775) from nathanross/install-build-selection
+* Merge pull request [#768](https://github.com/uutils/coreutils/issues/768) from KeenS/osx_ci
+* Merge pull request [#771](https://github.com/uutils/coreutils/issues/771) from nathanross/busytest-multicall
+* Merge pull request [#772](https://github.com/uutils/coreutils/issues/772) from ebfe/readme
+* Merge pull request [#770](https://github.com/uutils/coreutils/issues/770) from nathanross/install-fixes
+* Merge pull request [#766](https://github.com/uutils/coreutils/issues/766) from nathanross/install
+* Merge pull request [#765](https://github.com/uutils/coreutils/issues/765) from jbcrail/fix-warnings
+* Merge pull request [#762](https://github.com/uutils/coreutils/issues/762) from ebfe/expr-and-or
+* Merge pull request [#760](https://github.com/uutils/coreutils/issues/760) from ebfe/disable-stdbuf
+* Merge pull request [#759](https://github.com/uutils/coreutils/issues/759) from ebfe/fix-env-test
+* Merge pull request [#758](https://github.com/uutils/coreutils/issues/758) from ebfe/https
+* Merge pull request [#757](https://github.com/uutils/coreutils/issues/757) from ebfe/fix-busytest
+* Merge pull request [#756](https://github.com/uutils/coreutils/issues/756) from ebfe/fix-hostname
+* Merge pull request [#755](https://github.com/uutils/coreutils/issues/755) from ebfe/fix-warnings
+* Merge pull request [#754](https://github.com/uutils/coreutils/issues/754) from ebfe/fix-dirname
+* Merge pull request [#753](https://github.com/uutils/coreutils/issues/753) from ebfe/fix-id
+* Merge pull request [#752](https://github.com/uutils/coreutils/issues/752) from ebfe/fix-busytest
+* Merge pull request [#751](https://github.com/uutils/coreutils/issues/751) from nathanross/busybox-approach-2
+* Merge pull request [#745](https://github.com/uutils/coreutils/issues/745) from ebfe/fix-arm
+* Merge pull request [#749](https://github.com/uutils/coreutils/issues/749) from jbcrail/refactor-tail-2
+* Merge pull request [#750](https://github.com/uutils/coreutils/issues/750) from jbcrail/rm-unused-imports
+* Merge pull request [#748](https://github.com/uutils/coreutils/issues/748) from ebfe/cargoflags
+* Merge pull request [#743](https://github.com/uutils/coreutils/issues/743) from jbcrail/refactor-tail
+* Merge pull request [#741](https://github.com/uutils/coreutils/issues/741) from jbcrail/rm-path-shim
+* Merge pull request [#740](https://github.com/uutils/coreutils/issues/740) from jbcrail/simplify-build
+* Merge pull request [#739](https://github.com/uutils/coreutils/issues/739) from jbcrail/contribute
+* Merge pull request [#737](https://github.com/uutils/coreutils/issues/737) from jbcrail/more-windows-fixes
+* Merge pull request [#736](https://github.com/uutils/coreutils/issues/736) from jbcrail/refactor-interactive
+* Merge pull request [#735](https://github.com/uutils/coreutils/issues/735) from jbcrail/update-windows
+* Merge pull request [#734](https://github.com/uutils/coreutils/issues/734) from ebfe/fix-comm
+* Merge pull request [#733](https://github.com/uutils/coreutils/issues/733) from jbcrail/off-by-one-error
+* Merge pull request [#732](https://github.com/uutils/coreutils/issues/732) from ebfe/travis-cargo
+* Merge pull request [#731](https://github.com/uutils/coreutils/issues/731) from ebfe/fix-warnings
+* Merge pull request [#730](https://github.com/uutils/coreutils/issues/730) from jbcrail/test-fail
+* Merge pull request [#729](https://github.com/uutils/coreutils/issues/729) from ebfe/fix-true
+* Merge pull request [#728](https://github.com/uutils/coreutils/issues/728) from jbcrail/fix-namespace-collision
+* Merge pull request [#727](https://github.com/uutils/coreutils/issues/727) from jbcrail/make-cleanup
+* Merge pull request [#726](https://github.com/uutils/coreutils/issues/726) from jbcrail/fix-make
+* Merge pull request [#725](https://github.com/uutils/coreutils/issues/725) from ebfe/versions
+* Merge pull request [#723](https://github.com/uutils/coreutils/issues/723) from jbcrail/cleanup
+* Merge pull request [#722](https://github.com/uutils/coreutils/issues/722) from ebfe/fix-sum
+* Merge pull request [#721](https://github.com/uutils/coreutils/issues/721) from ebfe/truefalse
+* Merge pull request [#720](https://github.com/uutils/coreutils/issues/720) from jbcrail/fix-test-scaffold
+* Merge pull request [#718](https://github.com/uutils/coreutils/issues/718) from jbcrail/uucore
+* Merge pull request [#715](https://github.com/uutils/coreutils/issues/715) from nathanross/cargo-idioms
+* Merge pull request [#712](https://github.com/uutils/coreutils/issues/712) from jbcrail/add-link-tests
+* Merge pull request [#711](https://github.com/uutils/coreutils/issues/711) from jbcrail/add-rmdir-tests
+* Merge pull request [#710](https://github.com/uutils/coreutils/issues/710) from jbcrail/rm-deprecated
+* Merge pull request [#709](https://github.com/uutils/coreutils/issues/709) from jbcrail/rm-parentheses
+* Merge pull request [#708](https://github.com/uutils/coreutils/issues/708) from RGafiyatullin/impl-expr-pre-merge-2
+* Merge pull request [#707](https://github.com/uutils/coreutils/issues/707) from aarzee/newlines
+* Merge pull request [#705](https://github.com/uutils/coreutils/issues/705) from aarzee/updatedeps
+* Merge pull request [#704](https://github.com/uutils/coreutils/issues/704) from ebfe/fix-build
+* Merge pull request [#703](https://github.com/uutils/coreutils/issues/703) from RGafiyatullin/rgafiyatullin-factor-of-power-of-two
+* Merge pull request [#695](https://github.com/uutils/coreutils/issues/695) from ebfe/factor-test
+* Merge pull request [#694](https://github.com/uutils/coreutils/issues/694) from ebfe/travis-nightly
+* Merge pull request [#691](https://github.com/uutils/coreutils/issues/691) from steveklabnik/stable
+* Merge pull request [#689](https://github.com/uutils/coreutils/issues/689) from dbrgn/whoami_fix
+* Merge pull request [#671](https://github.com/uutils/coreutils/issues/671) from ebfe/cargo-build
+* Merge pull request [#686](https://github.com/uutils/coreutils/issues/686) from czinck/sort-enhance
+* Merge pull request [#685](https://github.com/uutils/coreutils/issues/685) from hexsel/depend-on-nightly-officially
+* Merge pull request [#683](https://github.com/uutils/coreutils/issues/683) from samfoo/fix-futures-in-du
+* Merge pull request [#680](https://github.com/uutils/coreutils/issues/680) from jbcrail/add-tests-for-sums
+* Merge pull request [#678](https://github.com/uutils/coreutils/issues/678) from jbcrail/stabilize-4
+* Merge pull request [#679](https://github.com/uutils/coreutils/issues/679) from jbcrail/stabilize-5
+* Merge pull request [#677](https://github.com/uutils/coreutils/issues/677) from jbcrail/add-comments
+* Merge pull request [#676](https://github.com/uutils/coreutils/issues/676) from jbcrail/stabilize-3
+* Merge pull request [#675](https://github.com/uutils/coreutils/issues/675) from jbcrail/update-travis
+* Merge pull request [#672](https://github.com/uutils/coreutils/issues/672) from jbcrail/add-beta-to-travis
+* Merge pull request [#670](https://github.com/uutils/coreutils/issues/670) from jbcrail/stablilize-2
+* Merge pull request [#669](https://github.com/uutils/coreutils/issues/669) from fahlmant/README-update
+* Merge pull request [#668](https://github.com/uutils/coreutils/issues/668) from jbcrail/stabilize
+* Merge pull request [#667](https://github.com/uutils/coreutils/issues/667) from jbcrail/update-travis
+* Merge pull request [#666](https://github.com/uutils/coreutils/issues/666) from krozycki/master
+* Merge pull request [#663](https://github.com/uutils/coreutils/issues/663) from jbcrail/rm-deprecated
+* Merge pull request [#664](https://github.com/uutils/coreutils/issues/664) from jbcrail/add-cut-tests
+* Merge pull request [#662](https://github.com/uutils/coreutils/issues/662) from jbcrail/replace-deprecated
+* Merge pull request [#661](https://github.com/uutils/coreutils/issues/661) from jbcrail/windows-ci
+* Merge pull request [#660](https://github.com/uutils/coreutils/issues/660) from retep998/master
+* Merge pull request [#656](https://github.com/uutils/coreutils/issues/656) from retep998/master
+* Merge pull request [#652](https://github.com/uutils/coreutils/issues/652) from jbcrail/update-deps
+* Merge pull request [#651](https://github.com/uutils/coreutils/issues/651) from jbcrail/stdbuf-dylib
+* Merge pull request [#650](https://github.com/uutils/coreutils/issues/650) from jbcrail/update-tr
+* Merge pull request [#647](https://github.com/uutils/coreutils/issues/647) from jbcrail/fix-osx-stdbuf
+* Merge pull request [#649](https://github.com/uutils/coreutils/issues/649) from jbcrail/fix-stdbuf-regression
+* Merge pull request [#648](https://github.com/uutils/coreutils/issues/648) from jbcrail/rm-unused-mutation
+* Merge pull request [#646](https://github.com/uutils/coreutils/issues/646) from jbcrail/fix-split-tests
+* Merge pull request [#645](https://github.com/uutils/coreutils/issues/645) from jbcrail/rm-unused-attribute
+* Merge pull request [#644](https://github.com/uutils/coreutils/issues/644) from jbcrail/add-ln
+* Merge pull request [#643](https://github.com/uutils/coreutils/issues/643) from jbcrail/fix-mv-help
+* Merge pull request [#640](https://github.com/uutils/coreutils/issues/640) from remram44/mv-strip-trailing-slashes
+* Merge pull request [#641](https://github.com/uutils/coreutils/issues/641) from remram44/fix-timeout
+* Merge pull request [#642](https://github.com/uutils/coreutils/issues/642) from remram44/allow-stable-failure
+* Merge pull request [#639](https://github.com/uutils/coreutils/issues/639) from jbcrail/update-nightly
+* Merge pull request [#638](https://github.com/uutils/coreutils/issues/638) from jbcrail/add-tac-tests
+* Merge pull request [#637](https://github.com/uutils/coreutils/issues/637) from jbcrail/fix-ptx-tests-on-osx
+* Merge pull request [#636](https://github.com/uutils/coreutils/issues/636) from jbcrail/update-dependencies
+* Merge pull request [#635](https://github.com/uutils/coreutils/issues/635) from jbcrail/fix-split-tests
+* Merge pull request [#634](https://github.com/uutils/coreutils/issues/634) from jbcrail/add-realpath-tests
+* Merge pull request [#633](https://github.com/uutils/coreutils/issues/633) from jbcrail/refactor-wc
+* Merge pull request [#632](https://github.com/uutils/coreutils/issues/632) from jbcrail/add-verbose-to-head
+* Merge pull request [#629](https://github.com/uutils/coreutils/issues/629) from jbcrail/flush-stdout-from-main
+* Merge pull request [#630](https://github.com/uutils/coreutils/issues/630) from jbcrail/refactor-test-method
+* Merge pull request [#631](https://github.com/uutils/coreutils/issues/631) from jbcrail/update-head
+* Merge pull request [#624](https://github.com/uutils/coreutils/issues/624) from dokaptur/ptx
+* Merge pull request [#627](https://github.com/uutils/coreutils/issues/627) from jbcrail/refactor-tests
+* Merge pull request [#628](https://github.com/uutils/coreutils/issues/628) from jbcrail/flush-stdout
+* Merge pull request [#625](https://github.com/uutils/coreutils/issues/625) from jbcrail/add-base64-tests
+* Merge pull request [#626](https://github.com/uutils/coreutils/issues/626) from jbcrail/upgrade-regex-cargo
+* Merge pull request [#623](https://github.com/uutils/coreutils/issues/623) from ctjhoa/master
+* Merge pull request [#622](https://github.com/uutils/coreutils/issues/622) from himikof/fix-env
+* Merge pull request [#621](https://github.com/uutils/coreutils/issues/621) from jbcrail/standardize-name-version
+* Merge pull request [#620](https://github.com/uutils/coreutils/issues/620) from jbcrail/add-manual-flush
+* Merge pull request [#619](https://github.com/uutils/coreutils/issues/619) from jbcrail/replace-utf8-ellipsis
+* Merge pull request [#618](https://github.com/uutils/coreutils/issues/618) from jbcrail/fix-flush-bug-for-echo
+* Merge pull request [#617](https://github.com/uutils/coreutils/issues/617) from vinipsmaker/patch-1
+* Merge pull request [#616](https://github.com/uutils/coreutils/issues/616) from jbcrail/use-getopts-cargo-3
+* Merge pull request [#615](https://github.com/uutils/coreutils/issues/615) from jbcrail/use-getopts-cargo-2
+* Merge pull request [#614](https://github.com/uutils/coreutils/issues/614) from jbcrail/use-getopts-cargo
+* Merge pull request [#610](https://github.com/uutils/coreutils/issues/610) from jbcrail/tweak-travis
+* Merge pull request [#611](https://github.com/uutils/coreutils/issues/611) from jbcrail/rm-unstable-regex-macros
+* Merge pull request [#608](https://github.com/uutils/coreutils/issues/608) from jbcrail/rm-unstable-exit-status
+* Merge pull request [#607](https://github.com/uutils/coreutils/issues/607) from jbcrail/fix-nohup
+* Merge pull request [#605](https://github.com/uutils/coreutils/issues/605) from jbcrail/fix-stdbuf
+* Merge pull request [#606](https://github.com/uutils/coreutils/issues/606) from jbcrail/fix-linux-build-for-mkfifo
+* Merge pull request [#604](https://github.com/uutils/coreutils/issues/604) from jbcrail/fix-id-kill
+* Merge pull request [#603](https://github.com/uutils/coreutils/issues/603) from jbcrail/update-hashsum
+* Merge pull request [#601](https://github.com/uutils/coreutils/issues/601) from kwantam/master
+* Merge pull request [#602](https://github.com/uutils/coreutils/issues/602) from jbcrail/add-tests
+* Merge pull request [#600](https://github.com/uutils/coreutils/issues/600) from jbcrail/fix-du
+* Merge pull request [#597](https://github.com/uutils/coreutils/issues/597) from jbcrail/update-mkdir
+* Merge pull request [#598](https://github.com/uutils/coreutils/issues/598) from jbcrail/fix-mv
+* Merge pull request [#599](https://github.com/uutils/coreutils/issues/599) from jbcrail/fix-mkfifo
+* Merge pull request [#594](https://github.com/uutils/coreutils/issues/594) from jbcrail/update-fold
+* Merge pull request [#595](https://github.com/uutils/coreutils/issues/595) from jbcrail/update-readlink
+* Merge pull request [#596](https://github.com/uutils/coreutils/issues/596) from jbcrail/remove-returns
+* Merge pull request [#593](https://github.com/uutils/coreutils/issues/593) from kwantam/master
+* Merge pull request [#592](https://github.com/uutils/coreutils/issues/592) from jbcrail/fix-nice
+* Merge pull request [#589](https://github.com/uutils/coreutils/issues/589) from jbcrail/fix-nl
+* Merge pull request [#590](https://github.com/uutils/coreutils/issues/590) from jbcrail/fix-nproc
+* Merge pull request [#591](https://github.com/uutils/coreutils/issues/591) from jbcrail/fix-od
+* Merge pull request [#588](https://github.com/uutils/coreutils/issues/588) from jbcrail/cleanup-pwd
+* Merge pull request [#587](https://github.com/uutils/coreutils/issues/587) from jbcrail/add-tsort-test
+* Merge pull request [#585](https://github.com/uutils/coreutils/issues/585) from jbcrail/add-basename-split-tests
+* Merge pull request [#586](https://github.com/uutils/coreutils/issues/586) from jbcrail/add-more-tests
+* Merge pull request [#584](https://github.com/uutils/coreutils/issues/584) from jbcrail/fix-basename-bug
+* Merge pull request [#581](https://github.com/uutils/coreutils/issues/581) from kwantam/master
+* Merge pull request [#582](https://github.com/uutils/coreutils/issues/582) from jbcrail/fix-split
+* Merge pull request [#579](https://github.com/uutils/coreutils/issues/579) from jbcrail/update-fold
+* Merge pull request [#578](https://github.com/uutils/coreutils/issues/578) from jbcrail/fix-broken-seq-tests
+* Merge pull request [#580](https://github.com/uutils/coreutils/issues/580) from jbcrail/remove-unused-feature
+* Merge pull request [#558](https://github.com/uutils/coreutils/issues/558) from kwantam/master
+* Merge pull request [#577](https://github.com/uutils/coreutils/issues/577) from jbcrail/add-test-check
+* Merge pull request [#576](https://github.com/uutils/coreutils/issues/576) from jbcrail/update-paste
+* Merge pull request [#574](https://github.com/uutils/coreutils/issues/574) from ctjhoa/master
+* Merge pull request [#575](https://github.com/uutils/coreutils/issues/575) from jbcrail/fix-env-with-tests
+* Merge pull request [#573](https://github.com/uutils/coreutils/issues/573) from jbcrail/fix-link-sum
+* Merge pull request [#570](https://github.com/uutils/coreutils/issues/570) from jbcrail/fix-sort-test
+* Merge pull request [#571](https://github.com/uutils/coreutils/issues/571) from jbcrail/fix-cp
+* Merge pull request [#572](https://github.com/uutils/coreutils/issues/572) from jbcrail/fix-realpath-relpath
+* Merge pull request [#569](https://github.com/uutils/coreutils/issues/569) from jbcrail/rewrite-tee
+* Merge pull request [#566](https://github.com/uutils/coreutils/issues/566) from jbcrail/update-tty
+* Merge pull request [#567](https://github.com/uutils/coreutils/issues/567) from jbcrail/fix-sort
+* Merge pull request [#563](https://github.com/uutils/coreutils/issues/563) from jbcrail/fix-printenv
+* Merge pull request [#564](https://github.com/uutils/coreutils/issues/564) from jbcrail/fix-hostid-pwd
+* Merge pull request [#562](https://github.com/uutils/coreutils/issues/562) from jbcrail/fix-groups-logname
+* Merge pull request [#561](https://github.com/uutils/coreutils/issues/561) from jbcrail/fix-tty
+* Merge pull request [#557](https://github.com/uutils/coreutils/issues/557) from jbcrail/fix-truncate
+* Merge pull request [#559](https://github.com/uutils/coreutils/issues/559) from jbcrail/fix-dirname
+* Merge pull request [#551](https://github.com/uutils/coreutils/issues/551) from jbcrail/fix-head-tail
+* Merge pull request [#553](https://github.com/uutils/coreutils/issues/553) from kwantam/master
+* Merge pull request [#555](https://github.com/uutils/coreutils/issues/555) from jbcrail/fix-tsort
+* Merge pull request [#552](https://github.com/uutils/coreutils/issues/552) from kwantam/master
+* Merge pull request [#549](https://github.com/uutils/coreutils/issues/549) from kwantam/master
+* Merge pull request [#548](https://github.com/uutils/coreutils/issues/548) from jbcrail/add-build-check
+* Merge pull request [#547](https://github.com/uutils/coreutils/issues/547) from kwantam/master
+* Merge pull request [#545](https://github.com/uutils/coreutils/issues/545) from kwantam/master
+* Merge pull request [#544](https://github.com/uutils/coreutils/issues/544) from ctjhoa/new_io
+* Merge pull request [#543](https://github.com/uutils/coreutils/issues/543) from kwantam/master
+* Merge pull request [#542](https://github.com/uutils/coreutils/issues/542) from kwantam/master
+* Merge pull request [#541](https://github.com/uutils/coreutils/issues/541) from jbcrail/fix-echo
+* Merge pull request [#539](https://github.com/uutils/coreutils/issues/539) from ctjhoa/new_io
+* Merge pull request [#538](https://github.com/uutils/coreutils/issues/538) from jbcrail/update-base64
+* Merge pull request [#537](https://github.com/uutils/coreutils/issues/537) from jbcrail/fix-build-serialize
+* Merge pull request [#536](https://github.com/uutils/coreutils/issues/536) from kwantam/new_io
+* Merge pull request [#532](https://github.com/uutils/coreutils/issues/532) from ebfe/fix-build
+* Merge pull request [#525](https://github.com/uutils/coreutils/issues/525) from ebfe/fix-warnings
+* Merge pull request [#530](https://github.com/uutils/coreutils/issues/530) from ebfe/fix-build
+* Merge pull request [#528](https://github.com/uutils/coreutils/issues/528) from ebfe/fix-build
+* Merge pull request [#526](https://github.com/uutils/coreutils/issues/526) from ebfe/fix-build
+* Merge pull request [#524](https://github.com/uutils/coreutils/issues/524) from ebfe/fix-build
+* Merge pull request [#523](https://github.com/uutils/coreutils/issues/523) from ebfe/fix-build
+* Merge pull request [#522](https://github.com/uutils/coreutils/issues/522) from Arcterus/fix-stdbuf
+* Merge pull request [#517](https://github.com/uutils/coreutils/issues/517) from keunwoo/keunwoo-fix-address-radix-20150127
+* Merge pull request [#519](https://github.com/uutils/coreutils/issues/519) from ebfe/fix-build
+* Merge pull request [#515](https://github.com/uutils/coreutils/issues/515) from keunwoo/merge-benhirsch-od-20150125
+* Merge pull request [#514](https://github.com/uutils/coreutils/issues/514) from dokaptur/readme_edit
+* Merge pull request [#511](https://github.com/uutils/coreutils/issues/511) from ebfe/stdbuf
+* Merge pull request [#513](https://github.com/uutils/coreutils/issues/513) from dokaptur/stdbuf_fix
+* Merge pull request [#510](https://github.com/uutils/coreutils/issues/510) from ebfe/fix-build
+* Merge pull request [#509](https://github.com/uutils/coreutils/issues/509) from Stebalien/cleanup-wc
+* Merge pull request [#508](https://github.com/uutils/coreutils/issues/508) from Stebalien/cleanup-sync
+* Merge pull request [#507](https://github.com/uutils/coreutils/issues/507) from Stebalien/cleanup-cat
+* Merge pull request [#469](https://github.com/uutils/coreutils/issues/469) from dokaptur/stdbuf
+* Merge pull request [#506](https://github.com/uutils/coreutils/issues/506) from Stebalien/yes-cleanup
+* Merge pull request [#504](https://github.com/uutils/coreutils/issues/504) from ebfe/slice
+* Merge pull request [#505](https://github.com/uutils/coreutils/issues/505) from ebfe/fix-build
+* Merge pull request [#503](https://github.com/uutils/coreutils/issues/503) from ebfe/fix-build
+* Merge pull request [#500](https://github.com/uutils/coreutils/issues/500) from TomGenco/patch-1
+* Merge pull request [#477](https://github.com/uutils/coreutils/issues/477) from lht/readlink
+* Merge pull request [#499](https://github.com/uutils/coreutils/issues/499) from Arcterus/master
+* Merge pull request [#498](https://github.com/uutils/coreutils/issues/498) from Arcterus/master
+* Merge pull request [#497](https://github.com/uutils/coreutils/issues/497) from ebfe/fix-build-alpha
+* Merge pull request [#496](https://github.com/uutils/coreutils/issues/496) from ebfe/fix-build-alpha
+* Merge pull request [#495](https://github.com/uutils/coreutils/issues/495) from ebfe/fix-build-alpha
+* Merge pull request [#494](https://github.com/uutils/coreutils/issues/494) from ebfe/fix-build-alpha
+* Merge pull request [#493](https://github.com/uutils/coreutils/issues/493) from Arcterus/master
+* Merge pull request [#491](https://github.com/uutils/coreutils/issues/491) from ebfe/wipe_tmp
+* Merge pull request [#492](https://github.com/uutils/coreutils/issues/492) from ebfe/fix-build-master
+* Merge pull request [#490](https://github.com/uutils/coreutils/issues/490) from ebfe/fix-build-master
+* Merge pull request [#489](https://github.com/uutils/coreutils/issues/489) from ebfe/fix-build-master
+* Merge pull request [#486](https://github.com/uutils/coreutils/issues/486) from ebfe/fix-build-master
+* Merge pull request [#485](https://github.com/uutils/coreutils/issues/485) from amty/master
+* Merge pull request [#484](https://github.com/uutils/coreutils/issues/484) from pitex/master
+* Merge pull request [#483](https://github.com/uutils/coreutils/issues/483) from sjaensch/fix_deprecation_warnings
+* Merge pull request [#482](https://github.com/uutils/coreutils/issues/482) from fhahn/rust-update
+* Merge pull request [#481](https://github.com/uutils/coreutils/issues/481) from skv-headless/fix_char_len_warning
+* Merge pull request [#479](https://github.com/uutils/coreutils/issues/479) from slapresta/add-tmp-to-gitignore
+* Merge pull request [#480](https://github.com/uutils/coreutils/issues/480) from slapresta/fix-deprecation-warnings
+* Merge pull request [#478](https://github.com/uutils/coreutils/issues/478) from lht/fix-build-master-62fb41c32
+* Merge pull request [#476](https://github.com/uutils/coreutils/issues/476) from lht/fix-build-master
+* Merge pull request [#475](https://github.com/uutils/coreutils/issues/475) from Arcterus/nice
+* Merge pull request [#474](https://github.com/uutils/coreutils/issues/474) from Arcterus/master
+* Merge pull request [#472](https://github.com/uutils/coreutils/issues/472) from ebfe/fix-build-master
+* Merge pull request [#471](https://github.com/uutils/coreutils/issues/471) from ebfe/fix-build-master
+* Merge pull request [#466](https://github.com/uutils/coreutils/issues/466) from Arcterus/master
+* Merge pull request [#468](https://github.com/uutils/coreutils/issues/468) from Arcterus/fix-build
+* Merge pull request [#465](https://github.com/uutils/coreutils/issues/465) from Arcterus/master
+* Merge pull request [#464](https://github.com/uutils/coreutils/issues/464) from Arcterus/fix-build
+* Merge pull request [#454](https://github.com/uutils/coreutils/issues/454) from wikol/master
+* Merge pull request [#462](https://github.com/uutils/coreutils/issues/462) from Arcterus/tr
+* Merge pull request [#461](https://github.com/uutils/coreutils/issues/461) from skv-headless/uptime_mismatch
+* Merge pull request [#460](https://github.com/uutils/coreutils/issues/460) from Arcterus/deprecation
+* Merge pull request [#459](https://github.com/uutils/coreutils/issues/459) from Arcterus/deprecation
+* Merge pull request [#458](https://github.com/uutils/coreutils/issues/458) from dokaptur/tail
+* Merge pull request [#456](https://github.com/uutils/coreutils/issues/456) from Arcterus/wc-speed
+* Merge pull request [#455](https://github.com/uutils/coreutils/issues/455) from Arcterus/deprecation
+* Merge pull request [#453](https://github.com/uutils/coreutils/issues/453) from ebfe/fix-build-master
+* Merge pull request [#452](https://github.com/uutils/coreutils/issues/452) from ebfe/fix-build-master
+* Merge pull request [#451](https://github.com/uutils/coreutils/issues/451) from ebfe/fix-build-master
+* Merge pull request [#450](https://github.com/uutils/coreutils/issues/450) from skv-headless/update_rust-crypto
+* Merge pull request [#449](https://github.com/uutils/coreutils/issues/449) from ebfe/fix-build-master
+* Merge pull request [#448](https://github.com/uutils/coreutils/issues/448) from Arcterus/nohup-hacks
+* Merge pull request [#447](https://github.com/uutils/coreutils/issues/447) from Arcterus/fix
+* Merge pull request [#446](https://github.com/uutils/coreutils/issues/446) from ebfe/fix-build-master
+* Merge pull request [#444](https://github.com/uutils/coreutils/issues/444) from ebfe/fix-deprecation
+* Merge pull request [#443](https://github.com/uutils/coreutils/issues/443) from ebfe/fix-build-master
+* Merge pull request [#442](https://github.com/uutils/coreutils/issues/442) from ebfe/fix-build-master
+* Merge pull request [#440](https://github.com/uutils/coreutils/issues/440) from ebfe/fix-build-master
+* Merge pull request [#438](https://github.com/uutils/coreutils/issues/438) from ebfe/fix-build-master
+* Merge pull request [#436](https://github.com/uutils/coreutils/issues/436) from ebfe/fix-build-master
+* Merge pull request [#435](https://github.com/uutils/coreutils/issues/435) from ebfe/rust-crypto
+* Merge pull request [#432](https://github.com/uutils/coreutils/issues/432) from awestroke/more_mv_test_cases
+* Merge pull request [#433](https://github.com/uutils/coreutils/issues/433) from ebfe/fix-build-master
+* Merge pull request [#427](https://github.com/uutils/coreutils/issues/427) from awestroke/feature_mv
+* Merge pull request [#430](https://github.com/uutils/coreutils/issues/430) from Arcterus/nproc
+* Merge pull request [#428](https://github.com/uutils/coreutils/issues/428) from Arcterus/chmod
+* Merge pull request [#429](https://github.com/uutils/coreutils/issues/429) from Arcterus/fix-master
+* Merge pull request [#426](https://github.com/uutils/coreutils/issues/426) from ebfe/nproc
+* Merge pull request [#425](https://github.com/uutils/coreutils/issues/425) from ebfe/test
+* Merge pull request [#424](https://github.com/uutils/coreutils/issues/424) from ebfe/fix-build-master
+* Merge pull request [#423](https://github.com/uutils/coreutils/issues/423) from Arcterus/test-tests
+* Merge pull request [#422](https://github.com/uutils/coreutils/issues/422) from Arcterus/die-warnings-die
+* Merge pull request [#420](https://github.com/uutils/coreutils/issues/420) from skv-headless/move_util
+* Merge pull request [#421](https://github.com/uutils/coreutils/issues/421) from yincrash/yin_sort_rebased
+* Merge pull request [#414](https://github.com/uutils/coreutils/issues/414) from Arcterus/test-fix
+* Merge pull request [#419](https://github.com/uutils/coreutils/issues/419) from jaysh/cp-tests
+* Merge pull request [#418](https://github.com/uutils/coreutils/issues/418) from ebfe/uniq
+* Merge pull request [#417](https://github.com/uutils/coreutils/issues/417) from ebfe/fix-build-master
+* Merge pull request [#415](https://github.com/uutils/coreutils/issues/415) from ebfe/fix-build-master
+* Merge pull request [#412](https://github.com/uutils/coreutils/issues/412) from Arcterus/test-fix
+* Merge pull request [#411](https://github.com/uutils/coreutils/issues/411) from Arcterus/mkdir-test-warn
+* Merge pull request [#410](https://github.com/uutils/coreutils/issues/410) from ssirai/fix
+* Merge pull request [#409](https://github.com/uutils/coreutils/issues/409) from ebfe/cfg
+* Merge pull request [#408](https://github.com/uutils/coreutils/issues/408) from nodakai/cat-range-three-dots
+* Merge pull request [#406](https://github.com/uutils/coreutils/issues/406) from Arcterus/fold-fix
+* Merge pull request [#405](https://github.com/uutils/coreutils/issues/405) from Arcterus/fold-fix
+* Merge pull request [#404](https://github.com/uutils/coreutils/issues/404) from Arcterus/wc-fix
+* Merge pull request [#403](https://github.com/uutils/coreutils/issues/403) from ebfe/deprecation
+* Merge pull request [#402](https://github.com/uutils/coreutils/issues/402) from Arcterus/tail-busybox
+* Merge pull request [#401](https://github.com/uutils/coreutils/issues/401) from ebfe/typo
+* Merge pull request [#400](https://github.com/uutils/coreutils/issues/400) from Heather/master
+* Merge pull request [#399](https://github.com/uutils/coreutils/issues/399) from Heather/fx1
+* Merge pull request [#398](https://github.com/uutils/coreutils/issues/398) from ebfe/deprecation
+* Merge pull request [#397](https://github.com/uutils/coreutils/issues/397) from ebfe/fix-build-master
+* Merge pull request [#396](https://github.com/uutils/coreutils/issues/396) from ebfe/freebsd
+* Merge pull request [#394](https://github.com/uutils/coreutils/issues/394) from ebfe/rust-crypto
+* Merge pull request [#226](https://github.com/uutils/coreutils/issues/226) from neyer/master
+* Merge pull request [#393](https://github.com/uutils/coreutils/issues/393) from ebfe/rfc-52
+* Merge pull request [#392](https://github.com/uutils/coreutils/issues/392) from Arcterus/fix-build
+* Merge pull request [#391](https://github.com/uutils/coreutils/issues/391) from Arcterus/travis-official
+* Merge pull request [#390](https://github.com/uutils/coreutils/issues/390) from ebfe/fix-build-master
+* Merge pull request [#388](https://github.com/uutils/coreutils/issues/388) from ebfe/fix-uutils-build
+* Merge pull request [#389](https://github.com/uutils/coreutils/issues/389) from ebfe/fix-snake-case
+* Merge pull request [#386](https://github.com/uutils/coreutils/issues/386) from ebfe/fix-build-master
+* Merge pull request [#384](https://github.com/uutils/coreutils/issues/384) from ebfe/repr_c
+* Merge pull request [#383](https://github.com/uutils/coreutils/issues/383) from ebfe/import_as
+* Merge pull request [#380](https://github.com/uutils/coreutils/issues/380) from xmasotto/master
+* Merge pull request [#382](https://github.com/uutils/coreutils/issues/382) from ebfe/fix-build-master
+* Merge pull request [#379](https://github.com/uutils/coreutils/issues/379) from IvanUkhov/from-buf
+* Merge pull request [#377](https://github.com/uutils/coreutils/issues/377) from Arcterus/fix-pipe_writeln
+* Merge pull request [#375](https://github.com/uutils/coreutils/issues/375) from polyphemus/cut-bytes-iterator
+* Merge pull request [#373](https://github.com/uutils/coreutils/issues/373) from ebfe/fix-deprecation
+* Merge pull request [#372](https://github.com/uutils/coreutils/issues/372) from Armavica/unexpand
+* Merge pull request [#370](https://github.com/uutils/coreutils/issues/370) from Armavica/expand
+* Merge pull request [#369](https://github.com/uutils/coreutils/issues/369) from Arcterus/busybox-fixes
+* Merge pull request [#368](https://github.com/uutils/coreutils/issues/368) from Arcterus/timeout
+* Merge pull request [#367](https://github.com/uutils/coreutils/issues/367) from Arcterus/src-to-test
+* Merge pull request [#366](https://github.com/uutils/coreutils/issues/366) from Arcterus/src-uutils
+* Merge pull request [#362](https://github.com/uutils/coreutils/issues/362) from Arcterus/lto
+* Merge pull request [#363](https://github.com/uutils/coreutils/issues/363) from ebfe/hashsum
+* Merge pull request [#361](https://github.com/uutils/coreutils/issues/361) from akiradeveloper/feature/add-tsort-v2
+* Merge pull request [#360](https://github.com/uutils/coreutils/issues/360) from Arcterus/makefile-fixes
+* Merge pull request [#358](https://github.com/uutils/coreutils/issues/358) from Arcterus/test-fix
+* Merge pull request [#354](https://github.com/uutils/coreutils/issues/354) from mahkoh/test
+* Merge pull request [#357](https://github.com/uutils/coreutils/issues/357) from polyphemus/cut-bytes-rewrite
+* Merge pull request [#356](https://github.com/uutils/coreutils/issues/356) from kwantam/master
+* Merge pull request [#355](https://github.com/uutils/coreutils/issues/355) from Arcterus/perf
+* Merge pull request [#352](https://github.com/uutils/coreutils/issues/352) from Arcterus/cksum-perf
+* Merge pull request [#351](https://github.com/uutils/coreutils/issues/351) from Arcterus/wc-message
+* Merge pull request [#350](https://github.com/uutils/coreutils/issues/350) from ebfe/wc
+* Merge pull request [#349](https://github.com/uutils/coreutils/issues/349) from Arcterus/kill-short-sigs
+* Merge pull request [#348](https://github.com/uutils/coreutils/issues/348) from Arcterus/wc-buffering
+* Merge pull request [#347](https://github.com/uutils/coreutils/issues/347) from Arcterus/master
+* Merge pull request [#346](https://github.com/uutils/coreutils/issues/346) from Arcterus/shuf
+* Merge pull request [#345](https://github.com/uutils/coreutils/issues/345) from polyphemus/cut-bytes-rewrite
+* Merge pull request [#344](https://github.com/uutils/coreutils/issues/344) from ebfe/fix-build-master
+* Merge pull request [#343](https://github.com/uutils/coreutils/issues/343) from ebfe/crypto
+* Merge pull request [#342](https://github.com/uutils/coreutils/issues/342) from ebfe/deprecation
+* Merge pull request [#341](https://github.com/uutils/coreutils/issues/341) from cbjadwani/uniq
+* Merge pull request [#339](https://github.com/uutils/coreutils/issues/339) from kwantam/master
+* Merge pull request [#338](https://github.com/uutils/coreutils/issues/338) from ebfe/fix-build-master
+* Merge pull request [#334](https://github.com/uutils/coreutils/issues/334) from Arcterus/uutils-prefix
+* Merge pull request [#336](https://github.com/uutils/coreutils/issues/336) from kwantam/master
+* Merge pull request [#335](https://github.com/uutils/coreutils/issues/335) from akiradeveloper/feature/add-split-v3
+* Merge pull request [#333](https://github.com/uutils/coreutils/issues/333) from ebfe/uutils
+* Merge pull request [#330](https://github.com/uutils/coreutils/issues/330) from ebfe/fix-build-master
+* Merge pull request [#329](https://github.com/uutils/coreutils/issues/329) from Arcterus/multicall-install
+* Merge pull request [#328](https://github.com/uutils/coreutils/issues/328) from Arcterus/uutils-autogen
+* Merge pull request [#326](https://github.com/uutils/coreutils/issues/326) from Arcterus/id-fix
+* Merge pull request [#327](https://github.com/uutils/coreutils/issues/327) from akiradeveloper/feature/fix-typo-tail-readme
+* Merge pull request [#322](https://github.com/uutils/coreutils/issues/322) from ebfe/fix-build-master
+* Merge pull request [#325](https://github.com/uutils/coreutils/issues/325) from kwantam/master
+* Merge pull request [#323](https://github.com/uutils/coreutils/issues/323) from ebfe/seq
+* Merge pull request [#318](https://github.com/uutils/coreutils/issues/318) from kwantam/master
+* Merge pull request [#321](https://github.com/uutils/coreutils/issues/321) from ebfe/fix-build-master
+* Merge pull request [#319](https://github.com/uutils/coreutils/issues/319) from torkve/master
+* Merge pull request [#320](https://github.com/uutils/coreutils/issues/320) from Arcterus/nohup-fix
+* Merge pull request [#234](https://github.com/uutils/coreutils/issues/234) from polyphemus/cut
+* Merge pull request [#317](https://github.com/uutils/coreutils/issues/317) from redcape/fix-mem-and-text-mode
+* Merge pull request [#309](https://github.com/uutils/coreutils/issues/309) from ebfe/build
+* Merge pull request [#304](https://github.com/uutils/coreutils/issues/304) from torkve/master
+* Merge pull request [#313](https://github.com/uutils/coreutils/issues/313) from Heather/master
+* Merge pull request [#285](https://github.com/uutils/coreutils/issues/285) from xanderfomin/sync
+* Merge pull request [#312](https://github.com/uutils/coreutils/issues/312) from redcape/update-rust-crypto
+* Merge pull request [#310](https://github.com/uutils/coreutils/issues/310) from alan-andrade/patch-6
+* Merge pull request [#308](https://github.com/uutils/coreutils/issues/308) from ebfe/fix-build-master
+* Merge pull request [#307](https://github.com/uutils/coreutils/issues/307) from ebfe/cargo
+* Merge pull request [#306](https://github.com/uutils/coreutils/issues/306) from redcape/regex-hashsum-check2
+* Merge pull request [#301](https://github.com/uutils/coreutils/issues/301) from Arcterus/seq-broken-pipe
+* Merge pull request [#300](https://github.com/uutils/coreutils/issues/300) from Arcterus/seq-busybox
+* Merge pull request [#299](https://github.com/uutils/coreutils/issues/299) from Arcterus/hashsum-fix
+* Merge pull request [#298](https://github.com/uutils/coreutils/issues/298) from ebfe/update-rust-crypto
+* Merge pull request [#295](https://github.com/uutils/coreutils/issues/295) from ebfe/link
+* Merge pull request [#296](https://github.com/uutils/coreutils/issues/296) from ebfe/exit_status
+* Merge pull request [#294](https://github.com/uutils/coreutils/issues/294) from ebfe/mkfifo
+* Merge pull request [#297](https://github.com/uutils/coreutils/issues/297) from torkve/master
+* Merge pull request [#293](https://github.com/uutils/coreutils/issues/293) from ebfe/comm
+* Merge pull request [#292](https://github.com/uutils/coreutils/issues/292) from ebfe/travis
+* Merge pull request [#291](https://github.com/uutils/coreutils/issues/291) from ebfe/cat
+* Merge pull request [#289](https://github.com/uutils/coreutils/issues/289) from Arcterus/gitmodules-update
+* Merge pull request [#290](https://github.com/uutils/coreutils/issues/290) from kwantam/master
+* Merge pull request [#286](https://github.com/uutils/coreutils/issues/286) from ebfe/uutils
+* Merge pull request [#287](https://github.com/uutils/coreutils/issues/287) from ebfe/remove-bytes
+* Merge pull request [#280](https://github.com/uutils/coreutils/issues/280) from Arcterus/echo-fix
+* Merge pull request [#283](https://github.com/uutils/coreutils/issues/283) from ebfe/uutils
+* Merge pull request [#281](https://github.com/uutils/coreutils/issues/281) from ebfe/uutils
+* Merge pull request [#278](https://github.com/uutils/coreutils/issues/278) from Arcterus/du-error-msgs
+* Merge pull request [#279](https://github.com/uutils/coreutils/issues/279) from Arcterus/busybox-fix
+* Merge pull request [#277](https://github.com/uutils/coreutils/issues/277) from ebfe/du
+* Merge pull request [#276](https://github.com/uutils/coreutils/issues/276) from Arcterus/c_types-mac-import
+* Merge pull request [#275](https://github.com/uutils/coreutils/issues/275) from ebfe/c-types-import
+* Merge pull request [#268](https://github.com/uutils/coreutils/issues/268) from Arcterus/id-group-mac-fix
+* Merge pull request [#274](https://github.com/uutils/coreutils/issues/274) from Arcterus/util-libc
+* Merge pull request [#272](https://github.com/uutils/coreutils/issues/272) from kwantam/master
+* Merge pull request [#270](https://github.com/uutils/coreutils/issues/270) from orodley/fix-32-bit-build
+* Merge pull request [#269](https://github.com/uutils/coreutils/issues/269) from ebfe/sum
+* Merge pull request [#266](https://github.com/uutils/coreutils/issues/266) from ebfe/uutils
+* Merge pull request [#263](https://github.com/uutils/coreutils/issues/263) from ebfe/du
+* Merge pull request [#262](https://github.com/uutils/coreutils/issues/262) from ebfe/fix-group-foo
+* Merge pull request [#255](https://github.com/uutils/coreutils/issues/255) from Arcterus/id-fix
+* Merge pull request [#257](https://github.com/uutils/coreutils/issues/257) from ebfe/hostname
+* Merge pull request [#258](https://github.com/uutils/coreutils/issues/258) from ebfe/nl
+* Merge pull request [#256](https://github.com/uutils/coreutils/issues/256) from ebfe/chroot
+* Merge pull request [#252](https://github.com/uutils/coreutils/issues/252) from torkve/master
+* Merge pull request [#254](https://github.com/uutils/coreutils/issues/254) from ebfe/groups
+* Merge pull request [#253](https://github.com/uutils/coreutils/issues/253) from ebfe/fix-c-group
+* Merge pull request [#238](https://github.com/uutils/coreutils/issues/238) from tobstar87/nl
+* Merge pull request [#251](https://github.com/uutils/coreutils/issues/251) from Arcterus/whoami
+* Merge pull request [#245](https://github.com/uutils/coreutils/issues/245) from ebfe/fix-id
+* Merge pull request [#246](https://github.com/uutils/coreutils/issues/246) from ebfe/remove-to-err-msg
+* Merge pull request [#247](https://github.com/uutils/coreutils/issues/247) from ebfe/gitignore
+* Merge pull request [#250](https://github.com/uutils/coreutils/issues/250) from xanderfomin/sync
+* Merge pull request [#244](https://github.com/uutils/coreutils/issues/244) from akiradeveloper/feature/fix-typo-tail
+* Merge pull request [#243](https://github.com/uutils/coreutils/issues/243) from Arcterus/sleep-inf
+* Merge pull request [#235](https://github.com/uutils/coreutils/issues/235) from Arcterus/non-utils
+* Merge pull request [#230](https://github.com/uutils/coreutils/issues/230) from Arcterus/rust-crypto
+* Merge pull request [#225](https://github.com/uutils/coreutils/issues/225) from molysgaard/master
+* Merge pull request [#228](https://github.com/uutils/coreutils/issues/228) from Arcterus/install-target
+* Merge pull request [#212](https://github.com/uutils/coreutils/issues/212) from brson/exitcodes
+* Merge pull request [#221](https://github.com/uutils/coreutils/issues/221) from espadrine/patch-1
+* Merge pull request [#213](https://github.com/uutils/coreutils/issues/213) from Heather/master
+* Merge pull request [#214](https://github.com/uutils/coreutils/issues/214) from ebfe/fix-build-master
+* Merge pull request [#209](https://github.com/uutils/coreutils/issues/209) from mahkoh/factor
+* Merge pull request [#201](https://github.com/uutils/coreutils/issues/201) from beatgammit/feat-factor
+* Merge pull request [#206](https://github.com/uutils/coreutils/issues/206) from ebfe/cp
+* Merge pull request [#205](https://github.com/uutils/coreutils/issues/205) from ebfe/comm
+* Merge pull request [#204](https://github.com/uutils/coreutils/issues/204) from brson/master
+* Merge pull request [#202](https://github.com/uutils/coreutils/issues/202) from ebfe/remove-tilde
+* Merge pull request [#199](https://github.com/uutils/coreutils/issues/199) from mahkoh/readme
+* Merge pull request [#189](https://github.com/uutils/coreutils/issues/189) from mahkoh/cat
+* Merge pull request [#195](https://github.com/uutils/coreutils/issues/195) from ebfe/multicall
+* Merge pull request [#197](https://github.com/uutils/coreutils/issues/197) from Heather/master
+* Merge pull request [#196](https://github.com/uutils/coreutils/issues/196) from ebfe/fix-head
+* Merge pull request [#193](https://github.com/uutils/coreutils/issues/193) from ebfe/fix-build-master
+* Merge pull request [#192](https://github.com/uutils/coreutils/issues/192) from Arcterus/master
+* Merge pull request [#191](https://github.com/uutils/coreutils/issues/191) from beatgammit/master
+* Merge pull request [#188](https://github.com/uutils/coreutils/issues/188) from ebfe/args
+* Merge pull request [#186](https://github.com/uutils/coreutils/issues/186) from ebfe/strbuf-string
+* Merge pull request [#187](https://github.com/uutils/coreutils/issues/187) from ebfe/fix-deprecation
+* Merge pull request [#185](https://github.com/uutils/coreutils/issues/185) from ebfe/fix-build-master
+* Merge pull request [#184](https://github.com/uutils/coreutils/issues/184) from caipre/master
+* Merge pull request [#183](https://github.com/uutils/coreutils/issues/183) from ebfe/fix-build-master
+* Merge pull request [#181](https://github.com/uutils/coreutils/issues/181) from ebfe/fix-build-master
+* Merge pull request [#180](https://github.com/uutils/coreutils/issues/180) from ebfe/tr
+* Merge pull request [#178](https://github.com/uutils/coreutils/issues/178) from ebfe/comm
+* Merge pull request [#179](https://github.com/uutils/coreutils/issues/179) from ebfe/mkdir
+* Merge pull request [#177](https://github.com/uutils/coreutils/issues/177) from ebfe/tr
+* Merge pull request [#175](https://github.com/uutils/coreutils/issues/175) from ebfe/fix-du
+* Merge pull request [#174](https://github.com/uutils/coreutils/issues/174) from ebfe/fix-cp
+* Merge pull request [#173](https://github.com/uutils/coreutils/issues/173) from ebfe/fix-make-test
+* Merge pull request [#172](https://github.com/uutils/coreutils/issues/172) from ebfe/strbuf-getopts
+* Merge pull request [#171](https://github.com/uutils/coreutils/issues/171) from zvms/add-unlink
+* Merge pull request [#170](https://github.com/uutils/coreutils/issues/170) from ebfe/cksum
+* Merge pull request [#169](https://github.com/uutils/coreutils/issues/169) from ebfe/comm
+* Merge pull request [#168](https://github.com/uutils/coreutils/issues/168) from ebfe/fix-build-master
+* Merge pull request [#167](https://github.com/uutils/coreutils/issues/167) from Arcterus/master
+* Merge pull request [#166](https://github.com/uutils/coreutils/issues/166) from Arcterus/master
+* Merge pull request [#164](https://github.com/uutils/coreutils/issues/164) from ebfe/box-syntax
+* Merge pull request [#163](https://github.com/uutils/coreutils/issues/163) from Arcterus/master
+* Merge pull request [#162](https://github.com/uutils/coreutils/issues/162) from Arcterus/master
+* Merge pull request [#161](https://github.com/uutils/coreutils/issues/161) from Arcterus/master
+* Merge pull request [#160](https://github.com/uutils/coreutils/issues/160) from jordyd/master
+* Merge pull request [#158](https://github.com/uutils/coreutils/issues/158) from PeteJodo/master
+* Merge pull request [#157](https://github.com/uutils/coreutils/issues/157) from Fiedzia/kill-cleanup
+* Merge pull request [#156](https://github.com/uutils/coreutils/issues/156) from Fiedzia/hostid
+* Merge pull request [#153](https://github.com/uutils/coreutils/issues/153) from Fiedzia/kill-ng
+* Merge pull request [#152](https://github.com/uutils/coreutils/issues/152) from joaoxsouls/master
+* Merge pull request [#150](https://github.com/uutils/coreutils/issues/150) from joaoxsouls/master
+* Merge pull request [#148](https://github.com/uutils/coreutils/issues/148) from Arcterus/master
+* Merge pull request [#147](https://github.com/uutils/coreutils/issues/147) from Arcterus/fold
+* Merge pull request [#145](https://github.com/uutils/coreutils/issues/145) from Arcterus/fixes
+* Merge pull request [#144](https://github.com/uutils/coreutils/issues/144) from Ryman/master
+* Merge pull request [#143](https://github.com/uutils/coreutils/issues/143) from Arcterus/md5sum
+* Merge pull request [#142](https://github.com/uutils/coreutils/issues/142) from alan-andrade/master-fix
+* Merge pull request [#138](https://github.com/uutils/coreutils/issues/138) from dpc/master
+* Merge pull request [#135](https://github.com/uutils/coreutils/issues/135) from huonw/du
+* Merge pull request [#133](https://github.com/uutils/coreutils/issues/133) from jlneder/master
+* Merge pull request [#130](https://github.com/uutils/coreutils/issues/130) from alan-andrade/fix_master
+* Merge pull request [#128](https://github.com/uutils/coreutils/issues/128) from Doppp/expand_in_progress
+* Merge pull request [#125](https://github.com/uutils/coreutils/issues/125) from Heather/master
+* Merge pull request [#124](https://github.com/uutils/coreutils/issues/124) from alan-andrade/patch-5
+* Merge pull request [#123](https://github.com/uutils/coreutils/issues/123) from Arcterus/mkdir
+* Merge pull request [#122](https://github.com/uutils/coreutils/issues/122) from Arcterus/paste
+* Merge pull request [#119](https://github.com/uutils/coreutils/issues/119) from Arcterus/tac
+* Merge pull request [#118](https://github.com/uutils/coreutils/issues/118) from Arcterus/tac
+* Merge pull request [#115](https://github.com/uutils/coreutils/issues/115) from Arcterus/master
+* Merge pull request [#114](https://github.com/uutils/coreutils/issues/114) from alan-andrade/groups
+* Merge pull request [#110](https://github.com/uutils/coreutils/issues/110) from humboldtux/master
+* Merge pull request [#107](https://github.com/uutils/coreutils/issues/107) from alan-andrade/common
+* Merge pull request [#105](https://github.com/uutils/coreutils/issues/105) from Arcterus/master
+* Merge pull request [#102](https://github.com/uutils/coreutils/issues/102) from Heather/master
+* Merge pull request [#100](https://github.com/uutils/coreutils/issues/100) from Heather/master
+* Merge pull request [#99](https://github.com/uutils/coreutils/issues/99) from Arcterus/du-and-id-fixes
+* Merge pull request [#98](https://github.com/uutils/coreutils/issues/98) from alan-andrade/patch-4
+* Merge pull request [#54](https://github.com/uutils/coreutils/issues/54) from alan-andrade/unix-head
+* Merge pull request [#97](https://github.com/uutils/coreutils/issues/97) from Arcterus/master
+* Merge pull request [#96](https://github.com/uutils/coreutils/issues/96) from alan-andrade/id
+* Merge pull request [#95](https://github.com/uutils/coreutils/issues/95) from Arcterus/master
+* Merge pull request [#93](https://github.com/uutils/coreutils/issues/93) from Arcterus/hostname
+* Merge pull request [#92](https://github.com/uutils/coreutils/issues/92) from Arcterus/master
+* Merge pull request [#31](https://github.com/uutils/coreutils/issues/31) from alan-andrade/hostname
+* Merge pull request [#90](https://github.com/uutils/coreutils/issues/90) from Arcterus/users
+* Merge pull request [#89](https://github.com/uutils/coreutils/issues/89) from Arcterus/truncate
+* Merge pull request [#91](https://github.com/uutils/coreutils/issues/91) from Arcterus/makefile
+* Merge pull request [#88](https://github.com/uutils/coreutils/issues/88) from Arcterus/master
+* Merge pull request [#73](https://github.com/uutils/coreutils/issues/73) from Arcterus/truncate
+* Merge pull request [#84](https://github.com/uutils/coreutils/issues/84) from Arcterus/fix-cat-tests
+* Merge pull request [#77](https://github.com/uutils/coreutils/issues/77) from Arcterus/master
+* Merge pull request [#69](https://github.com/uutils/coreutils/issues/69) from Heather/master
+* Merge pull request [#82](https://github.com/uutils/coreutils/issues/82) from dmac/seq
+* Merge pull request [#55](https://github.com/uutils/coreutils/issues/55) from juszczakn/master
+* Merge pull request [#70](https://github.com/uutils/coreutils/issues/70) from jordyd/base64
+* Merge pull request [#74](https://github.com/uutils/coreutils/issues/74) from Arcterus/rm
+* Merge pull request [#68](https://github.com/uutils/coreutils/issues/68) from nutsi/master
+* Merge pull request [#66](https://github.com/uutils/coreutils/issues/66) from Heather/master
+* Merge pull request [#65](https://github.com/uutils/coreutils/issues/65) from KokaKiwi/users
+* Merge pull request [#64](https://github.com/uutils/coreutils/issues/64) from KokaKiwi/fix-build
+* Merge pull request [#63](https://github.com/uutils/coreutils/issues/63) from Heather/master
+* Merge pull request [#62](https://github.com/uutils/coreutils/issues/62) from alan-andrade/patch-3
+* Merge pull request [#60](https://github.com/uutils/coreutils/issues/60) from alan-andrade/patch-2
+* Merge pull request [#59](https://github.com/uutils/coreutils/issues/59) from alan-andrade/tty
+* Merge pull request [#58](https://github.com/uutils/coreutils/issues/58) from alan-andrade/patch-1
+* Merge pull request [#56](https://github.com/uutils/coreutils/issues/56) from ashleyh/fix-cat-tests
+* Merge pull request [#50](https://github.com/uutils/coreutils/issues/50) from Arcterus/makefile
+* Merge pull request [#49](https://github.com/uutils/coreutils/issues/49) from Heather/master
+* Merge pull request [#40](https://github.com/uutils/coreutils/issues/40) from Arcterus/rmdir
+* Merge pull request [#35](https://github.com/uutils/coreutils/issues/35) from Heather/master
+* Merge pull request [#32](https://github.com/uutils/coreutils/issues/32) from alanandrade/master
+* Merge pull request [#30](https://github.com/uutils/coreutils/issues/30) from alanandrade/master
+* Merge pull request [#27](https://github.com/uutils/coreutils/issues/27) from Heather/master
+* Merge pull request [#25](https://github.com/uutils/coreutils/issues/25) from Heather/master
+* Merge pull request [#22](https://github.com/uutils/coreutils/issues/22) from derekchiang/add-dirname
+* Merge pull request [#23](https://github.com/uutils/coreutils/issues/23) from Heather/master
+* Merge pull request [#18](https://github.com/uutils/coreutils/issues/18) from ashleyh/master
+* Merge pull request [#16](https://github.com/uutils/coreutils/issues/16) from derekchiang/add-echo
+* Merge pull request [#15](https://github.com/uutils/coreutils/issues/15) from KokaKiwi/fix-build
+* Merge pull request [#13](https://github.com/uutils/coreutils/issues/13) from derekchiang/patch-1
+* Merge pull request [#9](https://github.com/uutils/coreutils/issues/9) from bpbp-boop/master
+* Merge pull request [#10](https://github.com/uutils/coreutils/issues/10) from KokaKiwi/fix-build
+* Merge pull request [#7](https://github.com/uutils/coreutils/issues/7) from huonw/update
+* Merge pull request [#6](https://github.com/uutils/coreutils/issues/6) from wilmoore/tidy-makefile
+* Merge pull request [#5](https://github.com/uutils/coreutils/issues/5) from KokaKiwi/master
+* Merge pull request [#3](https://github.com/uutils/coreutils/issues/3) from KokaKiwi/master
+* Merge pull request [#2](https://github.com/uutils/coreutils/issues/2) from KokaKiwi/master
+* Merge pull request [#1](https://github.com/uutils/coreutils/issues/1) from LeoTestard/master
