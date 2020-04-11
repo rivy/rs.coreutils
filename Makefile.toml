@@ -226,6 +226,14 @@ description = "`cargo fmt` lint report"
 command = "cargo"
 args = ["fmt", "--", "--check"]
 
+# [tasks.action-show-dependencies]
+# script_runner = "@duckscript"
+# script = [
+# '''
+# result = exec "cargo tree --no-dev-dependencies --no-indent --all | grep -vF \"$PWD\""
+# '''
+# ]
+
 [tasks.action-test_quiet]
 description = "Test (in `--quiet` mode)"
 command = "cargo"

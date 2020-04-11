@@ -7,7 +7,6 @@ name: CICD
 # spell-checker:ignore (shell/tools) choco clippy dmake esac fakeroot gmake grcov halium lcov libssl mkdir popd printf pushd rustc rustfmt rustup shopt
 # spell-checker:ignore (misc) alnum gnueabihf issuecomment maint nullglob onexitbegin onexitend uutils
 
-
 env:
   PROJECT_NAME: uutils
   PROJECT_DESC: "'Universal' (cross-platform) CLI utilities"
