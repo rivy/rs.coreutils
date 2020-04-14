@@ -1,3 +1,5 @@
+extern crate cargo_metadata;
+
 use std::env;
 use std::fs;
 use std::path::Path;
@@ -23,14 +25,16 @@ mod platform {
 fn main() {
     mkmain::main();
 
-    let manifest_dir = env::var("CARGO_MANIFEST_DIR").expect("Could not find manifest dir");
+    let mut cargo_metadata_cmd = cargo_metadata::MetadataCommand::new();
+    let metadata = cargo_metadata_cmd.exec().unwrap();
+
     let profile = env::var("PROFILE").expect("Could not determine profile");
 
     let out_dir = env::var("OUT_DIR").unwrap();
+
     let libstdbuf = format!(
-        "{}/../../../{}/{}/deps/liblibstdbuf{}",
-        manifest_dir,
-        env::var("CARGO_TARGET_DIR").unwrap_or_else(|_| "target".to_string()),
+        "{}/{}/deps/liblibstdbuf{}",
+        metadata.target_directory.to_str().unwrap(),
         profile,
         platform::DYLIB_EXT
     );

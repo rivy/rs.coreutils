@@ -15,6 +15,7 @@ tempdir = "0.3.7"
 uucore = "0.0.2"
 
 [build-dependencies]
+cargo_metadata = "0.9.1"
 libstdbuf = { path="src/libstdbuf" }
 
 [[bin]]
