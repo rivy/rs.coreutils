@@ -22,10 +22,10 @@ macro_rules! unix_only {
     };
 }
 unix_only! {
-    "chmod", test_chmod;
-    "chown", test_chown;
-    "chgrp", test_chgrp;
-    "install", test_install;
+    // "chmod", test_chmod;
+    // "chown", test_chown;
+    // "chgrp", test_chgrp;
+    // "install", test_install;
     "pathchk", test_pathchk;
     "pinky", test_pinky;
     "stdbuf", test_stdbuf;
@@ -44,25 +44,25 @@ macro_rules! generic {
     };
 }
 generic! {
-    "base32", test_base32;
-    "base64", test_base64;
-    "basename", test_basename;
-    "cat", test_cat;
-    "cksum", test_cksum;
-    "comm", test_comm;
-    "cp", test_cp;
-    "cut", test_cut;
-    "dircolors", test_dircolors;
-    "dirname", test_dirname;
-    "du", test_du;
-    "echo", test_echo;
-    "env", test_env;
-    "expr", test_expr;
-    "factor", test_factor;
-    "false", test_false;
-    "fold", test_fold;
-    "hashsum", test_hashsum;
-    "head", test_head;
+    // "base32", test_base32;
+    // "base64", test_base64;
+    // "basename", test_basename;
+    // "cat", test_cat;
+    // "cksum", test_cksum;
+    // "comm", test_comm;
+    // "cp", test_cp;
+    // "cut", test_cut;
+    // "dircolors", test_dircolors;
+    // "dirname", test_dirname;
+    // "du", test_du;
+    // "echo", test_echo;
+    // "env", test_env;
+    // "expr", test_expr;
+    // "factor", test_factor;
+    // "false", test_false;
+    // "fold", test_fold;
+    // "hashsum", test_hashsum;
+    // "head", test_head;
     "join", test_join;
     "link", test_link;
     "ln", test_ln;
@@ -95,7 +95,7 @@ generic! {
     "tsort", test_tsort;
     "unexpand", test_unexpand;
     "uniq", test_uniq;
-    "wc", test_wc;
+    "wc", test_wc
     // Be aware of the trailing semicolon after the last item
-    "hostname", test_hostname
+    // "hostname", test_hostname
 }
