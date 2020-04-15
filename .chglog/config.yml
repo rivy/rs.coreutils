@@ -1,5 +1,5 @@
-# spell-checker:ignore bugfix maint
-# spell-checker:ignore chglog
+# spell-checker:ignore (abbrev/names) bugfix coreutils maint uutils
+# spell-checker:ignore (util) chglog
 info:
   title: uutils/coreutils
   repository_url: https://github.com/uutils/coreutils

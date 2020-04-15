@@ -21,6 +21,8 @@
 {{ $output := false -}}
 {{/* <a name="{{ .Tag.Name }}"></a> */}}
 ## {{ if .Tag.Previous }}[{{ .Tag.Name }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ .Tag.Name }}{{ end }} <small>({{ datetime "2006-01-02" .Tag.Date }})</small>
+<details open><summary><small><em>[{{ .Tag.Name }}; change details]</em></small></summary>
+
 {{ if .CommitGroups -}}
 {{ range .CommitGroups }}{{ if eq .Title "Features" }}{{ $output = true }}{{ template "format-commit-group" . }}{{- end -}}{{- end -}}
 {{ range .CommitGroups }}{{ if eq .Title "Enhancements" }}{{ $output = true }}{{ template "format-commit-group" . }}{{- end -}}{{- end -}}
@@ -58,4 +60,6 @@
 {{- if not $output }}
 *No changelog for this release.*
 {{ end -}}
+</details>
 {{- end -}}
+<br/>
