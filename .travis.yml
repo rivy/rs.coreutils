@@ -26,6 +26,9 @@ matrix:
     # - rust: stable
     #   os: osx
     #   env: FEATURES=macos TEST_INSTALL=true
+    - rust: beta
+      os: linux
+      env: FEATURES=unix TEST_GNU=true
     - rust: nightly
       os: linux
       env: FEATURES=nightly,unix TEST_INSTALL=true
@@ -58,6 +61,28 @@ script:
   - cargo build $CARGO_ARGS --features "$FEATURES"
   - if [ ! $REDOX ]; then cargo test $CARGO_ARGS --features "$FEATURES" --no-fail-fast; fi
   - if [ -n "$TEST_INSTALL" ]; then mkdir installdir_test; DESTDIR=installdir_test make install; [ `ls installdir_test/usr/local/bin | wc -l` -gt 0 ]; fi
+  - |
+    if [ -n "$TEST_GNU" ]; then
+      # ref: https://github.com/uutils/coreutils/issues/1431
+      # Build `uutils` and individual packages
+      make PROFILE=release build-uutils build-pkgs
+      # Clone, configure, and build GNU tests
+      BUILD_DIR="$PWD/target/release/"
+      cd ..
+      GNU_TESTS_DIR="$PWD/gnu-coreutils-tests"
+      mkdir -p "$GNU_TESTS_DIR"
+      cd "$GNU_TESTS_DIR"
+      git clone --depth 1 https://github.com/coreutils/coreutils.git
+      git clone https://github.com/coreutils/gnulib.git
+      GNULIB_SRCDIR="$PWD/gnulib"
+      cd coreutils/
+      ./bootstrap --gnulib-srcdir="$GNULIB_SRCDIR"
+      ./configure --quiet --disable-gcc-warnings
+      # * change the PATH in the Makefile to test the uutils coreutils instead of the GNU coreutils
+      sed -i "s/^[[:blank:]]*PATH=.*/  PATH='${BUILDDIR//\//\\/}\$(PATH_SEPARATOR)'\"\$\$PATH\" \\\/" Makefile
+      ulimit -t 60; make -j "$(nproc)" check SUBDIRS=. RUN_EXPENSIVE_TESTS=yes VERBOSE=no
+      ## ulimit -t 600; make -j "$(nproc)" check SUBDIRS=. RUN_EXPENSIVE_TESTS=yes RUN_VERY_EXPENSIVE_TESTS=yes VERBOSE=no
+    fi
 
 addons:
   apt:
