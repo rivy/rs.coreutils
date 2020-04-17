@@ -11,18 +11,27 @@
 {{ end -}}
 
 # CHANGELOG <br/> [{{ $.Info.Title }}]({{ $.Info.RepositoryURL }})
-{{ if .Unreleased.CommitGroups }}{{/* <a name="unreleased"></a> */}}
+
+{{- if .Unreleased.CommitGroups }}
+
+---
+
+{{/* <a name="unreleased"></a> */}}
 ## [Unreleased]
 {{ range .Unreleased.CommitGroups }}{{ template "format-commit-group" . }}{{ end -}}
-{{ end -}}
+{{ end }}
 
-{{ range .Versions }}
+<div class="prefix"></div>
+{{- $first := true }}{{ range .Versions }}
+
 ---
 {{ $output := false -}}
 {{/* <a name="{{ .Tag.Name }}"></a> */}}
 ## {{ if .Tag.Previous }}[{{ .Tag.Name }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ .Tag.Name }}{{ end }} <small>({{ datetime "2006-01-02" .Tag.Date }})</small>
-<details open><summary><small><em>[{{ .Tag.Name }}; change details]</em></small></summary>
-
+{{ if (index .Commits 0).Body }}
+{{ (index .Commits 0).Body }}
+{{ end }}
+<details{{ if $first }} open{{ $first = false }}{{ end }}><summary><small><em>[{{ .Tag.Name }}; details]</em></small></summary>
 {{ if .CommitGroups -}}
 {{ range .CommitGroups }}{{ if eq .Title "Features" }}{{ $output = true }}{{ template "format-commit-group" . }}{{- end -}}{{- end -}}
 {{ range .CommitGroups }}{{ if eq .Title "Enhancements" }}{{ $output = true }}{{ template "format-commit-group" . }}{{- end -}}{{- end -}}
@@ -61,5 +70,6 @@
 *No changelog for this release.*
 {{ end -}}
 </details>
-{{- end -}}
+<br/>
+{{- end }}
 <br/>
