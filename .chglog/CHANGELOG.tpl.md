@@ -1,7 +1,7 @@
 {{- /* <!-- markdownlint-disable --><!-- spellchecker:ignore markdownlint --> */ -}}
 
 {{- define "format-commit" -}}
-* {{ if .Scope }}{{ .Type }} *({{ .Scope }})*: {{ .Subject }}{{ else }}{{ .Header }}{{ end }} &ac; [`{{ .Hash.Short }}`]({{ commitURL .Hash.Long }})
+* {{ if .Scope }}{{ .Type | sentenceCase }} *({{ .Scope }})*: {{ .Subject }}{{ else }}{{ .Header | sentenceCase }}{{ end }} &ac; [`{{ .Hash.Short }}`]({{ commitURL .Hash.Long }})
 {{ end -}}
 
 {{- define "format-commit-group" }}
