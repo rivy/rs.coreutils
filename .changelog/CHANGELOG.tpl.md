@@ -1,7 +1,7 @@
 {{- /* <!-- markdownlint-disable --><!-- spellchecker:ignore markdownlint --> */ -}}
 
 {{- define "format-commit" -}}
-* {{ if .Scope }}{{ .Type | sentenceCase }} *({{ .Scope }})*: {{ .Subject }}{{ else }}{{ .Header | sentenceCase }}{{ end }} &ac; [`{{ .Hash.Short }}`]({{ commitURL .Hash.Long }})
+* {{ if .Scope }}{{ .Type | smartSentenceCaseLower }} *({{ .Scope }})*: {{ .Subject }}{{ else }}{{ .Header | smartSentenceCaseLower }}{{ end }} &ac; [`{{ .Hash.Short }}`]({{ commitURL .Hash.Long }})
 {{ end -}}
 
 {{- define "format-commit-group" }}
@@ -10,17 +10,26 @@
 {{ range .Commits }}{{ template "format-commit" . -}}{{ end -}}
 {{ end -}}
 
+<!-- markdownlint-disable --><!-- spellchecker:ignore markdownlint --><!-- spellchecker:disable -->
+
 # CHANGELOG <br/> [{{ $.Info.Title }}]({{ $.Info.RepositoryURL }})
+
+<div style="font-size: 0.8em">
+
+> This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+> <br/>
+> The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) using [conventional/semantic commits](https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular).
+
+</div>
 
 {{- if .Unreleased.CommitGroups }}
 
 ---
 
-{{/* <a name="unreleased"></a> */}}
+{{/* <a name="unreleased"></a> */ -}}
 ## [Unreleased]
 {{ range .Unreleased.CommitGroups }}{{ template "format-commit-group" . }}{{ end -}}
 {{ end }}
-
 <div class="prefix"></div>
 {{- $first := true }}{{ range .Versions }}
 
@@ -67,9 +76,10 @@
 {{ end -}}
 
 {{- if not $output }}
-*No changelog for this release.*
-{{ end -}}
-</details>
 <br/>
-{{- end }}
+
+*No changelog for this release.*
+{{ end }}
+</details>
+{{- end -}}
 <br/>
