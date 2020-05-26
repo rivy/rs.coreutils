@@ -1,5 +1,5 @@
 USEGNU=gmake $*
 all:
-	@$(USEGNU)
+	@$(USEGNU) make_invoke_alias=make
 .DEFAULT:
-	@$(USEGNU)
+	@$(USEGNU) make_invoke_alias=make
