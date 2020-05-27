@@ -23,7 +23,7 @@ use uucore::fs::resolve_relative_path;
 use uucore::libc::{self, gid_t, lchown};
 use walkdir::WalkDir;
 
-use uucore::entries; // public re-export for testing
+pub use uucore::entries; // public re-export for testing
 
 static SYNTAX: &str =
     "chgrp [OPTION]... GROUP FILE...\n or :  chgrp [OPTION]... --reference=RFILE FILE...";

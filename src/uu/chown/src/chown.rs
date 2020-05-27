@@ -9,24 +9,21 @@
 
 #[macro_use]
 extern crate uucore;
-pub use uucore::entries::{self, Group, Locate, Passwd};
-use uucore::fs::resolve_relative_path;
-use uucore::libc::{self, gid_t, lchown, uid_t};
-
 extern crate walkdir;
-use walkdir::WalkDir;
-
-use std::fs::{self, Metadata};
-use std::os::unix::fs::MetadataExt;
-
-use std::io;
-use std::io::Result as IOResult;
 
 use std::convert::AsRef;
-use std::path::Path;
-
 use std::ffi::CString;
+use std::fs::{self, Metadata};
+use std::io;
+use std::io::Result as IOResult;
 use std::os::unix::ffi::OsStrExt;
+use std::os::unix::fs::MetadataExt;
+use std::path::Path;
+use uucore::fs::resolve_relative_path;
+use uucore::libc::{self, gid_t, lchown, uid_t};
+use walkdir::WalkDir;
+
+pub use uucore::entries::{self, Group, Locate, Passwd}; // public re-export for testing
 
 static SYNTAX: &str =
     "[OPTION]... [OWNER][:[GROUP]] FILE...\n chown [OPTION]... --reference=RFILE FILE...";
