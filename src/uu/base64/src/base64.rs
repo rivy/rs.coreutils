@@ -8,9 +8,10 @@
 
 #[macro_use]
 extern crate uucore;
-use uucore::encoding::Format;
 
 mod base_common;
+
+use uucore::encoding::Format;
 
 static SYNTAX: &str = "[OPTION]... [FILE]";
 static SUMMARY: &str = "Base64 encode or decode FILE, or standard input, to standard output.";

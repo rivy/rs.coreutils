@@ -9,24 +9,21 @@
 
 #[macro_use]
 extern crate uucore;
-pub use uucore::entries;
-use uucore::fs::resolve_relative_path;
-use uucore::libc::{self, gid_t, lchown};
-
 extern crate walkdir;
-use walkdir::WalkDir;
-
-use std::io::Error as IOError;
-use std::io::Result as IOResult;
-
-use std::fs;
-use std::fs::Metadata;
-use std::os::unix::fs::MetadataExt;
-
-use std::path::Path;
 
 use std::ffi::CString;
+use std::fs;
+use std::fs::Metadata;
+use std::io::Error as IOError;
+use std::io::Result as IOResult;
 use std::os::unix::ffi::OsStrExt;
+use std::os::unix::fs::MetadataExt;
+use std::path::Path;
+use uucore::fs::resolve_relative_path;
+use uucore::libc::{self, gid_t, lchown};
+use walkdir::WalkDir;
+
+use uucore::entries; // public re-export for testing
 
 static SYNTAX: &str =
     "chgrp [OPTION]... GROUP FILE...\n or :  chgrp [OPTION]... --reference=RFILE FILE...";
