@@ -272,6 +272,34 @@ command = "cargo"
 # args = ["build", "@@remove-empty(CARGO_MAKE_TASK_BUILD_UTILS_ARGS)" ]
 args = ["build", "--release", "@@split(CARGO_MAKE_TASK_BUILD_UTILS_ARGS, )" ]
 
+[tasks.action-publish-utils]
+description = "Publish individual utilities"
+dependencies = [
+	"action-determine-utils",
+]
+script_runner = "@duckscript"
+script = [
+'''
+x = pwd
+echo x=${x}
+y = get_env CARGO_MAKE_CURRENT_TASK_INITIAL_MAKEFILE_DIRECTORY
+echo y=${y}
+utils_str = get_env CARGO_MAKE_VAR_UTILS
+utils = array %{utils_str}
+for util in ${utils}
+	if not is_empty "${util}"
+		echo util="${util}"
+		cd "${x}/src/uu/${util}"
+		d = pwd
+		# echo "[ ${d} ]"
+		out = exec "cargo" publish --dry-run
+		echo out=${out.stdout}
+		echo err=${out.stderr}
+	end_if
+end
+'''
+]
+
 [tasks.action-clippy]
 description = "`cargo clippy` lint report"
 command = "cargo"
@@ -290,7 +318,8 @@ if is_empty "${package_options}"
 	else
 		result = exec "${show_utils}"
 	endif
-	set_env CARGO_MAKE_VAR_UTILS ${result.stdout}
+	out_trimmed = trim ${result.stdout}
+	set_env CARGO_MAKE_VAR_UTILS ${out_trimmed}
 	utils = array %{result.stdout}
 	for util in ${utils}
 		if not is_empty "${util}"
