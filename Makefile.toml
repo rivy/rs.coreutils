@@ -295,6 +295,7 @@ for util in ${utils}
 		out = exec "cargo" publish --dry-run
 		echo out=${out.stdout}
 		echo err=${out.stderr}
+		release out
 	end_if
 end
 '''
