@@ -9,17 +9,16 @@
 // spell-checker:ignore (ToDO) NEWROOT Userspec pstatus
 
 extern crate getopts;
-
 #[macro_use]
 extern crate uucore;
-use uucore::entries;
-use uucore::libc::{self, chroot, setgid, setgroups, setuid};
 
 use std::ffi::CString;
 use std::io::Error;
 use std::iter::FromIterator;
 use std::path::Path;
 use std::process::Command;
+use uucore::entries;
+use uucore::libc::{self, chroot, setgid, setgroups, setuid};
 
 static NAME: &str = "chroot";
 static SYNTAX: &str = "[OPTION]... NEWROOT [COMMAND [ARG]...]";

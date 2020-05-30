@@ -12,15 +12,17 @@
 
 extern crate clap;
 extern crate filetime;
-#[cfg(target_os = "linux")]
-#[macro_use]
-extern crate ioctl_sys;
 extern crate libc;
 #[macro_use]
 extern crate quick_error;
 #[macro_use]
 extern crate uucore;
 extern crate walkdir;
+
+#[cfg(target_os = "linux")]
+#[macro_use]
+extern crate ioctl_sys;
+
 #[cfg(unix)]
 extern crate xattr;
 
@@ -35,29 +37,32 @@ use clap::{App, Arg, ArgMatches};
 use filetime::FileTime;
 use quick_error::ResultExt;
 use std::collections::HashSet;
-#[cfg(not(windows))]
-use std::ffi::CString;
-#[cfg(windows)]
-use std::ffi::OsStr;
 use std::fs;
-#[cfg(target_os = "linux")]
-use std::fs::File;
 use std::fs::OpenOptions;
 use std::io;
 use std::io::{stdin, stdout, Write};
 use std::mem;
-#[cfg(target_os = "linux")]
-use std::os::unix::io::IntoRawFd;
-#[cfg(windows)]
-use std::os::windows::ffi::OsStrExt;
 use std::path::{Path, PathBuf, StripPrefixError};
 use std::str::FromStr;
 use std::string::ToString;
 use uucore::fs::{canonicalize, CanonicalizeMode};
 use walkdir::WalkDir;
 
+#[cfg(not(windows))]
+use std::ffi::CString;
+
+#[cfg(target_os = "linux")]
+use std::fs::File;
+#[cfg(target_os = "linux")]
+use std::os::unix::io::IntoRawFd;
+
 #[cfg(unix)]
 use std::os::unix::fs::PermissionsExt;
+
+#[cfg(windows)]
+use std::ffi::OsStr;
+#[cfg(windows)]
+use std::os::windows::ffi::OsStrExt;
 
 #[cfg(target_os = "linux")]
 #[allow(clippy::missing_safety_doc)]

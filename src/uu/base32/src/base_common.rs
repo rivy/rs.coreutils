@@ -10,7 +10,6 @@
 use std::fs::File;
 use std::io::{stdin, BufReader, Read};
 use std::path::Path;
-
 use uucore::encoding::{wrap_print, Data, Format};
 
 pub fn execute(

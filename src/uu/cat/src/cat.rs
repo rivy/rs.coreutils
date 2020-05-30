@@ -7,6 +7,8 @@
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
 
+// last synced with: cat (GNU coreutils) 8.13
+
 // spell-checker:ignore (ToDO) nonprint nonblank nonprinting
 
 #[macro_use]
@@ -16,7 +18,6 @@ extern crate unix_socket;
 #[macro_use]
 extern crate uucore;
 
-// last synced with: cat (GNU coreutils) 8.13
 use quick_error::ResultExt;
 use std::fs::{metadata, File};
 use std::io::{self, stderr, stdin, stdout, BufWriter, Read, Write};

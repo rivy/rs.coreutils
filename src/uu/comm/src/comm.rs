@@ -8,7 +8,6 @@
 // spell-checker:ignore (ToDO) delim mkdelim
 
 extern crate getopts;
-
 #[macro_use]
 extern crate uucore;
 

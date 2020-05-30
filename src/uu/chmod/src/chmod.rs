@@ -7,20 +7,21 @@
 
 // spell-checker:ignore (ToDO) Chmoder cmode fmode fperm fref ugoa RFILE RFILE's
 
+#[macro_use]
+extern crate uucore;
+
 #[cfg(unix)]
 extern crate libc;
 extern crate walker;
-
-#[macro_use]
-extern crate uucore;
 
 use std::fs;
 use std::os::unix::fs::{MetadataExt, PermissionsExt};
 use std::path::Path;
 use uucore::fs::display_permissions_unix;
+use walker::Walker;
+
 #[cfg(not(windows))]
 use uucore::mode;
-use walker::Walker;
 
 const NAME: &str = "chmod";
 static SUMMARY: &str = "Change the mode of each FILE to MODE.
