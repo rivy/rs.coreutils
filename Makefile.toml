@@ -166,6 +166,13 @@ dependencies = [
 	"action-format-tests",
 ]
 
+[tasks.fmt]
+description = "hidden `cargo`-style alias for 'format'"
+category = "[project]"
+dependencies = [
+	"format",
+]
+
 [tasks.help]
 description = "## Display help"
 category = "[project]"
