@@ -131,7 +131,7 @@ dependencies = [
 ]
 
 [tasks.build-features]
-description = "## Build (with features; release-mode) project; usage: `cargo make (build-features | features) FEATURE...`"
+description = "## Build (release-mode; with features) project; usage: `cargo make (build-features | features) FEATURE...`"
 category = "[project]"
 dependencies = [
 	"core::pre-build",
