@@ -941,7 +941,7 @@ fn copy_directory(root: &Path, target: &Target, options: &Options) -> CopyResult
             Some(parent) => {
                 #[cfg(windows)]
                 {
-                    // On Windows, some pathes are starting with \\?
+                    // On Windows, some paths start with \\?
                     // but not always, so, make sure that we are consistent for strip_prefix
                     // See https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file for more info
                     let parent_can = adjust_canonicalization(parent);

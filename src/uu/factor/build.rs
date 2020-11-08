@@ -80,7 +80,7 @@ fn main() {
 }
 
 #[test]
-fn test_generator_isprime() {
+fn test_generator_is_prime() {
     assert_eq!(Sieve::odd_primes.take(10_000).all(is_prime));
 }
 

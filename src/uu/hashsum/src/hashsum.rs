@@ -363,7 +363,7 @@ pub fn uumain(mut args: impl uucore::Args) -> i32 {
         );
 
     if !is_custom_binary(&binary_name) {
-        let algos = &[
+        let algorithms = &[
             ("md5", "work with MD5"),
             ("sha1", "work with SHA1"),
             ("sha224", "work with SHA224"),
@@ -385,7 +385,7 @@ pub fn uumain(mut args: impl uucore::Args) -> i32 {
             ),
         ];
 
-        for (name, desc) in algos {
+        for (name, desc) in algorithms {
             app = app.arg(Arg::with_name(name).long(name).help(desc));
         }
     }
