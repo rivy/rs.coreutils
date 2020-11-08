@@ -1,6 +1,10 @@
 uutils coreutils
 ================
 
+<!-- markdownlint-disable commands-show-output heading-style no-duplicate-heading no-trailing-punctuation -->
+<!-- spell-checker:ignore (misc) DESTDIR RUNTEST busytest esque markdownlint multicall -->
+<!-- spell-checker:ignore (names) Busybox NixOS busybox's -->
+
 [![Discord](https://img.shields.io/badge/discord-join-7289DA.svg?logo=discord&longCache=true&style=flat)](https://discord.gg/wQVJbvJ)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/uutils/coreutils/blob/master/LICENSE)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuutils%2Fcoreutils.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuutils%2Fcoreutils?ref=badge_shield)

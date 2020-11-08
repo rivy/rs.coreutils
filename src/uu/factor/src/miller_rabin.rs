@@ -5,7 +5,9 @@
 // * For the full copyright and license information, please view the LICENSE file
 // * that was distributed with this source code.
 
-// spell-checker:ignore (URL) appspot
+// spell-checker:ignore (jargon) semiprimes
+// spell-checker:ignore (names) Miller Rabin Worley
+// spell-checker:ignore (URL) appspot semiprimes
 
 use crate::numeric::*;
 

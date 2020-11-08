@@ -23,6 +23,7 @@ pub fn parse_mode(mode: Option<String>) -> Result<mode_t, String> {
 #[cfg(test)]
 mod test {
     /// Test if the program is running under WSL
+    // spell-checker:ignore (shell/nix) osrelease
     // ref: <https://github.com/microsoft/WSL/issues/4555> @@ <https://archive.is/dP0bz>
     // ToDO: test on WSL2 which likely doesn't need special handling; plan change to `is_wsl_1()` if WSL2 is less needy
     pub fn is_wsl() -> bool {

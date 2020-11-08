@@ -1,5 +1,7 @@
 # Notes / ToDO
 
+<!-- spell-checker:ignore () inotify -->
+
 - Rudimentary tail implementation.
 
 ## Missing features:
