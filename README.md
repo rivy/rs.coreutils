@@ -14,7 +14,7 @@ uutils coreutils
 [![Build Status](https://api.travis-ci.org/uutils/coreutils.svg?branch=master)](https://travis-ci.org/uutils/coreutils)
 [![Build Status (Windows)](https://ci.appveyor.com/api/projects/status/787ltcxgy86r20le?svg=true)](https://ci.appveyor.com/project/Arcterus/coreutils)
 [![Build Status (FreeBSD)](https://api.cirrus-ci.com/github/uutils/coreutils.svg)](https://cirrus-ci.com/github/uutils/coreutils/master)
-[![codecov](https://codecov.io/gh/uutils/coreutils/branch/master/graph/badge.svg)](https://codecov.io/gh/uutils/coreutils)
+[![CodeCov](https://codecov.io/gh/uutils/coreutils/branch/master/graph/badge.svg)](https://codecov.io/gh/uutils/coreutils)
 
 -----------------------------------------------
 
@@ -171,10 +171,10 @@ provides this package out of the box since 18.03:
 nix-env -iA nixos.uutils-coreutils
 ```
 
-Uninstallation Instructions
----------------------------
+Uninstall Instructions
+----------------------
 
-Uninstallation differs depending on how you have installed uutils.  If you used
+Removal instructions differ depending on how you have installed uutils.  If you used
 Cargo to install, use Cargo to uninstall.  If you used GNU Make to install, use
 Make to uninstall.
 

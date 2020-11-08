@@ -94,12 +94,12 @@ mod tests {
             gcd(a, gcd(b, c)) == gcd(gcd(a, b), c)
         }
 
-        fn scalar_mult(a: u64, b: u64, k: u64) -> bool {
+        fn scalar_multiple(a: u64, b: u64, k: u64) -> bool {
             gcd(k * a, k * b) == k * gcd(a, b)
         }
 
         fn multiplicative(a: u64, b: u64, c: u64) -> bool {
-            // gcd(ab, c) = gcd(a, c) gcd(b, c) when a and b coprime
+            // gcd(ab, c) = gcd(a, c) gcd(b, c) when a and b are co-prime
             gcd(a, b) != 1 || gcd(a * b, c) == gcd(a, c) * gcd(b, c)
         }
 

@@ -16,7 +16,7 @@ include!(concat!(env!("OUT_DIR"), "/prime_table.rs"));
 
 pub(crate) fn factor(n: &mut u64, factors: &mut Factors) {
     let mut num = *n;
-    for &(prime, inv, ceil) in P_INVS_U64 {
+    for &(prime, inv, ceil) in PRIME_INVERSES_U64 {
         if num == 1 {
             break;
         }

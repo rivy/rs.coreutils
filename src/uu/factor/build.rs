@@ -40,7 +40,7 @@ fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
     let mut file = File::create(&Path::new(&out_dir).join("prime_table.rs")).unwrap();
 
-    // By default, we print the multiplicative inverses mod 2^64 of the first 1k primes
+    // By default, we print the multiplicative inverses (aka reciprocals) mod 2^64 of the first 1k primes
     const DEFAULT_SIZE: usize = 320;
     let n = args()
         .nth(1)
@@ -105,5 +105,5 @@ const PREAMBLE: &str = r##"/*
 // re-run src/factor/gen_tables.rs.
 
 #[allow(clippy::unreadable_literal)]
-pub const P_INVS_U64: &[(u64, u64, u64)] = &[
+pub const PRIME_INVERSES_U64: &[(u64, u64, u64)] = &[
    "##;

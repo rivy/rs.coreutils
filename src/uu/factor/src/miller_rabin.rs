@@ -123,8 +123,8 @@ mod tests {
     }
 
     fn odd_primes() -> impl Iterator<Item = u64> {
-        use crate::table::{NEXT_PRIME, P_INVS_U64};
-        P_INVS_U64
+        use crate::table::{NEXT_PRIME, PRIME_INVERSES_U64};
+        PRIME_INVERSES_U64
             .iter()
             .map(|(p, _, _)| *p)
             .chain(iter::once(NEXT_PRIME))

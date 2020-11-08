@@ -201,7 +201,7 @@ mod tests {
     }
     parametrized_check!(test_add);
 
-    fn test_mult<A: DoubleInt>() {
+    fn test_multiplication<A: DoubleInt>() {
         for n in 0..100 {
             let n = 2 * n + 1;
             let m = Montgomery::<A>::new(n);
@@ -214,7 +214,7 @@ mod tests {
             }
         }
     }
-    parametrized_check!(test_mult);
+    parametrized_check!(test_multiplication);
 
     fn test_roundtrip<A: DoubleInt>() {
         for n in 0..100 {

@@ -16,11 +16,11 @@ pub(crate) fn modular_inverse<T: Int>(a: T) -> T {
     debug_assert!(a % (one + one) == one, "{:?} is not odd", a);
 
     let mut t = zero;
-    let mut newt = one;
+    let mut t_new = one;
     let mut r = zero;
-    let mut newr = a;
+    let mut r_new = a;
 
-    while newr != zero {
+    while r_new != zero {
         let quot = if r == zero {
             // special case when we're just starting out
             // This works because we know that
@@ -28,15 +28,15 @@ pub(crate) fn modular_inverse<T: Int>(a: T) -> T {
             T::max_value()
         } else {
             r
-        } / newr;
+        } / r_new;
 
-        let newtp = t.wrapping_sub(&quot.wrapping_mul(&newt));
-        t = newt;
-        newt = newtp;
+        let t_new_product = t.wrapping_sub(&quot.wrapping_mul(&t_new));
+        t = t_new;
+        t_new = t_new_product;
 
-        let newrp = r.wrapping_sub(&quot.wrapping_mul(&newr));
-        r = newr;
-        newr = newrp;
+        let r_new_product = r.wrapping_sub(&quot.wrapping_mul(&r_new));
+        r = r_new;
+        r_new = r_new_product;
     }
 
     debug_assert_eq!(r, one);
