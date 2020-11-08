@@ -1,5 +1,11 @@
+# `date` usage
+
+<!-- markdownlint-disable commands-show-output -->
+<!-- spell-checker:ignore () markdownlint hhmm tzselect -->
+
 FORMAT controls the output.  Interpreted sequences are:
 
+```text
   %%   a literal %
   %a   locale's abbreviated weekday name (e.g., Sun)
   %A   locale's full weekday name (e.g., Sunday)
@@ -46,27 +52,41 @@ FORMAT controls the output.  Interpreted sequences are:
   %::z  +hh:mm:ss numeric time zone (e.g., -04:00:00)
   %:::z  numeric time zone with : to necessary precision (e.g., -04, +05:30)
   %Z   alphabetic time zone abbreviation (e.g., EDT)
+```
 
 By default, date pads numeric fields with zeroes.
 The following optional flags may follow '%':
 
+```text
   -  (hyphen) do not pad the field
   _  (underscore) pad with spaces
   0  (zero) pad with zeros
   ^  use upper case if possible
   #  use opposite case if possible
+```
 
 After any flags comes an optional field width, as a decimal number;
 then an optional modifier, which is either
-E to use the locale's alternate representations if available, or
-O to use the locale's alternate numeric symbols if available.
 
-Examples:
-Convert seconds since the epoch (1970-01-01 UTC) to a date
-  $ date --date='@2147483647'
+- E to use the locale's alternate representations if available, or
+- O to use the locale's alternate numeric symbols if available.
 
-Show the time on the west coast of the US (use tzselect(1) to find TZ)
-  $ TZ='America/Los_Angeles' date
+## Examples
 
-Show the local time for 9AM next Friday on the west coast of the US
-  $ date --date='TZ="America/Los_Angeles" 09:00 next Fri'
+- Convert seconds since the epoch (1970-01-01 UTC) to a date
+
+```shell
+$ date --date='@2147483647'
+```
+
+- Show the time on the west coast of the US (use tzselect(1) to find TZ)
+
+```shell
+$ TZ='America/Los_Angeles' date
+```
+
+- Show the local time for 9AM next Friday on the west coast of the US
+
+```shell
+$ date --date='TZ="America/Los_Angeles" 09:00 next Fri'
+```
