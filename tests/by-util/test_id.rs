@@ -173,13 +173,13 @@ fn test_id_password_style() {
 }
 
 #[cfg(any(target_vendor = "apple", target_os = "linux"))]
-fn expected_result(args: &[&str], exp_fail: bool) -> String {
+fn expected_result(args: &[&str], expect_failure: bool) -> String {
     #[cfg(target_os = "linux")]
     let util_name = util_name!();
     #[cfg(target_vendor = "apple")]
     let util_name = format!("g{}", util_name!());
 
-    let result = if !exp_fail {
+    let result = if !expect_failure {
         // note: clippy::needless_borrow *false positive*
         #[allow(clippy::needless_borrow)]
         TestScenario::new(&util_name)
@@ -198,9 +198,9 @@ fn expected_result(args: &[&str], exp_fail: bool) -> String {
             .fails()
             .stderr_move_str()
     };
-    return if cfg!(target_os = "macos") && result.starts_with("gid") {
+    if cfg!(target_os = "macos") && result.starts_with("gid") {
         result[1..].to_string()
     } else {
         result
-    };
+    }
 }
