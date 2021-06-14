@@ -180,6 +180,8 @@ fn expected_result(args: &[&str], exp_fail: bool) -> String {
     let util_name = format!("g{}", util_name!());
 
     let result = if !exp_fail {
+        // note: clippy::needless_borrow *false positive*
+        #[allow(clippy::needless_borrow)]
         TestScenario::new(&util_name)
             .cmd_keepenv(util_name)
             .env("LANGUAGE", "C")
@@ -187,6 +189,8 @@ fn expected_result(args: &[&str], exp_fail: bool) -> String {
             .succeeds()
             .stdout_move_str()
     } else {
+        // note: clippy::needless_borrow *false positive*
+        #[allow(clippy::needless_borrow)]
         TestScenario::new(&util_name)
             .cmd_keepenv(util_name)
             .env("LANGUAGE", "C")
