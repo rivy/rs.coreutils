@@ -5,8 +5,6 @@
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
 
-// spell-checker:ignore (ToDO) fullname
-
 #[macro_use]
 extern crate uucore;
 
@@ -116,28 +114,24 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     0
 }
 
-fn basename(fullname: &str, suffix: &str) -> String {
+fn basename(path: &str, suffix: &str) -> String {
     // Remove all platform-specific path separators from the end
-    let path = fullname.trim_end_matches(is_separator);
+    let p = path.trim_end_matches(is_separator);
 
     // Convert to path buffer and get last path component
-    let pb = PathBuf::from(path);
+    let pb = PathBuf::from(p);
     match pb.components().last() {
         Some(c) => strip_suffix(c.as_os_str().to_str().unwrap(), suffix),
         None => "".to_owned(),
     }
 }
 
-// can be replaced with strip_suffix once MSRV is 1.45
+// ToDO: can be replaced with str::strip_suffix once MSRV is 1.45+
 #[allow(clippy::manual_strip)]
-fn strip_suffix(name: &str, suffix: &str) -> String {
-    if name == suffix {
-        return name.to_owned();
+fn strip_suffix(s: &str, suffix: &str) -> String {
+    if s != suffix && s.ends_with(suffix) {
+        return s[..s.len() - suffix.len()].to_owned();
     }
 
-    if name.ends_with(suffix) {
-        return name[..name.len() - suffix.len()].to_owned();
-    }
-
-    name.to_owned()
+    s.to_owned()
 }
