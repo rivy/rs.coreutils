@@ -20,7 +20,7 @@ pub mod options {
 }
 
 fn get_usage() -> String {
-    format!("{0} FILE1 FILE2", executable!())
+    format!("{0} FILE1 FILE2", util_name!())
 }
 
 pub fn normalize_error_message(e: Error) -> String {
@@ -32,7 +32,7 @@ pub fn normalize_error_message(e: Error) -> String {
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

@@ -32,7 +32,7 @@ mod options {
 }
 
 fn get_usage() -> String {
-    format!("{} [OPTION]... FILE1 FILE2", executable!())
+    format!("{} [OPTION]... FILE1 FILE2", util_name!())
 }
 
 fn mkdelim(col: usize, opts: &ArgMatches) -> String {
@@ -137,7 +137,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .collect_str(InvalidEncodingHandling::ConvertLossy)
         .accept_any();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

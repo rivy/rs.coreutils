@@ -72,7 +72,7 @@ impl Default for Settings {
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let mut settings: Settings = Default::default();
 
-    let app = App::new(executable!())
+    let app = App::new(util_name!())
         .version(crate_version!())
         .about("output the last part of files")
         // TODO: add usage

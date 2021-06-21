@@ -54,7 +54,7 @@ static AFTER_HELP: &str = "The TIME_STYLE argument can be full-iso, long-iso, is
 Also the TIME_STYLE environment variable sets the default style to use.";
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]... [FILE]...", executable!())
+    format!("{0} [OPTION]... [FILE]...", util_name!())
 }
 
 pub mod options {
@@ -558,7 +558,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
 
     let usage = get_usage();
 
-    let app = App::new(executable!())
+    let app = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

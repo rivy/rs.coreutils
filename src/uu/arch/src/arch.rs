@@ -17,7 +17,7 @@ static ABOUT: &str = "Display machine architecture";
 static SUMMARY: &str = "Determine architecture name for current machine.";
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    App::new(executable!())
+    App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .after_help(SUMMARY)

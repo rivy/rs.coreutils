@@ -214,7 +214,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .collect_str(InvalidEncodingHandling::Ignore)
         .accept_any();
 
-    let clap_opts = clap::App::new(executable!())
+    let clap_opts = clap::App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(USAGE)

@@ -42,8 +42,8 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .accept_any();
     let (args, obs_signal) = handle_obsolete(args);
 
-    let usage = format!("{} [OPTIONS]... PID...", executable!());
-    let matches = App::new(executable!())
+    let usage = format!("{} [OPTIONS]... PID...", util_name!());
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

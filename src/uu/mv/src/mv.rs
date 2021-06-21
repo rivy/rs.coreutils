@@ -63,14 +63,14 @@ fn get_usage() -> String {
         "{0} [OPTION]... [-T] SOURCE DEST
 {0} [OPTION]... SOURCE... DIRECTORY
 {0} [OPTION]... -t DIRECTORY SOURCE...",
-        executable!()
+        util_name!()
     )
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .after_help(&*format!("{}\n{}", LONG_HELP, backup_control::BACKUP_CONTROL_LONG_HELP))
@@ -281,7 +281,7 @@ fn exec(files: &[PathBuf], b: Behavior) -> i32 {
                     "mv: extra operand ‘{}’\n\
                      Try '{} --help' for more information.",
                     files[2].display(),
-                    executable!()
+                    util_name!()
                 );
                 return 1;
             }
@@ -338,7 +338,7 @@ fn rename(from: &Path, to: &Path, b: &Behavior) -> io::Result<()> {
         match b.overwrite {
             OverwriteMode::NoClobber => return Ok(()),
             OverwriteMode::Interactive => {
-                println!("{}: overwrite ‘{}’? ", executable!(), to.display());
+                println!("{}: overwrite ‘{}’? ", util_name!(), to.display());
                 if !read_yes() {
                     return Ok(());
                 }

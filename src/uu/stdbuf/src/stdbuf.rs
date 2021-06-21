@@ -48,7 +48,7 @@ mod options {
 }
 
 fn get_usage() -> String {
-    format!("{0} OPTION... COMMAND", executable!())
+    format!("{0} OPTION... COMMAND", util_name!())
 }
 
 const STDBUF_INJECT: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/libstdbuf.so"));
@@ -154,7 +154,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .accept_any();
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

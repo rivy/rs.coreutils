@@ -34,13 +34,13 @@ static OPT_T: &str = "t";
 static ARG_TEMPLATE: &str = "template";
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]... [TEMPLATE]", executable!())
+    format!("{0} [OPTION]... [TEMPLATE]", util_name!())
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

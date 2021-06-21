@@ -59,7 +59,7 @@ impl<'b> MultifileReader<'b> {
                             // This matches the behavior of the original `od`
                             eprintln!(
                                 "{}: '{}': {}",
-                                executable!().split("::").next().unwrap(), // remove module
+                                util_name!().split("::").next().unwrap(), // remove module
                                 fname,
                                 e
                             );
@@ -97,7 +97,7 @@ impl<'b> io::Read for MultifileReader<'b> {
                             Err(e) => {
                                 eprintln!(
                                     "{}: I/O: {}",
-                                    executable!().split("::").next().unwrap(), // remove module
+                                    util_name!().split("::").next().unwrap(), // remove module
                                     e
                                 );
                                 self.any_err = true;

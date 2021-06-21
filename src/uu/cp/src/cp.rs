@@ -221,7 +221,7 @@ fn get_usage() -> String {
         "{0} [OPTION]... [-T] SOURCE DEST
     {0} [OPTION]... SOURCE... DIRECTORY
     {0} [OPTION]... -t DIRECTORY SOURCE...",
-        executable!()
+        util_name!()
     )
 }
 
@@ -292,7 +292,7 @@ static DEFAULT_ATTRIBUTES: &[Attribute] = &[
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .after_help(&*format!("{}\n{}", LONG_HELP, backup_control::BACKUP_CONTROL_LONG_HELP))
@@ -1036,7 +1036,7 @@ impl OverwriteMode {
         match *self {
             OverwriteMode::NoClobber => Err(Error::NotAllFilesCopied),
             OverwriteMode::Interactive(_) => {
-                if prompt_yes!("{}: overwrite {}? ", executable!(), path.display()) {
+                if prompt_yes!("{}: overwrite {}? ", util_name!(), path.display()) {
                     Ok(())
                 } else {
                     Err(Error::Skipped(format!(

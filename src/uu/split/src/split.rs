@@ -56,7 +56,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let long_usage = get_long_usage();
     let default_suffix_length_str = OPT_DEFAULT_SUFFIX_LENGTH.to_string();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about("Create output files containing consecutive or interleaved sections of input")
         .usage(&usage[..])

@@ -21,7 +21,7 @@ fn get_usage() -> String {
     format!(
         "{0} NAME [SUFFIX]
     {0} OPTION... NAME...",
-        executable!()
+        util_name!()
     )
 }
 
@@ -40,7 +40,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     //
     // Argument parsing
     //
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(SUMMARY)
         .usage(&usage[..])
@@ -71,7 +71,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         crash!(
             1,
             "{1}\nTry '{0} --help' for more information.",
-            executable!(),
+            util_name!(),
             "missing operand"
         );
     }
@@ -85,7 +85,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         crash!(
             1,
             "extra operand '{1}'\nTry '{0} --help' for more information.",
-            executable!(),
+            util_name!(),
             matches.values_of(options::NAME).unwrap().nth(2).unwrap()
         );
     }

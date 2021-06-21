@@ -20,7 +20,7 @@ static OPT_VERBOSE: &str = "verbose";
 static ARG_DIRS: &str = "dirs";
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]... [USER]", executable!())
+    format!("{0} [OPTION]... [USER]", util_name!())
 }
 
 /**
@@ -32,7 +32,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     // Linux-specific options, not implemented
     // opts.optflag("Z", "context", "set SELinux security context" +
     // " of each created directory to CTX"),
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])
@@ -129,7 +129,7 @@ fn mkdir(path: &Path, recursive: bool, mode: u16, verbose: bool) -> i32 {
     }
 
     if verbose {
-        println!("{}: created directory '{}'", executable!(), path.display());
+        println!("{}: created directory '{}'", util_name!(), path.display());
     }
 
     #[cfg(any(unix, target_os = "redox"))]

@@ -36,7 +36,7 @@ fn get_userlogin() -> Option<String> {
 static SUMMARY: &str = "Print user's login name";
 
 fn get_usage() -> String {
-    String::from(executable!())
+    String::from(util_name!())
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
@@ -45,7 +45,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .accept_any();
 
     let usage = get_usage();
-    let _ = App::new(executable!())
+    let _ = App::new(util_name!())
         .version(crate_version!())
         .about(SUMMARY)
         .usage(&usage[..])

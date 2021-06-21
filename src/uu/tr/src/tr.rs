@@ -231,7 +231,7 @@ fn translate_input<T: SymbolTranslator>(
 }
 
 fn get_usage() -> String {
-    format!("{} [OPTION]... SET1 [SET2]", executable!())
+    format!("{} [OPTION]... SET1 [SET2]", util_name!())
 }
 
 fn get_long_usage() -> String {
@@ -249,7 +249,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
     let after_help = get_long_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])
@@ -304,7 +304,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     if sets.is_empty() {
         show_error!(
             "missing operand\nTry `{} --help` for more information.",
-            executable!()
+            util_name!()
         );
         return 1;
     }
@@ -313,7 +313,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         show_error!(
             "missing operand after ‘{}’\nTry `{} --help` for more information.",
             sets[0],
-            executable!()
+            util_name!()
         );
         return 1;
     }

@@ -36,7 +36,7 @@ fn print_factors_str(num_str: &str, w: &mut impl io::Write) -> Result<(), Box<dy
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(SUMMARY)
         .arg(Arg::with_name(options::NUMBER).multiple(true))

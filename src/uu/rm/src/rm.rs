@@ -53,7 +53,7 @@ static OPT_VERBOSE: &str = "verbose";
 static ARG_FILES: &str = "files";
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]... FILE...", executable!())
+    format!("{0} [OPTION]... FILE...", util_name!())
 }
 
 fn get_long_usage() -> String {
@@ -77,7 +77,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
     let long_usage = get_long_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])
@@ -164,7 +164,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         // Still check by hand and not use clap
         // Because "rm -f" is a thing
         show_error!("missing an argument");
-        show_error!("for help, try '{0} --help'", executable!());
+        show_error!("for help, try '{0} --help'", util_name!());
         return 1;
     } else {
         let options = Options {

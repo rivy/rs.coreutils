@@ -99,7 +99,7 @@ fn get_usage() -> String {
     format!(
         "{0} [OPTION]... [FILE]...
  With no FILE, or when FILE is -, read standard input.",
-        executable!()
+        util_name!()
     )
 }
 
@@ -134,7 +134,7 @@ impl Input {
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

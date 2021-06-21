@@ -49,7 +49,7 @@ Multiple fields/ranges can be separated with commas
 ";
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]... [NUMBER]...", executable!())
+    format!("{0} [OPTION]... [NUMBER]...", util_name!())
 }
 
 fn handle_args<'a>(args: impl Iterator<Item = &'a str>, options: NumfmtOptions) -> Result<()> {
@@ -147,7 +147,7 @@ fn parse_options(args: &ArgMatches) -> Result<NumfmtOptions> {
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

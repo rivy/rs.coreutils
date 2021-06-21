@@ -27,7 +27,7 @@ fn get_usage() -> String {
         "{0} [OPTION]... LAST
     {0} [OPTION]... FIRST LAST
     {0} [OPTION]... FIRST INCREMENT LAST",
-        executable!()
+        util_name!()
     )
 }
 #[derive(Clone)]
@@ -72,13 +72,13 @@ impl FromStr for Number {
                 Ok(value) if value.is_nan() => Err(format!(
                     "invalid 'not-a-number' argument: '{}'\nTry '{} --help' for more information.",
                     s,
-                    executable!(),
+                    util_name!(),
                 )),
                 Ok(value) => Ok(Number::F64(value)),
                 Err(_) => Err(format!(
                     "invalid floating point argument: '{}'\nTry '{} --help' for more information.",
                     s,
-                    executable!(),
+                    util_name!(),
                 )),
             },
         }
@@ -87,7 +87,7 @@ impl FromStr for Number {
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .setting(AppSettings::AllowLeadingHyphen)
         .version(crate_version!())
         .about(ABOUT)
@@ -158,7 +158,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         show_error!(
             "invalid Zero increment value: '{}'\nTry '{} --help' for more information.",
             numbers[1],
-            executable!()
+            util_name!()
         );
         return 1;
     }

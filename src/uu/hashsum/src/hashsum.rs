@@ -303,7 +303,7 @@ pub fn uumain(mut args: impl uucore::Args) -> i32 {
         }
     );
 
-    let mut app = App::new(executable!())
+    let mut app = App::new(util_name!())
         .version(crate_version!())
         .about("Compute and check message digests.")
         .arg(

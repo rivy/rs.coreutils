@@ -41,7 +41,7 @@ use lines::zlines;
 use take::take_all_but;
 
 fn app<'a>() -> App<'a, 'a> {
-    App::new(executable!())
+    App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(USAGE)

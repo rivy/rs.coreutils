@@ -31,7 +31,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .collect_str(InvalidEncodingHandling::ConvertLossy)
         .accept_any();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .name(NAME)
         .version(crate_version!())
         .usage(USAGE)

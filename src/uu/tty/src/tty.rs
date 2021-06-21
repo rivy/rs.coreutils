@@ -24,7 +24,7 @@ mod options {
 }
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]...", executable!())
+    format!("{0} [OPTION]...", util_name!())
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
@@ -33,7 +33,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .collect_str(InvalidEncodingHandling::ConvertLossy)
         .accept_any();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

@@ -39,14 +39,14 @@ Run COMMAND with an adjusted niceness, which affects process scheduling.
 With no COMMAND, print the current niceness.  Niceness values range from at
 least -20 (most favorable to the process) to 19 (least favorable to the
 process).",
-        executable!()
+        util_name!()
     )
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .setting(AppSettings::TrailingVarArg)
         .version(crate_version!())
         .usage(&usage[..])
@@ -75,7 +75,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
             if !matches.is_present(options::COMMAND) {
                 show_error!(
                     "A command must be given with an adjustment.\nTry \"{} --help\" for more information.",
-                    executable!()
+                    util_name!()
                 );
                 return 125;
             }

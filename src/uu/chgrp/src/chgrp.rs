@@ -62,7 +62,7 @@ const FTS_LOGICAL: u8 = 1 << 2;
 fn get_usage() -> String {
     format!(
         "{0} [OPTION]... GROUP FILE...\n    {0} [OPTION]... --reference=RFILE FILE...",
-        executable!()
+        util_name!()
     )
 }
 
@@ -73,7 +73,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
 
     let usage = get_usage();
 
-    let mut app = App::new(executable!())
+    let mut app = App::new(util_name!())
         .version(VERSION)
         .about(ABOUT)
         .usage(&usage[..])

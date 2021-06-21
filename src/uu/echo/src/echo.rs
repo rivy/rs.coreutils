@@ -117,7 +117,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let args = args
         .collect_str(InvalidEncodingHandling::ConvertLossy)
         .accept_any();
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .name(NAME)
         // TrailingVarArg specifies the final positional argument is a VarArg
         // and it doesn't attempts the parse any further args.

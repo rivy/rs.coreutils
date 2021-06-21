@@ -48,16 +48,16 @@ fn local_tm_to_filetime(tm: time::Tm) -> FileTime {
     FileTime::from_unix_time(ts.sec as i64, ts.nsec as u32)
 }
 
-// static USAGE: String = format!("{0} [OPTION]... FILE...", executable!());
+// static USAGE: String = format!("{0} [OPTION]... FILE...", util_name!());
 
 fn usage() -> String {
-    format!("{0} [OPTION]... FILE...", executable!())
+    format!("{0} [OPTION]... FILE...", util_name!())
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

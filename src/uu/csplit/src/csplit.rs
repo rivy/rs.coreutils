@@ -35,7 +35,7 @@ mod options {
 }
 
 fn get_usage() -> String {
-    format!("{0} [OPTION]... FILE PATTERN...", executable!())
+    format!("{0} [OPTION]... FILE PATTERN...", util_name!())
 }
 
 /// Command line options for csplit.
@@ -711,7 +711,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .collect_str(InvalidEncodingHandling::Ignore)
         .accept_any();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(SUMMARY)
         .usage(&usage[..])

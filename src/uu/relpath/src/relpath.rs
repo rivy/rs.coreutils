@@ -26,7 +26,7 @@ mod options {
 }
 
 fn get_usage() -> String {
-    format!("{} [-d DIR] TO [FROM]", executable!())
+    format!("{} [-d DIR] TO [FROM]", util_name!())
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
@@ -35,7 +35,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .accept_any();
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])

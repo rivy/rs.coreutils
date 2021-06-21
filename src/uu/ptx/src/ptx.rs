@@ -638,7 +638,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         .accept_any();
 
     // let mut opts = Options::new();
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .name(NAME)
         .version(crate_version!())
         .usage(BRIEF)

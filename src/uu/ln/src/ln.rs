@@ -57,7 +57,7 @@ fn get_usage() -> String {
        {0} [OPTION]... TARGET                  (2nd form)
        {0} [OPTION]... TARGET... DIRECTORY     (3rd form)
        {0} [OPTION]... -t DIRECTORY TARGET...  (4th form)",
-        executable!()
+        util_name!()
     )
 }
 
@@ -97,7 +97,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let usage = get_usage();
     let long_usage = get_long_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])
@@ -287,7 +287,7 @@ fn exec(files: &[PathBuf], settings: &Settings) -> i32 {
         show_error!(
             "extra operand '{}'\nTry '{} --help' for more information.",
             files[2].display(),
-            executable!()
+            util_name!()
         );
         return 1;
     }
@@ -406,7 +406,7 @@ fn link(src: &Path, dst: &Path, settings: &Settings) -> Result<()> {
         match settings.overwrite {
             OverwriteMode::NoClobber => {}
             OverwriteMode::Interactive => {
-                print!("{}: overwrite '{}'? ", executable!(), dst.display());
+                print!("{}: overwrite '{}'? ", util_name!(), dst.display());
                 if !read_yes() {
                     return Ok(());
                 }

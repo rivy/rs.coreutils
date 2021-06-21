@@ -51,7 +51,7 @@ pub mod options {
 const MULTI_FILE_TOP_PROMPT: &str = "::::::::::::::\n{}\n::::::::::::::\n";
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .about("A file perusal filter for CRT viewing.")
         .version(crate_version!())
         .arg(

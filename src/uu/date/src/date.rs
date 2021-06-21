@@ -142,7 +142,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
  {0} [OPTION]... [MMDDhhmm[[CC]YY][.ss]]",
         NAME
     );
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&syntax[..])

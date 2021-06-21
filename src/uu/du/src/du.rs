@@ -377,7 +377,7 @@ fn get_usage() -> String {
     format!(
         "{0} [OPTION]... [FILE]...
     {0} [OPTION]... --files0-from=F",
-        executable!()
+        util_name!()
     )
 }
 
@@ -389,7 +389,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
 
     let usage = get_usage();
 
-    let matches = App::new(executable!())
+    let matches = App::new(util_name!())
         .version(crate_version!())
         .about(SUMMARY)
         .usage(&usage[..])
