@@ -9,7 +9,7 @@
 ///
 /// e.g.: `src/uu/cp/src/cp.rs` -> `cp`
 #[macro_export]
-macro_rules! executable(
+macro_rules! util_name(
     () => ({
         let module = module_path!();
         let module = module.split("::").next().unwrap_or(module);
@@ -25,7 +25,7 @@ macro_rules! executable(
 #[macro_export]
 macro_rules! show_error(
     ($($args:tt)+) => ({
-        eprint!("{}: ", executable!());
+        eprint!("{}: ", util_name!());
         eprintln!($($args)+);
     })
 );
@@ -34,7 +34,7 @@ macro_rules! show_error(
 #[macro_export]
 macro_rules! show_error_custom_description (
     ($err:expr,$($args:tt)+) => ({
-        eprint!("{}: {}: ", executable!(), $err);
+        eprint!("{}: {}: ", util_name!(), $err);
         eprintln!($($args)+);
     })
 );
@@ -42,7 +42,7 @@ macro_rules! show_error_custom_description (
 #[macro_export]
 macro_rules! show_warning(
     ($($args:tt)+) => ({
-        eprint!("{}: warning: ", executable!());
+        eprint!("{}: warning: ", util_name!());
         eprintln!($($args)+);
     })
 );
@@ -51,9 +51,9 @@ macro_rules! show_warning(
 #[macro_export]
 macro_rules! show_usage_error(
     ($($args:tt)+) => ({
-        eprint!("{}: ", executable!());
+        eprint!("{}: ", util_name!());
         eprintln!($($args)+);
-        eprintln!("Try '{} --help' for more information.", executable!());
+        eprintln!("Try '{} --help' for more information.", util_name!());
     })
 );
 
