@@ -23,11 +23,12 @@ fn usage<T>(utils: &UtilityMap<T>, name: &str) {
     #[allow(clippy::map_clone)]
     let mut utils: Vec<&str> = utils.keys().map(|&s| s).collect();
     utils.sort_unstable();
-    let display_list = utils.join(", ");
-    let width = cmp::min(textwrap::termwidth(), 100) - 4 * 2; // (opinion/heuristic) max 100 chars wide with 4 character side indentions
+    let util_list = utils.join(", ");
+    let margin_size = 4; // (opinion/heuristic) 4 character margins
+    let width = cmp::min(textwrap::termwidth(), 100) - margin_size * 2; // (opinion/heuristic) max 100 chars wide
     println!(
         "{}",
-        textwrap::indent(&textwrap::fill(&display_list, width), "    ")
+        textwrap::indent(&textwrap::fill(&util_list, width), " ".repeat(margin_size))
     );
 }
 
