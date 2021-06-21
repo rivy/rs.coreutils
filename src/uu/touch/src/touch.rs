@@ -36,7 +36,7 @@ pub mod options {
     pub static TIME: &str = "time";
 }
 
-static ARG_FILES: &str = "files";
+static ARG_FILES: &str = "FILE";
 
 fn to_local(mut tm: time::Tm) -> time::Tm {
     tm.tm_utcoff = time::now().tm_utcoff;
@@ -48,17 +48,20 @@ fn local_tm_to_filetime(tm: time::Tm) -> FileTime {
     FileTime::from_unix_time(ts.sec as i64, ts.nsec as u32)
 }
 
-fn get_usage() -> String {
-    format!("{0} [OPTION]... [USER]", executable!())
+// static USAGE: String = format!("{0} [OPTION]... FILE...", executable!());
+
+fn usage() -> String {
+    format!("{0} [OPTION]... FILE...", executable!())
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let usage = get_usage();
+    let usage = usage();
 
     let matches = App::new(executable!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])
+        .setting(clap::AppSettings::UnifiedHelpMessage)
         .arg(
             Arg::with_name(options::ACCESS)
                 .short("a")
@@ -119,6 +122,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         )
         .arg(
             Arg::with_name(ARG_FILES)
+                .help("FILE(s)) to update\nA FILE argument that does not exist is created empty, unless -c or -h is supplied.")
                 .multiple(true)
                 .takes_value(true)
                 .min_values(1),
