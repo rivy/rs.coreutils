@@ -21,6 +21,8 @@ use std::path::Path;
 use std::process;
 
 static ABOUT: &str = "Update the access and modification times of each FILE to the current time.";
+static USAGE: &str = "{NAME} [OPTION]... FILE...";
+
 pub mod options {
     // Both SOURCES and sources are needed as we need to be able to refer to the ArgGroup.
     pub static SOURCES: &str = "sources";
@@ -32,11 +34,15 @@ pub mod options {
     pub static ACCESS: &str = "access";
     pub static MODIFICATION: &str = "modification";
     pub static NO_CREATE: &str = "no-create";
-    pub static NO_DEREF: &str = "no-dereference";
+    pub static NO_DEREFERENCE: &str = "no-dereference";
     pub static TIME: &str = "time";
 }
 
 static ARG_FILES: &str = "FILE";
+
+fn usage(name: &str) -> String {
+    USAGE.replace("{NAME}", name)
+}
 
 fn to_local(mut tm: time::Tm) -> time::Tm {
     tm.tm_utcoff = time::now().tm_utcoff;
@@ -48,29 +54,35 @@ fn local_tm_to_filetime(tm: time::Tm) -> FileTime {
     FileTime::from_unix_time(ts.sec as i64, ts.nsec as u32)
 }
 
-// static USAGE: String = format!("{0} [OPTION]... FILE...", util_name!());
-
-fn usage() -> String {
-    format!("{0} [OPTION]... FILE...", util_name!())
-}
-
-pub fn uumain(args: impl uucore::Args) -> i32 {
-    let usage = usage();
+pub fn uumain(mut args_: impl uucore::Args) -> i32 {
+    let name = args_
+        .next()
+        .unwrap_or_else(|| std::ffi::OsString::from(util_name!()));
+    let usage = usage(&name.to_string_lossy());
+    let args = vec![name.clone()].into_iter().chain(args_);
 
     let matches = App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(&usage[..])
         .setting(clap::AppSettings::UnifiedHelpMessage)
+        // .arg(Arg::with_name("help").long("help").help("Display help information and exit"))
+        // .arg(Arg::with_name("version").long("version").short("V").help("Display version information and exit"))
+        .help_message("Display help information and exit")
+        .version_message("Display version information and exit")
+        // .group(ArgGroup::with_name("standard_options")
+        //     .args(&["help", "version"])
+        //     .multiple(true)
+        // )
         .arg(
             Arg::with_name(options::ACCESS)
                 .short("a")
-                .help("change only the access time"),
+                .help("Change only the access time"),
         )
         .arg(
             Arg::with_name(options::sources::CURRENT)
                 .short("t")
-                .help("use [[CC]YY]MMDDhhmm[.ss] instead of the current time")
+                .help("Use [[CC]YY]MMDDhhmm[.ss] instead of the current time")
                 .value_name("STAMP")
                 .takes_value(true),
         )
@@ -78,43 +90,41 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
             Arg::with_name(options::sources::DATE)
                 .short("d")
                 .long(options::sources::DATE)
-                .help("parse argument and use it instead of current time")
+                .help("Parse argument and use it instead of current time")
                 .value_name("STRING"),
         )
         .arg(
             Arg::with_name(options::MODIFICATION)
                 .short("m")
-                .help("change only the modification time"),
+                .help("Change only the modification time"),
         )
         .arg(
             Arg::with_name(options::NO_CREATE)
                 .short("c")
                 .long(options::NO_CREATE)
-                .help("do not create any files"),
+                .help("Do not create any files"),
         )
         .arg(
-            Arg::with_name(options::NO_DEREF)
+            Arg::with_name(options::NO_DEREFERENCE)
                 .short("h")
-                .long(options::NO_DEREF)
+                .long(options::NO_DEREFERENCE)
                 .help(
-                    "affect each symbolic link instead of any referenced file \
-                     (only for systems that can change the timestamps of a symlink)",
+                    "Affect each symbolic link instead of any referenced file \
+                    (only for systems that can change the timestamps of a symlink)",
                 ),
         )
         .arg(
             Arg::with_name(options::sources::REFERENCE)
                 .short("r")
                 .long(options::sources::REFERENCE)
-                .help("use this file's times instead of the current time")
+                .help("Use this file's times instead of the current time")
                 .value_name("FILE"),
         )
         .arg(
             Arg::with_name(options::TIME)
                 .long(options::TIME)
                 .help(
-                    "change only the specified time: \"access\", \"atime\", or \
-                     \"use\" are equivalent to -a; \"modify\" or \"mtime\" are \
-                     equivalent to -m",
+                    "Change only the specified time: \"access\", \"atime\", or \"use\" are equivalent to -a; \"modify\" or \"mtime\" are equivalent to -m",
                 )
                 .value_name("WORD")
                 .possible_values(&["access", "atime", "use"])
@@ -122,7 +132,9 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
         )
         .arg(
             Arg::with_name(ARG_FILES)
-                .help("FILE(s)) to update\nA FILE argument that does not exist is created empty, unless -c or -h is supplied.")
+                .help(
+                    "FILE(s) to update\n\
+                    A FILE argument that does not exist is created empty, unless -c or -h is supplied.")
                 .multiple(true)
                 .takes_value(true)
                 .min_values(1),
@@ -142,7 +154,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let (mut atime, mut mtime) = if matches.is_present(options::sources::REFERENCE) {
         stat(
             matches.value_of(options::sources::REFERENCE).unwrap(),
-            !matches.is_present(options::NO_DEREF),
+            !matches.is_present(options::NO_DEREFERENCE),
         )
     } else if matches.is_present(options::sources::DATE)
         || matches.is_present(options::sources::CURRENT)
@@ -165,7 +177,8 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
 
         if !Path::new(path).exists() {
             // no-dereference included here for compatibility
-            if matches.is_present(options::NO_CREATE) || matches.is_present(options::NO_DEREF) {
+            if matches.is_present(options::NO_CREATE) || matches.is_present(options::NO_DEREFERENCE)
+            {
                 continue;
             }
 
@@ -195,7 +208,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
             || matches.is_present(options::MODIFICATION)
             || matches.is_present(options::TIME)
         {
-            let st = stat(path, !matches.is_present(options::NO_DEREF));
+            let st = stat(path, !matches.is_present(options::NO_DEREFERENCE));
             let time = matches.value_of(options::TIME).unwrap_or("");
 
             if !(matches.is_present(options::ACCESS)
@@ -214,7 +227,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
             }
         }
 
-        if matches.is_present(options::NO_DEREF) {
+        if matches.is_present(options::NO_DEREFERENCE) {
             if let Err(e) = set_symlink_file_times(path, atime, mtime) {
                 // we found an error, it should fail in any case
                 error_code = 1;
