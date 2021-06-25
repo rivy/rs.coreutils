@@ -82,6 +82,29 @@ $ cargo build --release --features windows
 $ cargo build --release --features unix
 ```
 
+> #### supplied platform feature sets
+>
+> feature | platform
+> --|--
+> `macos` *__or__* `feat_os_macos` | MacOS / FreeBSD-like OS
+> `unix` *__or__* `feat_os_unix` | *nix / POSIX platforms
+> `windows` *__or__* `feat_os_windows` | Windows platforms (Win10+)
+> |
+> `feat_os_unix_fuchsia` | Fuchsia OS
+> `feat_os_unix_gnueabihf` | arm-unknown-linux-gnueabihf
+> `feat_os_unix_redox` | Redox OS
+> `feat_os_windows_legacy` | early Windows platforms (WinXP v3+)
+
+<!--
+# "feat_os_unix_gnueabihf" == set of utilities which can be built/run on the "arm-unknown-linux-gnueabihf" target (ARMv6 Linux [hardfloat])
+# "feat_os_unix_musl" == set of utilities which can be built/run on targets binding to the "musl" library (ref: <https://musl.libc.org/about.html>)
+# "feat_require_unix" == set of utilities requiring support which is only available on unix platforms (as of 2020-04-23)
+# "feat_require_unix_utmpx" == set of utilities requiring unix utmp/utmpx support
+# "feat_os_unix_fuchsia" == set of utilities which can be built/run on the "Fuchsia" OS (refs: <https://fuchsia.dev>; <https://en.wikipedia.org/wiki/Google_Fuchsia>)
+# "feat_os_unix_redox" == set of utilities which can be built/run on "Redox OS" (refs: <https://www.redox-os.org>; <https://en.wikipedia.org/wiki/Redox_(operating_system)>)
+# "feat_os_windows_legacy" == slightly restricted set of utilities which can be built/run on early windows platforms (eg, "WinXP")
+-->
+
 If you don't want to build every utility available on your platform into the
 final binary, you can also specify which ones you want to build manually.
 For example:
