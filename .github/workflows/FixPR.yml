@@ -83,8 +83,6 @@ jobs:
         default_author: github_actions
         message: "maint ~ refresh 'Cargo.lock'"
         add: Cargo.lock
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   code_format:
     # Recheck/refresh code formatting
@@ -131,5 +129,3 @@ jobs:
         branch: ${{ env.BRANCH_TARGET }}
         default_author: github_actions
         message: "maint ~ rustfmt (`cargo fmt`)"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
