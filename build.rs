@@ -42,6 +42,7 @@ pub fn main() {
     let mut mf = File::create(Path::new(&out_dir).join("uutils_map.rs")).unwrap();
     let mut tf = File::create(Path::new(&out_dir).join("test_modules.rs")).unwrap();
 
+    #[rustfmt_skip]
     mf.write_all(
         "type UtilityMap<T> = HashMap<&'static str, (fn(T) -> i32, fn() -> App<'static, 'static>)>;\n\
          \n\
@@ -56,6 +57,7 @@ pub fn main() {
         match krate.as_ref() {
             // 'test' is named uu_test to avoid collision with rust core crate 'test'.
             // It can also be invoked by name '[' for the '[ expr ] syntax'.
+            #[rustfmt_skip]
             "uu_test" => {
                 mf.write_all(
                     format!(
@@ -116,6 +118,7 @@ pub fn main() {
                 )
                 .unwrap()
             }
+            #[rustfmt_skip]
             "hashsum" => {
                 mf.write_all(
                     format!(
