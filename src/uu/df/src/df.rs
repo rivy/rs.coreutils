@@ -78,7 +78,7 @@ struct Filesystem {
     usage: FsUsage,
 }
 
-fn get_usage() -> String {
+fn usage() -> String {
     format!("{0} [OPTION]... [FILE]...", executable!())
 }
 
@@ -257,7 +257,7 @@ fn use_size(free_size: u64, total_size: u64) -> String {
 }
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let usage = get_usage();
+    let usage = usage();
     let matches = uu_app().usage(&usage[..]).get_matches_from(args);
 
     let paths: Vec<String> = matches

@@ -44,7 +44,7 @@ pub enum OverwriteMode {
     Force,
 }
 
-fn get_usage() -> String {
+fn usage() -> String {
     format!(
         "{0} [OPTION]... [-T] TARGET LINK_NAME   (1st form)
        {0} [OPTION]... TARGET                  (2nd form)
@@ -54,7 +54,7 @@ fn get_usage() -> String {
     )
 }
 
-fn get_long_usage() -> String {
+fn long_usage() -> String {
     String::from(
         " In the 1st form, create a link to TARGET with the name LINK_NAME.
         In the 2nd form, create a link to TARGET in the current directory.
@@ -87,8 +87,8 @@ mod options {
 static ARG_FILES: &str = "files";
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let usage = get_usage();
-    let long_usage = get_long_usage();
+    let usage = usage();
+    let long_usage = long_usage();
 
     let matches = uu_app()
         .usage(&usage[..])
