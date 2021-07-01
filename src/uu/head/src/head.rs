@@ -41,7 +41,7 @@ use lines::zlines;
 use take::take_all_but;
 
 pub fn uu_app() -> App<'static, 'static> {
-    App::new(executable!())
+    App::new(util_name!())
         .version(crate_version!())
         .about(ABOUT)
         .usage(USAGE)

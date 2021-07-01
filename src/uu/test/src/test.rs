@@ -17,7 +17,7 @@ use std::path::Path;
 use uucore::executable;
 
 pub fn uu_app() -> App<'static, 'static> {
-    App::new(executable!())
+    App::new(util_name!())
         .setting(AppSettings::DisableHelpFlags)
         .setting(AppSettings::DisableVersion)
 }
