@@ -459,7 +459,7 @@ Valid arguments are:
 - 'full-iso'
 - 'long-iso'
 - 'iso'
-Try '{} --help' for more information.",
+Try `{} --help` for more information.",
                     s,
                     NAME
                 );

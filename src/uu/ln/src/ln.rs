@@ -289,7 +289,7 @@ fn exec(files: &[PathBuf], settings: &Settings) -> i32 {
     }
     if files.len() > 2 {
         show_error!(
-            "extra operand '{}'\nTry '{} --help' for more information.",
+            "extra operand '{}'\nTry `{} --help` for more information.",
             files[2].display(),
             executable!()
         );
