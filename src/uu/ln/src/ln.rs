@@ -51,7 +51,7 @@ pub enum BackupMode {
     ExistingBackup,
 }
 
-fn get_usage() -> String {
+fn usage() -> String {
     format!(
         "{0} [OPTION]... [-T] TARGET LINK_NAME   (1st form)
        {0} [OPTION]... TARGET                  (2nd form)
@@ -94,7 +94,7 @@ mod options {
 static ARG_FILES: &str = "files";
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let usage = get_usage();
+    let usage = usage();
     let long_usage = get_long_usage();
 
     let matches = uu_app()

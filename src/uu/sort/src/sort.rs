@@ -914,7 +914,7 @@ impl FieldSelector {
     }
 }
 
-fn get_usage() -> String {
+fn usage() -> String {
     format!(
         "{0}
 Usage:
@@ -941,7 +941,7 @@ pub fn uumain(args: impl uucore::Args) -> i32 {
     let args = args
         .collect_str(InvalidEncodingHandling::Ignore)
         .accept_any();
-    let usage = get_usage();
+    let usage = usage();
     let mut settings: GlobalSettings = Default::default();
 
     let matches = uu_app().usage(&usage[..]).get_matches_from(args);

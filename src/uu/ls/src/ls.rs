@@ -54,7 +54,7 @@ static ABOUT: &str = "
 static AFTER_HELP: &str = "The TIME_STYLE argument can be full-iso, long-iso, iso.
 Also the TIME_STYLE environment variable sets the default style to use.";
 
-fn get_usage() -> String {
+fn usage() -> String {
     format!("{0} [OPTION]... [FILE]...", executable!())
 }
 
@@ -582,7 +582,7 @@ pub fn uumain(args: impl uucore::Args) -> UResult<()> {
         .collect_str(InvalidEncodingHandling::Ignore)
         .accept_any();
 
-    let usage = get_usage();
+    let usage = usage();
 
     let app = uu_app().usage(&usage[..]);
 

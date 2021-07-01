@@ -87,7 +87,7 @@ static OPT_CONTEXT: &str = "context";
 
 static ARG_FILES: &str = "files";
 
-fn get_usage() -> String {
+fn usage() -> String {
     format!("{0} [OPTION]... [FILE]...", executable!())
 }
 
@@ -96,7 +96,7 @@ fn get_usage() -> String {
 /// Returns a program return code.
 ///
 pub fn uumain(args: impl uucore::Args) -> i32 {
-    let usage = get_usage();
+    let usage = usage();
 
     let matches = uu_app().usage(&usage[..]).get_matches_from(args);
 
