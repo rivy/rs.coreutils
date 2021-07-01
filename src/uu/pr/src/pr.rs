@@ -23,7 +23,7 @@ use std::fs::{metadata, File};
 use std::io::{stdin, stdout, BufRead, BufReader, Lines, Read, Stdout, Write};
 #[cfg(unix)]
 use std::os::unix::fs::FileTypeExt;
-use uucore::executable;
+use uucore::util_name;
 
 type IOError = std::io::Error;
 

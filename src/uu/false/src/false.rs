@@ -6,7 +6,7 @@
 //  * file that was distributed with this source code.
 
 use clap::App;
-use uucore::executable;
+use uucore::util_name;
 
 pub fn uumain(args: impl uucore::Args) -> i32 {
     uu_app().get_matches_from(args);

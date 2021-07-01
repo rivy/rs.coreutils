@@ -14,7 +14,7 @@ use clap::{App, AppSettings};
 use parser::{parse, Symbol};
 use std::ffi::{OsStr, OsString};
 use std::path::Path;
-use uucore::executable;
+use uucore::util_name;
 
 pub fn uu_app() -> App<'static, 'static> {
     App::new(util_name!())
