@@ -33,7 +33,7 @@ static LONG_HELP: &str = "";
 static DEFAULT_TABSTOP: usize = 8;
 
 fn usage() -> String {
-    format!("{0} [OPTION]... [FILE]...", executable!())
+    format!("{0} [OPTION]... [FILE]...", execution_phrase!())
 }
 
 fn tabstops_parse(s: String) -> Vec<usize> {

@@ -882,7 +882,7 @@ impl Stater {
 }
 
 fn usage() -> String {
-    format!("{0} [OPTION]... FILE...", executable!())
+    format!("{0} [OPTION]... FILE...", execution_phrase!())
 }
 
 fn get_long_usage() -> String {

@@ -46,7 +46,6 @@ use uucore::parse_size::{parse_size, ParseSizeError};
 use uucore::version_cmp::version_cmp;
 use uucore::InvalidEncodingHandling;
 
-const NAME: &str = "sort";
 const ABOUT: &str = "Display sorted concatenation of all FILE(s).";
 
 const LONG_HELP_KEYS: &str = "The key format is FIELD[.CHAR][OPTIONS][,FIELD[.CHAR]][OPTIONS].
@@ -922,7 +921,7 @@ Usage:
 Write the sorted concatenation of all FILE(s) to standard output.
 Mandatory arguments for long options are mandatory for short options too.
 With no FILE, or when FILE is -, read standard input.",
-        NAME
+        execution_phrase!()
     )
 }
 
