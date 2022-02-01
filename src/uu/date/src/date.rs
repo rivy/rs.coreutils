@@ -14,6 +14,8 @@ use chrono::{Datelike, Timelike};
 use clap::{crate_version, App, AppSettings, Arg};
 #[cfg(all(unix, not(target_os = "macos"), not(target_os = "redox")))]
 use libc::{clock_settime, timespec, CLOCK_REALTIME};
+#[cfg(all(unix, not(target_os = "macos"), not(target_os = "redox")))]
+use std::convert::TryFrom;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::PathBuf;
@@ -382,9 +384,12 @@ fn set_system_datetime(_date: DateTime<Utc>) -> UResult<()> {
 /// `<https://linux.die.net/man/3/clock_settime>`
 /// `<https://www.gnu.org/software/libc/manual/html_node/Time-Types.html>`
 fn set_system_datetime(date: DateTime<Utc>) -> UResult<()> {
+    // allow deprecated time_t for musl ~ ref: https://github.com/rust-lang/libc/issues/1848
+    #[cfg_attr(target_env = "musl", allow(deprecated))]
+    #[allow(clippy::useless_conversion)]
     let timespec = timespec {
-        tv_sec: date.timestamp(),
-        tv_nsec: date.timestamp_subsec_nanos().into(),
+        tv_sec: libc::time_t::try_from(date.timestamp()).unwrap_or(0),
+        tv_nsec: libc::c_long::try_from(date.timestamp_subsec_nanos()).unwrap_or(0),
     };
 
     let result = unsafe { clock_settime(CLOCK_REALTIME, &timespec) };
