@@ -384,13 +384,15 @@ fn set_system_datetime(_date: DateTime<Utc>) -> UResult<()> {
 /// `<https://linux.die.net/man/3/clock_settime>`
 /// `<https://www.gnu.org/software/libc/manual/html_node/Time-Types.html>`
 fn set_system_datetime(date: DateTime<Utc>) -> UResult<()> {
-    // allow deprecated time_t for musl ~ ref: https://github.com/rust-lang/libc/issues/1848
+    // allow deprecated time_t for musl transition of time type ~ ref: https://github.com/rust-lang/libc/issues/1848
     #[cfg_attr(target_env = "musl", allow(deprecated))]
     // allow 'useless_conversion' (enables cross-platform support without warnings)
     #[allow(clippy::useless_conversion)]
     let timespec = timespec {
-        tv_sec: libc::time_t::try_from(date.timestamp()).unwrap_or(0),
-        tv_nsec: libc::c_long::try_from(date.timestamp_subsec_nanos()).unwrap_or(0),
+        tv_sec: libc::time_t::try_from(date.timestamp())
+            .map_err(|_| USimpleError::new(1, "failed time conversion".to_string()))?,
+        tv_nsec: libc::c_long::try_from(date.timestamp_subsec_nanos())
+            .map_err(|_| USimpleError::new(1, "failed time conversion".to_string()))?,
     };
 
     let result = unsafe { clock_settime(CLOCK_REALTIME, &timespec) };

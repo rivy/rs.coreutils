@@ -34,7 +34,6 @@
 pub extern crate time;
 use self::time::{Timespec, Tm};
 
-use std::convert::TryInto;
 use std::ffi::CString;
 use std::io::Result as IOResult;
 use std::marker::PhantomData;
@@ -191,9 +190,10 @@ impl Utmpx {
     }
     /// A.K.A. ut.ut_tv
     pub fn login_time(&self) -> Tm {
+        // allow 'useless_conversion' (enables cross-platform support without lint warnings)
         #[allow(clippy::useless_conversion)]
         time::at(Timespec::new(
-            self.inner.ut_tv.tv_sec.try_into().unwrap_or(0),
+            self.inner.ut_tv.tv_sec.into(),
             self.inner.ut_tv.tv_usec as i32,
         ))
     }
