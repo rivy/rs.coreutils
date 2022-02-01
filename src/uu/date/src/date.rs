@@ -386,6 +386,7 @@ fn set_system_datetime(_date: DateTime<Utc>) -> UResult<()> {
 fn set_system_datetime(date: DateTime<Utc>) -> UResult<()> {
     // allow deprecated time_t for musl ~ ref: https://github.com/rust-lang/libc/issues/1848
     #[cfg_attr(target_env = "musl", allow(deprecated))]
+    // allow 'useless_conversion' (enables cross-platform support without warnings)
     #[allow(clippy::useless_conversion)]
     let timespec = timespec {
         tv_sec: libc::time_t::try_from(date.timestamp()).unwrap_or(0),
