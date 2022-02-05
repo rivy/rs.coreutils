@@ -163,11 +163,13 @@ jobs:
         name: "${{ steps.summary.outputs.HASH }}"
         path: "${{ steps.vars.outputs.TEST_SUMMARY_FILE }}"
     - name: Reserve test results summary
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       uses: actions/upload-artifact@v2
       with:
         name: test-summary
         path: "${{ steps.vars.outputs.TEST_SUMMARY_FILE }}"
     - name: Reserve test logs
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       uses: actions/upload-artifact@v2
       with:
         name: test-logs
