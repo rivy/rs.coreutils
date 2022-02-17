@@ -160,6 +160,7 @@ jobs:
     - name: Compare test failures VS reference
       shell: bash
       run: |
+        have_new_failures=""
         REF_LOG_FILE='${{ steps.vars.outputs.path_reference }}/test-logs/test-suite.log'
         REF_SUMMARY_FILE='${{ steps.vars.outputs.path_reference }}/test-summary/gnu-result.json'
         if test -f "${REF_LOG_FILE}"; then
@@ -177,12 +178,13 @@ jobs:
             if ! grep -Fxq ${LINE}<<<"${REF_FAILING}"
             then
               echo "::error ::GNU test failed: ${LINE}. ${LINE} is passing on '${{ steps.vars.outputs.repo_default_branch }}'. Maybe you have to rebase?"
+              have_new_failures="true"
             fi
           done
         else
           echo "::warning ::Skipping test failure comparison; no prior reference test logs are available."
         fi
-        if test -n "${NEW_FAILING}" ; then exit -1 ; fi
+        if test -n "${have_new_failures}" ; then exit -1 ; fi
     - name: Compare test summary VS reference
       if: success() || failure() # run regardless of prior step success/failure
       shell: bash
