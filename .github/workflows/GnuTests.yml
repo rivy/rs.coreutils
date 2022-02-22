@@ -1,6 +1,9 @@
 name: GnuTests
 
-# spell-checker:ignore (names) gnulib ; (jargon) submodules ; (people) Dawid Dziurla * dawidd ; (utils) autopoint chksum gperf pyinotify shopt texinfo ; (vars) FILESET XPASS
+# spell-checker:ignore (names) gnulib ; (jargon) submodules ; (people) Dawid Dziurla * dawidd ; (utils) autopoint chksum gperf pyinotify shopt texinfo ; (vars) FILESET SUBDIRS XPASS
+
+# ref: [How the GNU coreutils are tested](https://www.pixelbeat.org/docs/coreutils-testing.html) @@ <https://archive.is/p2ITW>
+# * note: to run a single test => `mae TESTS=PATH/TO/TEST/SCRIPT SUBDIRS=. VERBOSE=yes check`
 
 on: [push, pull_request]
 
