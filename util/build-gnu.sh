@@ -5,6 +5,9 @@
 
 # spell-checker:ignore (paths) abmon deref discrim eacces getlimits getopt ginstall inacc infloop inotify reflink ; (misc) INT_OFLOW OFLOW baddecode submodules ; (vars/env) SRCDIR
 
+# ref: [How the GNU coreutils are tested](https://www.pixelbeat.org/docs/coreutils-testing.html) @@ <https://archive.is/p2ITW>
+# * note: to run a single test => `mae TESTS=PATH/TO/TEST/SCRIPT SUBDIRS=. VERBOSE=yes check`
+
 set -e
 
 ME="${0}"
