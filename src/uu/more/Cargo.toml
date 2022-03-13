@@ -17,7 +17,7 @@ path = "src/more.rs"
 [dependencies]
 clap = { version = "3.0", features = ["wrap_help", "cargo"] }
 uucore = { version = ">=0.0.7", package = "uucore", path = "../../uucore" }
-crossterm = ">=0.19"
+crossterm = { version = "0.19, < 0.23.0" } ## *pinned*; v0.23.0 implements a breaking change to `edition = "2021"` (requiring MinSRV of v1.56.0) without a semantic version update
 atty = "0.2"
 unicode-width = "0.1.7"
 unicode-segmentation = "1.9.0"
