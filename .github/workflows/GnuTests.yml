@@ -30,7 +30,7 @@ jobs:
         repo_reference_branch="${{ github.event.repository.default_branch }}"
         outputs repo_default_branch repo_GNU_ref repo_reference_branch
         #
-        rust_toolchain="nightly-2022-03-21" ## maint: should correlate with MSRV
+        rust_toolchain="nightly-2022-03-21" ## maint: should be equivalent to RUST_NIGHTLY from 'CICD.yml'
         outputs rust_toolchain
         #
         SUITE_LOG_FILE="${path_GNU_tests}/test-suite.log"
