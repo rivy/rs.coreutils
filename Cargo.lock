@@ -26,7 +26,7 @@ version = "0.7.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e37cfd5e7657ada45f742d6e99ca5788580b5c529dc78faf11ece6dc702656f"
 dependencies = [
- "memchr 2.4.1",
+ "memchr 2.5.0",
 ]
 
 [[package]]
@@ -175,7 +175,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ba3569f383e8f1598449f1a423e72e99569137b47740b1da11ef19af3d5c3223"
 dependencies = [
  "lazy_static",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "regex-automata",
 ]
 
@@ -1138,9 +1138,9 @@ dependencies = [
 
 [[package]]
 name = "memchr"
-version = "2.4.1"
+version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
+checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
 
 [[package]]
 name = "memmap2"
@@ -1230,7 +1230,7 @@ version = "7.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1b1d11e1ef389c76fe5b81bcaf2ea32cf88b62bc494e19f493d0b30e7a930109"
 dependencies = [
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "minimal-lexical",
  "version_check",
 ]
@@ -1370,7 +1370,7 @@ version = "6.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e22443d1643a904602595ba1cd8f7d896afe56d26712531c5ff73a15b2fbf64"
 dependencies = [
- "memchr 2.4.1",
+ "memchr 2.5.0",
 ]
 
 [[package]]
@@ -1692,7 +1692,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d07a8629359eb56f1e2fb1652bb04212c072a87ba68546a04065d525673ac461"
 dependencies = [
  "aho-corasick",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "regex-syntax",
 ]
 
@@ -2427,7 +2427,7 @@ dependencies = [
  "atty",
  "bstr",
  "clap 3.1.6",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "uucore",
 ]
 
@@ -2584,7 +2584,7 @@ dependencies = [
  "digest",
  "hex",
  "md-5",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "regex",
  "sha1",
  "sha2",
@@ -2597,7 +2597,7 @@ name = "uu_head"
 version = "0.0.12"
 dependencies = [
  "clap 3.1.6",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "uucore",
 ]
 
@@ -2645,7 +2645,7 @@ name = "uu_join"
 version = "0.0.12"
 dependencies = [
  "clap 3.1.6",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "uucore",
 ]
 
@@ -2990,7 +2990,7 @@ dependencies = [
  "ctrlc",
  "fnv",
  "itertools",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "ouroboros",
  "rand",
  "rayon",
@@ -3004,7 +3004,7 @@ name = "uu_split"
 version = "0.0.12"
 dependencies = [
  "clap 3.1.6",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "uucore",
 ]
 
@@ -3059,7 +3059,7 @@ name = "uu_tac"
 version = "0.0.12"
 dependencies = [
  "clap 3.1.6",
- "memchr 2.4.1",
+ "memchr 2.5.0",
  "memmap2",
  "regex",
  "uucore",
