@@ -1,0 +1,1 @@
+{ "prConcurrentLimit": 5, "schedule": ["every weekend"], "stabilityDays": 30 }
