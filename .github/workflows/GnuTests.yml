@@ -4,6 +4,9 @@ name: GnuTests
 
 # * note: to run a single test => `REPO/util/run-gnu-test.sh PATH/TO/TEST/SCRIPT`
 
+env:
+  RUST_NIGHTLY: "nightly-2022-03-21" ## fully specify with date; must *same or later* than MSRV release date
+
 on: [push, pull_request]
 
 jobs:

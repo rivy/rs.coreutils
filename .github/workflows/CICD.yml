@@ -361,6 +361,16 @@ jobs:
         # * ensure '.clippy.toml' MSRV configuration setting is equal to ${{ env.RUST_MIN_SRV }}
         CLIPPY_MSRV=$(grep -P "(?i)^\s*msrv\s*=\s*" .clippy.toml | grep -oP "\d+([.]\d+)+")
         if [ "${CLIPPY_MSRV}" != "${{ env.RUST_MIN_SRV }}" ]; then { echo "::error file=.clippy.toml::Incorrect MSRV configuration for clippy (found '${CLIPPY_MSRV}'; should be '${{ env.RUST_MIN_SRV }}'); update '.clippy.toml' with 'msrv = \"${{ env.RUST_MIN_SRV }}\"'" ; exit 1 ; } ; fi
+    - name: Confirm MinSRV and 'nightly' equivalence for other workflows
+      shell: bash
+      run: |
+        ## Confirm MinSRV and 'nightly' equivalence for other workflows
+        # * ensure MSRV configuration setting is equal to ${{ env.RUST_MIN_SRV }} for all workflows
+        CLIPPY_MSRV=$(grep -P "(?i)^\s*msrv\s*=\s*" .clippy.toml | grep -oP "\d+([.]\d+)+")
+        if [ "${CLIPPY_MSRV}" != "${{ env.RUST_MIN_SRV }}" ]; then { echo "::error file=.clippy.toml::Incorrect MSRV configuration for clippy (found '${CLIPPY_MSRV}'; should be '${{ env.RUST_MIN_SRV }}'); update '.clippy.toml' with 'msrv = \"${{ env.RUST_MIN_SRV }}\"'" ; exit 1 ; } ; fi
+        # * ensure 'nightly' configuration setting is equal to ${{ env.RUST_MIN_SRV }} for all workflows
+        CLIPPY_MSRV=$(grep -P "(?i)^\s*msrv\s*=\s*" .clippy.toml | grep -oP "\d+([.]\d+)+")
+        if [ "${CLIPPY_MSRV}" != "${{ env.RUST_MIN_SRV }}" ]; then { echo "::error file=.clippy.toml::Incorrect MSRV configuration for clippy (found '${CLIPPY_MSRV}'; should be '${{ env.RUST_MIN_SRV }}'); update '.clippy.toml' with 'msrv = \"${{ env.RUST_MIN_SRV }}\"'" ; exit 1 ; } ; fi
     - name: Info
       shell: bash
       run: |
