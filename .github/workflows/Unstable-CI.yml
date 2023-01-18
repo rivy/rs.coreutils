@@ -1,0 +1,81 @@
+name: Unstable-CI
+
+# CI for tests which are not stable enough to include in the standard automated testing for all commits/PRs
+# * manually triggered (see the Github Actions UI)
+
+# spell-checker:ignore (acronyms) CICD MSVC musl
+# spell-checker:ignore (env/flags) Awarnings Ccodegen Coverflow Cpanic Dwarnings RUSTDOCFLAGS RUSTFLAGS Zpanic
+# spell-checker:ignore (jargon) SHAs deps dequote softprops subshell toolchain
+# spell-checker:ignore (names) CodeCOV MacOS MinGW Peltoche rivy
+# spell-checker:ignore (shell/tools) choco clippy dmake dpkg esac fakeroot gmake grcov halium lcov libssl mkdir popd printf pushd rsync rustc rustfmt rustup shopt xargs
+# spell-checker:ignore (misc) aarch alnum armhf bindir busytest coreutils gnueabihf issuecomment maint nullglob onexitbegin onexitend pell runtest tempfile testsuite uutils DESTDIR multisize Swatinem
+
+env:
+  PROJECT_NAME: coreutils
+  PROJECT_DESC: 'Core universal (cross-platform) utilities'
+  PROJECT_AUTH: 'uutils'
+  RUST_MIN_SRV: '1.60.0' ## aka MSRV
+  # * style job configuration
+  STYLE_FAIL_ON_FAULT: true ## (bool) fail the build if a style job contains a fault (error or warning); may be overridden on a per-job basis
+
+on: [workflow_dispatch]
+
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
+jobs:
+  test_android:
+    name: Test Android builds
+    needs: [min_version, deps]
+    runs-on: macos-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        api-level: [28]
+        target: [default]
+        arch: [x86] # , arm64-v8a
+    env:
+      TERMUX: v0.118.0
+    steps:
+      - uses: actions/checkout@v3
+      - name: AVD cache
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/avd/*/snapshots/*
+            ~/.android/adb*
+          key: avd-${{ matrix.api-level }}-${{ matrix.arch }}+termux-${{ env.TERMUX }}
+      - name: Create and cache emulator image
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: ${{ matrix.arch }}
+          ram-size: 2048M
+          disk-size: 5120M
+          force-avd-creation: true
+          emulator-options: -no-snapshot-load -noaudio -no-boot-anim -camera-back none
+          script: |
+            wget https://github.com/termux/termux-app/releases/download/${{ env.TERMUX }}/termux-app_${{ env.TERMUX }}+github-debug_${{ matrix.arch }}.apk
+            util/android-commands.sh snapshot termux-app_${{ env.TERMUX }}+github-debug_${{ matrix.arch }}.apk
+            adb -s emulator-5554 emu avd snapshot save ${{ matrix.api-level }}-${{ matrix.arch }}+termux-${{ env.TERMUX }}
+            echo "Emulator image created."
+            pkill -9 qemu-system-x86_64
+      - name: Build and Test on Android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: ${{ matrix.arch }}
+          ram-size: 2048M
+          disk-size: 5120M
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -snapshot ${{ matrix.api-level }}-${{ matrix.arch }}+termux-${{ env.TERMUX }}
+          script: |
+            util/android-commands.sh sync
+            util/android-commands.sh build
+            util/android-commands.sh tests
