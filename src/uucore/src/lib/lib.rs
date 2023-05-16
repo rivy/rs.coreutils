@@ -78,6 +78,10 @@ pub use crate::features::utmpx;
 #[cfg(all(windows, feature = "wide"))]
 pub use crate::features::wide;
 
+//## clap
+use clap::{crate_name, crate_version};
+use clap::{Arg, ArgAction, /* ArgMatches, Command */};
+
 //## core functions
 
 use std::ffi::OsString;
@@ -108,6 +112,46 @@ macro_rules! bin {
 pub fn format_usage(s: &str) -> String {
     let s = s.replace('\n', &format!("\n{}", " ".repeat(7)));
     s.replace("{}", crate::execution_phrase())
+}
+
+pub fn after_help_text(crate_name: impl AsRef<str>) -> String {
+    // format!("* From [uutils/coreutils v{}](https://github.com/uutils/coreutils)\n* Copyright (C) * uutils developers (MIT license)\n", crate_version!())
+    format!("* From [uutils](https://github.com/uutils) coreutils/{} v{}\n* Copyright (C) * uutils developers (MIT license)\n", crate_name.as_ref(), crate_version!())
+}
+
+// pub fn clap_defaults() -> clap::App<'static, 'static> {
+//     clap::App::new(crate_name!())
+//         .version(crate_version!())
+//         .about(crate_description!())
+//         .after_help(after_help_text().as_str())
+// }
+pub fn clap_defaults(crate_name: impl AsRef<str>, about: impl AsRef<str>, usage: impl AsRef<str>) -> clap::Command {
+    clap::Command::new(util_name())
+        .version(crate_version!())
+        .bin_name(execution_phrase())
+        .about(about.as_ref().to_string())
+        .override_usage(format_usage(usage.as_ref()))
+        .after_help(after_help_text(crate_name))
+        .infer_long_args(true)
+        .disable_help_flag(true)
+        .disable_version_flag(true)
+        .arg(
+            Arg::new("help")
+                .long("help")
+                .short('h')
+                .help("Display help and exit")
+                .help_heading("*Help/Info")
+                .action(ArgAction::Help),
+        )
+        .arg(
+            Arg::new("version")
+                .long("version")
+                .short('V')
+                .help("Display version information and exit")
+                .help_heading("*Help/Info")
+                .action(ArgAction::Version),
+        )
+
 }
 
 pub fn get_utility_is_second_arg() -> bool {
