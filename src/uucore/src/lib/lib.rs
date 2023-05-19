@@ -79,8 +79,8 @@ pub use crate::features::utmpx;
 pub use crate::features::wide;
 
 //## clap
-use clap::{crate_name, crate_version};
-use clap::{Arg, ArgAction, /* ArgMatches, Command */};
+use clap::crate_version;
+use clap::{Arg, ArgAction /* ArgMatches, Command */};
 
 //## core functions
 
@@ -89,13 +89,38 @@ use std::sync::atomic::Ordering;
 
 use once_cell::sync::Lazy;
 
+//# note: use `uucore::main` proc macro attribute to designate the utility `main` fn and generate wrapper (`_uumain_wrapper_(...)`)
+//  #... `uumain` is used as the utility main function by convention (though the actual function name is irrelevant (i.e. `uumain` is just a placeholder))
+// ```rust
+// #[uucore::main]
+// pub fn uumain(args: impl uucore::Args) -> UResult<()> {
+// //...
+// }
+// ```
+
+// ToDO: [2023-05; rivy] plan to rename `bin!()` macro to `main!()` macro
+//  #... requires renaming the uucore_procs `main` macro to `uumain` (with corresponding uutil code file updates)
+//  #... then updating all utilities to use new macro name in the *main.rs* code files
+// ToDO: [2023-05; rivy] improve docs
+// ToDO: [2023-05; rivy] add additional overload for `main!()` which uses ` env!("CARGO_PKG_NAME")` to generate the $util string (allows the simple use of `uucore::main!()`)
+
+// bin!()
+/// Generate the standard boilerplate main function for a utility.
+///
+/// This macro should be used in the *src/main.rs* file of the utility.
+///
+/// ### Example
+/// ```rust
+/// // * uu/arch/src/main.rs
+/// uucore::bin!(uu_arch);
+/// ```
 #[macro_export]
 macro_rules! bin {
     ($util:ident) => {
         pub fn main() {
             use std::io::Write;
             uucore::panic::mute_sigpipe_panic(); // suppress extraneous error output for SIGPIPE failures/panics
-            let code = $util::uumain(uucore::args_os()); // execute utility code
+            let code: i32 = $util::_uumain_wrapper_(uucore::args_os()); // execute wrapped utility main fn (expects proc_macro generated `_uumain_wrapper_(args: impl uucore::Args) -> i32`)
             std::io::stdout().flush().expect("could not flush stdout"); // (defensively) flush stdout for utility prior to exit; see <https://github.com/rust-lang/rust/issues/23818>
             std::process::exit(code);
         }
@@ -119,13 +144,11 @@ pub fn after_help_text(crate_name: impl AsRef<str>) -> String {
     format!("* From [uutils](https://github.com/uutils) coreutils/{} v{}\n* Copyright (C) * uutils developers (MIT license)\n", crate_name.as_ref(), crate_version!())
 }
 
-// pub fn clap_defaults() -> clap::App<'static, 'static> {
-//     clap::App::new(crate_name!())
-//         .version(crate_version!())
-//         .about(crate_description!())
-//         .after_help(after_help_text().as_str())
-// }
-pub fn clap_defaults(crate_name: impl AsRef<str>, about: impl AsRef<str>, usage: impl AsRef<str>) -> clap::Command {
+pub fn clap_defaults(
+    crate_name: impl AsRef<str>,
+    about: impl AsRef<str>,
+    usage: impl AsRef<str>,
+) -> clap::Command {
     clap::Command::new(util_name())
         .version(crate_version!())
         .bin_name(execution_phrase())
@@ -151,7 +174,6 @@ pub fn clap_defaults(crate_name: impl AsRef<str>, about: impl AsRef<str>, usage:
                 .help_heading("*Help/Info")
                 .action(ArgAction::Version),
         )
-
 }
 
 pub fn get_utility_is_second_arg() -> bool {

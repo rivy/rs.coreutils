@@ -746,13 +746,18 @@ impl Error for ClapErrorWrapper {}
 //         Ok(())
 //     }
 // }
-// FixME: [2022-04; terts] (HACK!) this is abuse of the Display trait to enable `clap` to display color
 impl Display for ClapErrorWrapper {
-    fn fmt(&self, _f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
-        self.error.print().unwrap();
-        Ok(())
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+        write!(f, "{}", self.error.render().ansi())
     }
 }
+// // FixME: [2022-04; terts] (HACK!) this is abuse of the Display trait to enable `clap` to display color
+// impl Display for ClapErrorWrapper {
+//     fn fmt(&self, _f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+//         self.error.print().unwrap();
+//         Ok(())
+//     }
+// }
 
 #[cfg(test)]
 mod tests {
