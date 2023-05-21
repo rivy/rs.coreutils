@@ -1,3 +1,4 @@
+// ToDO: [2023-05; rivy] revise errors to allow determination of clap-type errors in order to avoid hackish removal of all EOLs from supplied error messages
 // TODO fix broken links
 #![allow(rustdoc::broken_intra_doc_links)]
 //! All utils return exit with an exit code. Usually, the following scheme is used:
@@ -748,7 +749,9 @@ impl Error for ClapErrorWrapper {}
 // }
 impl Display for ClapErrorWrapper {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f, "{}", self.error.render().ansi())
+        // `render().ansi()` generated error message (may contain ANSI escape codes)
+        // note: remove trailing newlines (for consistency with other errors)
+        write!(f, "{}", self.error.render().ansi().to_string().trim_end())
     }
 }
 // // FixME: [2022-04; tertsdiepraam] (HACK!) this is abuse of the Display trait to enable `clap` to display color
