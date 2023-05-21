@@ -149,6 +149,11 @@ pub fn clap_defaults(
     about: impl AsRef<str>,
     usage: impl AsRef<str>,
 ) -> clap::Command {
+    let uutil_name = crate_name.as_ref().trim_start_matches("uu_").to_string();
+    let txt = match uutil_name {
+        s if s == crate::util_name() => " ".to_string(),
+        _ => format!(" ({uutil_name}) "),
+    };
     clap::Command::new(util_name())
         .version(crate_version!())
         .bin_name(execution_phrase())
@@ -158,6 +163,16 @@ pub fn clap_defaults(
         .infer_long_args(true)
         .disable_help_flag(true)
         .disable_version_flag(true)
+        .help_template(format!(
+            "\
+{{before-help}}{{name}}{0}{{version}}
+{{author-with-newline}} {{about-section}}
+{{usage-heading}} {{usage}}
+
+{{all-args}}{{after-help}}
+",
+            txt
+        ))
         .arg(
             Arg::new("help")
                 .long("help")

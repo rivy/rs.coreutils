@@ -38,14 +38,14 @@ pub fn main(_args: TokenStream, input: TokenStream) -> TokenStream {
         pub fn _uumain_wrapper_(args: impl uucore::Args) -> i32 {
             #stream
             let result: UResult<()> = #original_fn_name(args);
-            // eprintln!("result={:?}", result);
+            eprintln!("result={:?}", result);
             match result {
                 Ok(()) => uucore::error::get_exit_code(),
                 Err(e) => {
                     // FixME: [2022-04; terts] (HACK!) for color output, `clap` error text is directly displayed on stdout/stderr when "formatted"
                     // !  ... (see `impl Display for ClapErrorWrapper` in `uucore/src/error.rs`)
                     // clap messages (error, help, version) can have extra trailing newlines, so we trim them
-                    let s = format!("{}", e).trim_end().to_string();
+                    let s = format!("{}", e);
                     let code = e.code();
                     if s != "" {
                         if code == 0 {
