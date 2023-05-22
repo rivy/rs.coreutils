@@ -240,77 +240,76 @@ pub fn uumain(args: impl uucore::Args) -> UResult<()> {
 
 pub fn uu_app() -> Command {
     let app = uucore::clap_defaults(crate_name!(), ABOUT, USAGE);
-    app
-        .arg(
-            Arg::new(options::BYTES)
-                .short('c')
-                .long(options::BYTES)
-                .help("Display the byte counts")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new(options::CHAR)
-                .short('m')
-                .long(options::CHAR)
-                .help("Display the character counts")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new(options::FILES0_FROM)
-                .long(options::FILES0_FROM)
-                .value_name("F")
-                .help(
-                    "Read input from the files specified by
+    app.arg(
+        Arg::new(options::BYTES)
+            .short('c')
+            .long(options::BYTES)
+            .help("Display the byte counts")
+            .action(ArgAction::SetTrue),
+    )
+    .arg(
+        Arg::new(options::CHAR)
+            .short('m')
+            .long(options::CHAR)
+            .help("Display the character counts")
+            .action(ArgAction::SetTrue),
+    )
+    .arg(
+        Arg::new(options::FILES0_FROM)
+            .long(options::FILES0_FROM)
+            .value_name("F")
+            .help(
+                "Read input from the files specified by
     NUL-terminated names in file F;
     If F is - then read names from standard input",
-                )
-                .value_hint(clap::ValueHint::FilePath),
-        )
-        .arg(
-            Arg::new(options::LINES)
-                .short('l')
-                .long(options::LINES)
-                .help("Display the newline counts")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new(options::MAX_LINE_LENGTH)
-                .short('L')
-                .long(options::MAX_LINE_LENGTH)
-                .help("Display the length of the longest line")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new(options::TOTAL)
-                .long(options::TOTAL)
-                .value_parser(["auto", "always", "never"])
-                .default_value("auto")
-                .default_missing_value("always")
-                .num_args(0..=1)
-                .hide_default_value(true)
-                .value_name("WHEN")
-                .help("WHEN to display a line with count totals"),
-        )
-        .arg(
-            Arg::new(options::TOTAL_ONLY)
-                .long(options::TOTAL_ONLY)
-                .help("Display *only* count totals")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new(options::WORDS)
-                .short('w')
-                .long(options::WORDS)
-                .help("Display the word counts")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new(ARG_FILES)
-                .help("FILE(s) to process")
-                .action(ArgAction::Append)
-                .value_parser(ValueParser::os_string())
-                .value_hint(clap::ValueHint::FilePath),
-        )
+            )
+            .value_hint(clap::ValueHint::FilePath),
+    )
+    .arg(
+        Arg::new(options::LINES)
+            .short('l')
+            .long(options::LINES)
+            .help("Display the newline counts")
+            .action(ArgAction::SetTrue),
+    )
+    .arg(
+        Arg::new(options::MAX_LINE_LENGTH)
+            .short('L')
+            .long(options::MAX_LINE_LENGTH)
+            .help("Display the length of the longest line")
+            .action(ArgAction::SetTrue),
+    )
+    .arg(
+        Arg::new(options::TOTAL)
+            .long(options::TOTAL)
+            .value_parser(["auto", "always", "never"])
+            .default_value("auto")
+            .default_missing_value("always")
+            .num_args(0..=1)
+            .hide_default_value(true)
+            .value_name("WHEN")
+            .help("WHEN to display a line with count totals"),
+    )
+    .arg(
+        Arg::new(options::TOTAL_ONLY)
+            .long(options::TOTAL_ONLY)
+            .help("Display *only* count totals")
+            .action(ArgAction::SetTrue),
+    )
+    .arg(
+        Arg::new(options::WORDS)
+            .short('w')
+            .long(options::WORDS)
+            .help("Display the word counts")
+            .action(ArgAction::SetTrue),
+    )
+    .arg(
+        Arg::new(ARG_FILES)
+            .help("FILE(s) to process")
+            .action(ArgAction::Append)
+            .value_parser(ValueParser::os_string())
+            .value_hint(clap::ValueHint::FilePath),
+    )
 }
 
 fn inputs(matches: &ArgMatches) -> UResult<Vec<Input>> {
@@ -620,17 +619,17 @@ fn compute_number_width(inputs: &[Input], settings: &Settings) -> usize {
 fn wc(inputs: &[Input], settings: &Settings) -> UResult<()> {
     let mut total_word_count = WordCount::default();
 
-    let (number_width, are_stats_visible, total_row_title) =
-        if settings.total_only {
-            (1, false, None)
-        } else {
-            let number_width = compute_number_width(inputs, settings);
-            let title = Some(String::from("total"));
+    let (number_width, are_stats_visible, total_row_title) = if settings.total_only {
+        (1, false, None)
+    } else {
+        let number_width = compute_number_width(inputs, settings);
+        let title = Some(String::from("total"));
 
-            (number_width, true, title)
-        };
+        (number_width, true, title)
+    };
 
-    let is_total_row_visible = settings.total_when.is_total_row_visible(inputs.len()) || settings.total_only;
+    let is_total_row_visible =
+        settings.total_when.is_total_row_visible(inputs.len()) || settings.total_only;
 
     for input in inputs {
         let word_count = match word_count_from_input(input, settings) {
