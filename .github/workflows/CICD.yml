@@ -3,9 +3,9 @@ name: CICD
 # spell-checker:ignore (abbrev/names) CICD CodeCOV MacOS MinGW MSVC musl taiki
 # spell-checker:ignore (env/flags) Awarnings Ccodegen Coverflow Cpanic Dwarnings RUSTDOCFLAGS RUSTFLAGS Zpanic CARGOFLAGS
 # spell-checker:ignore (jargon) SHAs deps dequote softprops subshell toolchain fuzzers
-# spell-checker:ignore (people) Peltoche rivy dtolnay
-# spell-checker:ignore (shell/tools) choco clippy dmake dpkg esac fakeroot fdesc fdescfs gmake grcov halium lcov libssl mkdir popd printf pushd rsync rustc rustfmt rustup shopt utmpdump xargs
-# spell-checker:ignore (misc) aarch alnum armhf bindir busytest coreutils defconfig DESTDIR gecos gnueabihf issuecomment maint multisize nullglob onexitbegin onexitend pell runtest Swatinem tempfile testsuite toybox uutils
+# spell-checker:ignore (people) DavidAnson dawidd6 dtolnay Peltoche rivy
+# spell-checker:ignore (shell/tools) choco clippy dmake dpkg esac fakeroot fdesc fdescfs gmake grcov halium lcov libssl mkdir popd printf pushd rsync rustc rustfmt rustup sccache shopt utmpdump xargs
+# spell-checker:ignore (misc) aarch alnum armhf bindir busytest coreutils defconfig DESTDIR gecos gnueabihf issuecomment maint multisize nextest nullglob onexitbegin onexitend pell runtest Swatinem tempfile testsuite toybox uutils
 
 env:
   PROJECT_NAME: coreutils
@@ -26,9 +26,10 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  cargo-deny:
+  style_cargo-deny:
     name: Style/cargo-deny
     runs-on: ubuntu-latest
+    continue-on-error: ${{ env.STYLE_FAIL_ON_FAULT != 'true' }}
     steps:
     - uses: actions/checkout@v3
     - uses: EmbarkStudios/cargo-deny-action@v1
@@ -82,6 +83,66 @@ jobs:
         grep --ignore-case "all deps seem to have been used" udeps.log || { printf "%s\n" "::${fault_type} ::${fault_prefix}: \`cargo udeps\`: style violation (unused dependency found)" ; fault=true ; }
         if [ -n "${{ steps.vars.outputs.FAIL_ON_FAULT }}" ] && [ -n "$fault" ]; then exit 1 ; fi
 
+  style_docs:
+    name: Style/docs
+    runs-on: ${{ matrix.job.os }}
+    env:
+      SCCACHE_GHA_ENABLED: "true"
+      RUSTC_WRAPPER: "sccache"
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - { os: ubuntu-latest  , features: feat_os_unix }
+          # maint: [2021-01; sylvestre] for now, don't build it on mac & windows because...
+          # + the doc is only published from linux
+          # + it needs a bunch of duplication for build
+          # + don't want to add a doc step in the regular build to avoid long builds
+          # - { os: macos-latest   , features: feat_os_macos }
+          # - { os: windows-latest , features: feat_os_windows }
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@master
+      with:
+        toolchain: stable
+        components: clippy
+    - uses: Swatinem/rust-cache@v2
+    - name: Run sccache-cache
+      uses: mozilla-actions/sccache-action@v0.0.3
+    - name: Initialize workflow variables
+      id: vars
+      shell: bash
+      run: |
+        ## VARs setup
+        outputs() { step_id="${{ github.action }}"; for var in "$@" ; do echo steps.${step_id}.outputs.${var}="${!var}"; echo "${var}=${!var}" >> $GITHUB_OUTPUT; done; }
+        # failure mode
+        unset FAIL_ON_FAULT ; case '${{ env.STYLE_FAIL_ON_FAULT }}' in
+          ''|0|f|false|n|no|off) FAULT_TYPE=warning ;;
+          *) FAIL_ON_FAULT=true ; FAULT_TYPE=error ;;
+        esac;
+        outputs FAIL_ON_FAULT FAULT_TYPE
+        # target-specific options
+        # * CARGO_FEATURES_OPTION
+        CARGO_FEATURES_OPTION='--all-features' ;
+        if [ -n "${{ matrix.job.features }}" ]; then CARGO_FEATURES_OPTION='--features ${{ matrix.job.features }}' ; fi
+        outputs CARGO_FEATURES_OPTION
+        # * determine sub-crate utility list
+        UTILITY_LIST="$(./util/show-utils.sh ${CARGO_FEATURES_OPTION})"
+        echo UTILITY_LIST=${UTILITY_LIST}
+        CARGO_UTILITY_LIST_OPTIONS="$(for u in ${UTILITY_LIST}; do echo -n "-puu_${u} "; done;)"
+        outputs CARGO_UTILITY_LIST_OPTIONS
+    - name: "`cargo doc` with warnings"
+      shell: bash
+      run: |
+        RUSTDOCFLAGS="-Dwarnings" cargo doc  ${{ steps.vars.outputs.CARGO_FEATURES_OPTION }} --no-deps --workspace --document-private-items
+    - uses: DavidAnson/markdownlint-cli2-action@v10
+      with:
+        command: fix
+        globs: |
+          *.md
+          docs/src/*.md
+          src/uu/*/*.md
+
   style_format:
     name: Style/format
     runs-on: ${{ matrix.job.os }}
@@ -124,42 +185,6 @@ jobs:
         # * convert any errors/warnings to GHA UI annotations; ref: <https://help.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-a-warning-message>
         S=$(cargo fmt -- --check) && printf "%s\n" "$S" || { printf "%s\n" "$S" ; printf "%s\n" "$S" | sed -E -n -e "s/^Diff[[:space:]]+in[[:space:]]+${PWD//\//\\/}\/(.*)[[:space:]]+at[[:space:]]+[^0-9]+([0-9]+).*$/::${fault_type} file=\1,line=\2::${fault_prefix}: \`cargo fmt\`: style violation (file:'\1', line:\2; use \`cargo fmt -- \"\1\"\`)/p" ; fault=true ; }
         if [ -n "${{ steps.vars.outputs.FAIL_ON_FAULT }}" ] && [ -n "$fault" ]; then exit 1 ; fi
-
-  fuzz:
-    name: Run the fuzzers
-    runs-on: ubuntu-latest
-    env:
-      RUN_FOR: 60
-    steps:
-    - uses: actions/checkout@v3
-    - uses: dtolnay/rust-toolchain@nightly
-    - name: Install `cargo-fuzz`
-      run: cargo install cargo-fuzz
-    - uses: Swatinem/rust-cache@v2
-    - name: Run fuzz_date for XX seconds
-      shell: bash
-      run: |
-        ## Run it
-        cd fuzz
-        cargo +nightly fuzz run fuzz_date -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
-    - name: Run fuzz_parse_glob for XX seconds
-      shell: bash
-      run: |
-        ## Run it
-        cd fuzz
-        cargo +nightly fuzz run fuzz_parse_glob -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
-    - name: Run fuzz_parse_size for XX seconds
-      shell: bash
-      run: |
-        ## Run it
-        cd fuzz
-        cargo +nightly fuzz run fuzz_parse_size -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
-    - name: Run fuzz_parse_time for XX seconds
-      shell: bash
-      run: |
-        ## Run it
-        cd fuzz
-        cargo +nightly fuzz run fuzz_parse_time -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
 
   style_lint:
     name: Style/lint
@@ -267,65 +292,6 @@ jobs:
         # S=$(cspell ${CSPELL_CFG_OPTION} --no-summary --no-progress "**/*") && printf "%s\n" "$S" || { printf "%s\n" "$S" ; printf "%s" "$S" | sed -E -n "s/${PWD//\//\\/}\/(.*):(.*):(.*) - (.*)/::${fault_type} file=\1,line=\2,col=\3::${fault_type^^}: \4 (file:'\1', line:\2)/p" ; fault=true ; true ; }
         S=$(cspell ${CSPELL_CFG_OPTION} --no-summary "**/*") && printf "%s\n" "$S" || { printf "%s\n" "$S" ; printf "%s" "$S" | sed -E -n "s/${PWD//\//\\/}\/(.*):(.*):(.*) - (.*)/::${fault_type} file=\1,line=\2,col=\3::${fault_type^^}: \4 (file:'\1', line:\2)/p" ; fault=true ; true ; }
         if [ -n "${{ steps.vars.outputs.FAIL_ON_FAULT }}" ] && [ -n "$fault" ]; then exit 1 ; fi
-
-  doc_warnings:
-    name: Documentation/warnings
-    runs-on: ${{ matrix.job.os }}
-    env:
-      SCCACHE_GHA_ENABLED: "true"
-      RUSTC_WRAPPER: "sccache"
-    strategy:
-      fail-fast: false
-      matrix:
-        job:
-          - { os: ubuntu-latest  , features: feat_os_unix }
-# for now, don't build it on mac & windows because the doc is only published from linux
-# + it needs a bunch of duplication for build
-# and I don't want to add a doc step in the regular build to avoid long builds
-#          - { os: macos-latest   , features: feat_os_macos }
-#          - { os: windows-latest , features: feat_os_windows }
-    steps:
-    - uses: actions/checkout@v3
-    - uses: dtolnay/rust-toolchain@master
-      with:
-        toolchain: stable
-        components: clippy
-    - uses: Swatinem/rust-cache@v2
-    - name: Run sccache-cache
-      uses: mozilla-actions/sccache-action@v0.0.3
-    - name: Initialize workflow variables
-      id: vars
-      shell: bash
-      run: |
-        ## VARs setup
-        outputs() { step_id="${{ github.action }}"; for var in "$@" ; do echo steps.${step_id}.outputs.${var}="${!var}"; echo "${var}=${!var}" >> $GITHUB_OUTPUT; done; }
-        # failure mode
-        unset FAIL_ON_FAULT ; case '${{ env.STYLE_FAIL_ON_FAULT }}' in
-          ''|0|f|false|n|no|off) FAULT_TYPE=warning ;;
-          *) FAIL_ON_FAULT=true ; FAULT_TYPE=error ;;
-        esac;
-        outputs FAIL_ON_FAULT FAULT_TYPE
-        # target-specific options
-        # * CARGO_FEATURES_OPTION
-        CARGO_FEATURES_OPTION='--all-features' ;
-        if [ -n "${{ matrix.job.features }}" ]; then CARGO_FEATURES_OPTION='--features ${{ matrix.job.features }}' ; fi
-        outputs CARGO_FEATURES_OPTION
-        # * determine sub-crate utility list
-        UTILITY_LIST="$(./util/show-utils.sh ${CARGO_FEATURES_OPTION})"
-        echo UTILITY_LIST=${UTILITY_LIST}
-        CARGO_UTILITY_LIST_OPTIONS="$(for u in ${UTILITY_LIST}; do echo -n "-puu_${u} "; done;)"
-        outputs CARGO_UTILITY_LIST_OPTIONS
-    - name: "`cargo doc` with warnings"
-      shell: bash
-      run: |
-        RUSTDOCFLAGS="-Dwarnings" cargo doc  ${{ steps.vars.outputs.CARGO_FEATURES_OPTION }} --no-deps --workspace --document-private-items
-    - uses: DavidAnson/markdownlint-cli2-action@v10
-      with:
-        command: fix
-        globs: |
-          *.md
-          docs/src/*.md
-          src/uu/*/*.md
 
   min_version:
     name: MinRustV # Minimum supported rust version (aka, MinSRV or MSRV)
@@ -960,6 +926,43 @@ jobs:
         name: busybox-result.json
         path: ${{ steps.vars.outputs.TEST_SUMMARY_FILE }}
 
+
+  test_fuzz:
+    name: Fuzz testing
+    runs-on: ubuntu-latest
+    env:
+      RUN_FOR: 60
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@nightly
+    - name: Install `cargo-fuzz`
+      run: cargo install cargo-fuzz
+    - uses: Swatinem/rust-cache@v2
+    - name: Run fuzz_date for XX seconds
+      shell: bash
+      run: |
+        ## Run it
+        cd fuzz
+        cargo +nightly fuzz run fuzz_date -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
+    - name: Run fuzz_parse_glob for XX seconds
+      shell: bash
+      run: |
+        ## Run it
+        cd fuzz
+        cargo +nightly fuzz run fuzz_parse_glob -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
+    - name: Run fuzz_parse_size for XX seconds
+      shell: bash
+      run: |
+        ## Run it
+        cd fuzz
+        cargo +nightly fuzz run fuzz_parse_size -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
+    - name: Run fuzz_parse_time for XX seconds
+      shell: bash
+      run: |
+        ## Run it
+        cd fuzz
+        cargo +nightly fuzz run fuzz_parse_time -- -max_total_time=${{ env.RUN_FOR }} -detect_leaks=0
+
   test_toybox:
     name: Tests/Toybox test suite
     needs: [ min_version, deps ]
@@ -1180,4 +1183,3 @@ jobs:
         flags: ${{ steps.vars.outputs.CODECOV_FLAGS }}
         name: codecov-umbrella
         fail_ci_if_error: false
-
