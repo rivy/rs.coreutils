@@ -35,7 +35,7 @@ pub fn main(_args: TokenStream, input: TokenStream) -> TokenStream {
     let original_fn_name = &ast.sig.ident;
 
     let new = quote!(
-        pub fn _uumain_wrapper_(args: impl uucore::Args) -> i32 {
+        pub fn _uumain_adapter_(args: impl uucore::Args) -> i32 {
             #stream
             let result: UResult<()> = #original_fn_name(args);
             eprintln!("result={:?}", result);
