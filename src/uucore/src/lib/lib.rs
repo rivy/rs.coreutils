@@ -89,7 +89,7 @@ use std::sync::atomic::Ordering;
 
 use once_cell::sync::Lazy;
 
-//# note: use `uucore::main` proc macro attribute to designate the utility `main` fn and generate wrapper (`_uumain_wrapper_(...)`)
+//# note: use `uucore::main` proc macro attribute to designate the utility `main` fn and generate adapter (`_uumain_adapter_(...)`)
 //  #... `uumain` is used as the utility main function by convention (though the actual function name is irrelevant (i.e. `uumain` is just a placeholder))
 // ```rust
 // #[uucore::main]
@@ -120,7 +120,7 @@ macro_rules! bin {
         pub fn main() {
             use std::io::Write;
             uucore::panic::mute_sigpipe_panic(); // suppress extraneous error output for SIGPIPE failures/panics
-            let code: i32 = $util::_uumain_wrapper_(uucore::args_os()); // execute wrapped utility main fn (expects proc_macro generated `_uumain_wrapper_(args: impl uucore::Args) -> i32`)
+            let code: i32 = $util::_uumain_adapter_(uucore::args_os()); // execute wrapped utility main fn (expects proc_macro generated `_uumain_adapter_(args: impl uucore::Args) -> i32`)
             std::io::stdout().flush().expect("could not flush stdout"); // (defensively) flush stdout for utility prior to exit; see <https://github.com/rust-lang/rust/issues/23818>
             std::process::exit(code);
         }
