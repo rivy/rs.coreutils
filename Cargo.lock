@@ -3427,6 +3427,7 @@ version = "0.0.19"
 dependencies = [
  "proc-macro2",
  "quote",
+ "syn",
  "uuhelp_parser",
 ]
 
