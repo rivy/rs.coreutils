@@ -3,7 +3,6 @@ target/
 /build/
 /tmp/
 /busybox/
-/.vscode/
 /.vs/
 *~
 .*.swp
@@ -15,3 +14,9 @@ lib*.a
 *.iml
 ### macOS ###
 .DS_Store
+
+## VSCode
+# * ignore all files/sub-directories in VSCode by default
+/.vscode/**
+# * don't ignore cSpell configuration files
+!/.vscode/c[sS]pell*
