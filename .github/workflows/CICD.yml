@@ -1,6 +1,6 @@
 name: CICD
 
-# spell-checker:ignore (abbrev/names) CICD CodeCOV MacOS MinGW MSVC musl taiki
+# spell-checker:ignore (abbrev/names) CICD CodeCOV MacOS MinGW MSVC musl taiki taplo
 # spell-checker:ignore (env/flags) Awarnings Ccodegen Coverflow Cpanic Dwarnings RUSTDOCFLAGS RUSTFLAGS Zpanic CARGOFLAGS
 # spell-checker:ignore (jargon) SHAs deps dequote softprops subshell toolchain fuzzers
 # spell-checker:ignore (people) DavidAnson dawidd6 dtolnay Peltoche rivy
