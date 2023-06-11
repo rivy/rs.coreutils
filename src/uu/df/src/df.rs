@@ -571,7 +571,7 @@ pub fn uu_app() -> Command {
                 .use_value_delimiter(true)
                 .value_parser(OUTPUT_FIELD_LIST)
                 .default_missing_values(OUTPUT_FIELD_LIST)
-                .default_values(["source", "size", "used", "avail", "pcent", "target"])
+                .default_value("source,size,used,avail,pcent,target")
                 .conflicts_with_all([OPT_INODES, OPT_PORTABILITY, OPT_PRINT_TYPE])
                 .help(
                     "use the output format defined by FIELD_LIST, \
