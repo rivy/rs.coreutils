@@ -754,7 +754,7 @@ impl Display for ClapErrorWrapper {
         write!(f, "{}", self.error.render().ansi().to_string().trim_end())
     }
 }
-// // FixME: [2022-04; terts] (HACK!) this is abuse of the Display trait to enable `clap` to display color
+// // FixME: [2022-04; tertsdiepraam] (HACK!) this is abuse of the Display trait to enable `clap` to display color
 // impl Display for ClapErrorWrapper {
 //     fn fmt(&self, _f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
 //         self.error.print().unwrap();
