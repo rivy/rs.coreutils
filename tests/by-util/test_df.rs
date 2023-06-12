@@ -276,11 +276,13 @@ fn test_type_option_with_file() {
         .arg("--output=fstype")
         .succeeds()
         .stdout_move_str();
+    print!("fs_types: {:?}\n", fs_types);
     let fs_types: Vec<_> = fs_types
         .lines()
         .skip(1)
         .filter(|t| t.trim() != fs_type && t.trim() != "")
         .collect();
+    print!("fs_types: {:?}\n", fs_types);
 
     if !fs_types.is_empty() {
         new_ucmd!()

@@ -353,6 +353,7 @@ fn get_all_filesystems(opt: &Options) -> Result<Vec<Filesystem>, std::io::Error>
     // Filesystems excluded by the command-line options are
     // not considered.
     let mounts: Vec<MountInfo> = filter_mount_list(read_fs_list()?, opt);
+    println!("mounts: {:?}\n", mounts);
 
     // Convert each `MountInfo` into a `Filesystem`, which contains
     // both the mount information and usage information.
