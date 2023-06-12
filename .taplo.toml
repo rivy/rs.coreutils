@@ -1,0 +1,7 @@
+# `taplo` configuration
+# ref: [`taplo` ~ Configuration File](https://taplo.tamasfe.dev/configuration.html)
+# spell-checker:ignore taplo
+[formatting]
+align_comments = false
+array_auto_collapse = false
+array_auto_expand = false
