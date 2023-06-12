@@ -85,8 +85,8 @@ pub fn uumain(args: impl uucore::Args) -> UResult<()> {
         (Some(reference), Some(date)) => {
             let (atime, mtime) = stat(Path::new(reference), !matches.get_flag(options::NO_DEREF))?;
             if let Ok(offset) = parse_datetime::from_str(date) {
-                let mut seconds = offset.whole_seconds();
-                let mut nanos = offset.subsec_nanoseconds();
+                let mut seconds = offset.num_seconds();
+                let mut nanos = offset.num_nanoseconds().unwrap_or(0);
                 if nanos < 0 {
                     nanos += 1_000_000_000;
                     seconds -= 1;
@@ -447,7 +447,11 @@ fn parse_date(s: &str) -> UResult<FileTime> {
 
     if let Ok(duration) = parse_datetime::from_str(s) {
         let now_local = time::OffsetDateTime::now_local().unwrap();
-        let diff = now_local.checked_add(duration).unwrap();
+        let diff = now_local
+            .checked_add(time::Duration::nanoseconds(
+                duration.num_nanoseconds().unwrap(),
+            ))
+            .unwrap();
         return Ok(local_dt_to_filetime(diff));
     }
 
