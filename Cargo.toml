@@ -356,7 +356,7 @@ textwrap = { workspace = true }
 zip = { workspace = true, optional = true }
 
 # * uutils
-uu_test = { optional = true, version = "0.0.19", package = "uu_test", path = "src/uu/test" }
+uu_test = { optional = true, version = "0.0.19", package = "uu_test", path = "src/uu/test" } ## avoid collision with core crate 'test'
 #
 arch = { optional = true, version = "0.0.19", package = "uu_arch", path = "src/uu/arch" }
 base32 = { optional = true, version = "0.0.19", package = "uu_base32", path = "src/uu/base32" }
