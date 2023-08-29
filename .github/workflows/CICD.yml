@@ -29,7 +29,7 @@ jobs:
   style_cargo-deny:
     name: Style/cargo-deny
     runs-on: ubuntu-latest
-    # continue-on-error: ${{ env.STYLE_FAIL_ON_FAULT != 'true' }}
+    # continue-on-error: ${{ env.STYLE_FAIL_ON_FAULT != 'true' }} ## FixME: [2023-06; rivy] broken; `env` not available in `continue-on-error` context
     steps:
       - uses: actions/checkout@v3
       - uses: EmbarkStudios/cargo-deny-action@v1
